@@ -27,10 +27,9 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/allejok96/jwlib"
-# TODO insert correct link
-Documentation = "https://readthedocs.org"
+Documentation = "https://jwlib.readthedocs.io/en/latest"
 Issues = "https://github.com/allejok96/jwlib/issues"
-Changelog = "https://github.com/allejok96/jwlib/blob/master/HISTORY.rst"
+Changelog = "https://github.com/allejok96/jwlib/blob/main/HISTORY.rst"
 
 # ---------------------------------------
 
