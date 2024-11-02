@@ -1,5 +1,5 @@
 =======
-History
+Changelog
 =======
 
 Unreleased_

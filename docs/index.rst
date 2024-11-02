@@ -4,7 +4,7 @@
    :hidden:
 
    Home <self>
-   installation
    jwlib
    history
    logging
+   development

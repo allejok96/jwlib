@@ -6,8 +6,9 @@ jwlib
 .. image:: https://img.shields.io/pypi/v/jwlib.svg
         :target: https://pypi.python.org/pypi/jwlib
 
-.. image:: https://img.shields.io/travis/allejok96/jwlib.svg
-        :target: https://travis-ci.com/allejok96/jwlib
+.. image:: https://github.com/allejok96/jwlib/actions/workflows/build.yml/badge.svg
+        :target: https://github.com/allejok96/jwlib/actions/workflows/build.yml
+        :alt: Build Status
 
 .. image:: https://readthedocs.org/projects/jwlib/badge/?version=latest
         :target: https://jwlib.readthedocs.io/en/latest/?version=latest
@@ -16,90 +17,81 @@ jwlib
 
 Python wrappers for a few JW.ORG_ APIs.
 
-* Documentation: https://jwlib.readthedocs.io.
+.. note:: This is project is in beta stage.
 
-
-.. note::
-
-    This is project is currently in beta stage.
-
-------------
-Installation
-------------
-
-This is the preferred method to install jwlib is using pip, as it will always install the most recent stable release.
+Install the most recent release using pip.
 
 .. code-block:: console
 
-    $ pip install jwlib
+    pip install jwlib
 
------
-Usage
------
+Here's how you might use jwlib a script:
 
-.. code-block:: console
+.. code-block:: python
 
-    TODO
+    import jwlib.media as jw
+
+    # Select Swedish
+    session = jw.Session(language='Z')
+
+    # Fetch the JW Broadcasting category
+    studio_category = session.get_category('VODStudio')
+
+    # Iterate through all its subcategories
+    # (this will make more API requests as needed)
+    for subcategory in studio_category.get_subcategories():
+
+        # Print a category header
+        print(f'\n{subcategory.name}\n-----------')
+
+        # Print title and URL of all media items
+        for media in subcategory.get_media():
+            print(media.title)
+            print(media.get_file().url)
+
+See the documentation_ for more details.
 
 ------------
 Development
 ------------
 
-Download the source code from the `repo`_ or by using git.
+This is only if you intend to
+
+jwlib uses `hatch`_ as its build system. You don't necessarily need it to work on jwlib. I use it mostly for the test
+features and to build documentation.
+
+Here's an example on how you might set up a development environment with hatch:
 
 .. code-block:: console
 
-    $ git clone git://github.com/allejok96/jwlib
+    # Install hatch using pipx
+    pip install --user pipx
+    pipx ensurepath
+    pipx install hatch
 
-jwlib uses `hatch`_ as its build system and it comes with some nice features, but it's not strictly needed.
-If you want to take a simpler approach using regular old `venv` you can stop right here.
+    # Download the jwlib source code
+    git clone git://github.com/allejok96/jwlib
+    cd jwlib
 
-Otherwise let's go ahead and install `hatch`_. Here's one way you can do it:
+    # Do a test run to initialize the environment
+    hatch run test
 
-.. code-block:: console
-
-    $ pip install --user pipx
-    $ pipx ensurepath
-    $ pipx install hatch
-
-Then do a test run to download all dependencies and create a virtual environment.
-
-.. code-block:: console
-
-    $ cd jwlib
-    $ hatch run test
+    # List a few other handy commands
+    hatch run help
 
 If you're using an IDE like PyCharm probably want to configure it to use the virtual environment that hatch just
 created. You can find it somewhere in the `hatch data directory`_.  On Linux this will be something like
-`~/.local/share/hatch/env/virtual/jwlib/3onyU7Va/jwlib`.
+``~/.local/share/hatch/env/virtual/jwlib/3onyU7Va/jwlib``.
 
-Now if you want to run a command from the terminal in the virtual environment you have to do it like so:
+If you want to run a python file in the virtual environment you'd call ``hatch run python somefile.py``.
 
-.. code-block:: console
-
-    $ hatch run python somefile.py
-
-When you're satisfied with your changes, run the tests again.
-
-.. code-block:: console
-
-    $ hatch run test
-
-This will probably fail because jwlib uses `pytest-recording`_ to record all interactions with the server and store
-them offline for testing. If the code tries to make a request that has not been recorded, the test will fail.
-In that case you must update the cassettes using the command below (this might take a while).
-
-.. code-block:: console
-
-    $ hatch run record
-
-A list of other development related commands can be obtained with:
-
-.. code-block:: console
-
-    $ hatch run help
+Once you've made your changes, you should test everything with ``hatch run test``.
+This will probably fail because jwlib uses `pytest-recording`_ to record all interactions with the server and
+store them offline for testing. If the code tries to make a request that has not been recorded, the test will fail.
+In that case you must update the cassettes using ``hatch run record`` (this might take a while).
 
 .. _JW.ORG: https://www.jw.org/
+.. _documentation: https://jwlib.readthedocs.io/en/latest
 .. _hatch: https://hatch.pypa.io/dev/install
 .. _repo: https://github.com/allejok96/jwlib
 .. _hatch data directory: https://hatch.pypa.io/dev/config/hatch/#data
