@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jwlib"
+dynamic = ["version"]
+authors = [
+    { name = "allejok96", email = "allejok96@gmail.com" },
+]
+description = "Wrapper for jw.org APIs"
+readme = "README.rst"
+requires-python = ">=3.8"
+# dependencies = []
+keywords = ["jw", "jworg"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+    "Topic :: Religion",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed"
+]
+
+[project.urls]
+Homepage = "https://github.com/allejok96/jwlib"
+# TODO insert correct link
+Documentation = "https://readthedocs.org"
+Issues = "https://github.com/allejok96/jwlib/issues"
+Changelog = "https://github.com/allejok96/jwlib/blob/master/HISTORY.rst"
+
+# ---------------------------------------
+
+[tool.ruff]
+line-length = 120
+# target-version = "py38"
+
+[tool.ruff.format]
+quote-style = "single"

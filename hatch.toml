@@ -1,0 +1,96 @@
+[version]
+path = "src/jwlib/__init__.py"
+
+[envs.default]
+dependencies = [
+    "mypy",
+    "Pillow",
+    "pytest-recording",
+    "tabulate",
+]
+
+# Show help
+scripts.help = "python -c \"import re\nwith open('hatch.toml') as f:\n  for m in re.finditer(r'# (hatch .*)\\n# (.*)', f.read()):\n    print(format(m.group(1), '40'), m.group(2))\""
+
+# Used internally to open documentation or reports in the web browser
+scripts.browser = "python -c \"import os,webbrowser,sys,urllib.request\nwebbrowser.open('file://'+urllib.request.pathname2url(os.path.abspath(sys.argv[1])))\""
+
+# Shortcut
+scripts.test = "pytest"
+
+#
+# hatch run record
+# Re-generate the cassette files used for offline testing with pytest
+#
+scripts.record = [
+    "rm tests/cassettes/test_media/cassette.yaml",
+    "pytest --record-mode=new_episodes",
+]
+
+#
+# hatch run typecheck
+# Static type checking with mypy
+#
+scripts.typecheck = "mypy --install-types --non-interactive --check-untyped-defs {args:src/jwlib tests}"
+
+#
+# hatch run cover
+# Open a test coverage report in the browser
+#
+scripts.cover = [
+    "coverage run -m pytest",
+    "coverage html",
+    "browser htmlcov/index.html"
+]
+
+#
+# hatch run docs:make-docs
+# Generate documentation
+#
+[envs.docs]
+# Will override the default dependencies
+dependencies = [
+    "Sphinx",
+    "sphinx_rtd_theme",
+]
+scripts.update = [
+    "sphinx-build -M clean docs docs/_build",
+    "sphinx-build -M html docs docs/_build",
+    "browser docs/_build/html/index.html"
+]
+
+#
+# hatch run docs:requirements
+# Update the requirements file used by readthedocs
+#
+# TODO why/when/how?
+scripts.requirements = "pip-freeze > docs/requirements.txt"
+
+#
+# hatch run watchdocs:watch
+# Re-build documentation whenever it changes
+#
+[envs.watchdocs]
+template = "docs"
+# Won't override the dependencies from `docs`
+extra-dependencies = [
+    "watchdog",
+]
+scripts.watch = [
+    "update",
+    "watchmedo shell-command --recursive --patterns '*.rst;*.py' --ignore-directories . --command 'make -C docs html'",
+]
+
+#
+# hatch test --all
+# Run pytest on all python versions
+#
+[envs.hatch-test]
+extra-dependencies = [
+    "Pillow",
+    "pytest-recording",
+    "tabulate",
+]
+
+[[envs.hatch-test.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
