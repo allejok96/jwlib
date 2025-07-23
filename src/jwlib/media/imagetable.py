@@ -3,6 +3,7 @@
 The values from the table can be fed into :meth:`~jwlib.media.Media.get_image`.
 
 .. rubric:: Category images
+
 +---------+--------------+---------------+--------------+-----------------------------+
 | ratio   | dimensions   | ratio alias   | size alias   | available for client type   |
 +=========+==============+===============+==============+=============================+
@@ -48,6 +49,7 @@ The values from the table can be fed into :meth:`~jwlib.media.Media.get_image`.
 +---------+--------------+---------------+--------------+-----------------------------+
 
 .. rubric:: Media images
+
 +---------+--------------+---------------+--------------+----------------------------------+
 | ratio   | dimensions   | ratio alias   | size alias   | available for client type        |
 +=========+==============+===============+==============+==================================+

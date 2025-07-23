@@ -34,15 +34,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Hatch
-        run: pip install --upgrade hatch
-
-      # - if: matrix.python-version == '3.8' && runner.os == 'Linux'
-        # name: Lint
-        # run: hatch fmt --check
+      - name: Install test dependencies
+        run: pip install ".[dev]"
 
       - name: Run tests
-        run: hatch test
+        run: pytest
 
         # TODO coverage
         # TODO type checking

@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "jwlib"
@@ -31,7 +31,23 @@ Documentation = "https://jwlib.readthedocs.io/en/latest"
 Issues = "https://github.com/allejok96/jwlib/issues"
 Changelog = "https://github.com/allejok96/jwlib/blob/main/HISTORY.rst"
 
-# ---------------------------------------
+[project.optional-dependencies]
+dev = [
+    "coverage",
+    "mypy",
+    "Pillow", # needed by media/imagetable.py
+    "pytest-recording",
+    "tabulate", # needed by media/imagetable.py
+    "pip-tools", # pip-compile needed by `make requirements`
+]
+docs = [
+    "Sphinx",
+    "sphinx_rtd_theme",
+    "watchdog", # needed by `make watchdocs`
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "jwlib.__version__"}
 
 [tool.ruff]
 line-length = 120
