@@ -71,3 +71,24 @@ TODO
 .. _jw.org: https://www.jw.org/
 .. _media: https://jwlib.readthedocs.io/en/latest/jwlib.media.html
 
+Development
+===========
+
+An example on how to setup the dev environment:
+
+.. code-block:: shell
+
+    # Create a virtual Python environement
+    python -m venv venv
+    . venv/bin/activate
+
+    # Install dependencies
+    # -e keeps the installed jwlib in sync with your changes
+    # [dev] installs the dependencies for testing
+    pip install -e '.[dev]'
+
+    # If you also want to build documentation:
+    pip install -e '.[dev,docs]'
+
+    # Show some convenience functions
+    make help
