@@ -11,3 +11,5 @@ def pytest_collection_modifyitems(session, config, items):
             item.add_marker(pytest.mark.default_cassette('cassette.yaml'))
 
 
+def pytest_recording_configure(config, vcr):
+    assert vcr, 'pytest-recording is not installed!'
