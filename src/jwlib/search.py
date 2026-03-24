@@ -97,7 +97,7 @@ class SearchResult(dict):
         return self['links'].get('wol')
 
 
-def search(string: str, item_type: str, *, lang='E', offset=0, limit: int | None = None) \
+def search(string: str, item_type: str, *, lang='E', offset=0, limit=0) \
         -> tuple[list[SearchResult], Pagination]:
     """Return a list of SearchResults together with Pagination info and token
 
