@@ -2,7 +2,9 @@
 jwlib.search
 ============
 
-.. note::
-    Under construction.
-
 .. automodule:: jwlib.search
+
+.. toctree::
+    :hidden:
+
+    jwlib.search.const

@@ -80,15 +80,19 @@ class _DictWrapper:
         return default
 
 
-def _get_json(url: str, query: dict | None = None, *, headers: dict | None = None):
+def _get_json(url: str, query: Optional[dict] = None, *, headers: Optional[dict] = None):
     """Send a query to the server and return loaded JSON"""
 
-    if query:
+    if query is not None:
         # Remove None, convert bool to int
-        query = {k: (int(v) if isinstance(v, bool) else v)
-                 for k, v in query.items()
-                 if v is not None}
-        url += '?' + urllib.parse.urlencode(query)
+        filtered_query = {
+            k: (int(v) if isinstance(v, bool) else v)
+            for k, v in query.items()
+            if v is not None
+        }
+
+        url += '&' if ('?' in url) else '?'
+        url += urllib.parse.urlencode(filtered_query)
 
     logger.debug(f'opening: {url}')
 
