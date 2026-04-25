@@ -213,7 +213,10 @@ class Category(_ItemWithImage):
             subcat_list.clear()
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} '{self.session.language}/{self.key}'>"
+        try:
+            return f"<{self.__class__.__name__} '{self.session.language}/{self.key}'>"
+        except (TypeError, LookupError, ValueError):
+            return super().__repr__()
 
     def get_media(self) -> Iterator[Media]:
         """Iterate over :class:`Media` items.
@@ -328,7 +331,10 @@ class Media(_ItemWithImage):
         self.parent = parent
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} '{self.session.language}/{self.key}'>"
+        try:
+            return f"<{self.__class__.__name__} '{self.session.language}/{self.key}'>"
+        except (TypeError, LookupError, ValueError):
+            return super().__repr__()
 
     @property
     def description(self) -> str:
@@ -521,7 +527,10 @@ class File(_DictWrapper):
     """Information about a downloadable file."""
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} '{self.filename}'>"
+        try:
+            return f"<{self.__class__.__name__} {self.filename!r}>"
+        except (TypeError, LookupError, ValueError):
+            return super().__repr__()
 
     @property
     def bitrate(self) -> float:
