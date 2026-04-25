@@ -19,7 +19,10 @@ class Language(_DictWrapper):
     """Information about a language"""
 
     def __repr__(self):
-        return f'<{self.__class__.__name__} {self.code!r}>'
+        try:
+            return f'<{self.__class__.__name__} {self.code!r}>'
+        except (TypeError, LookupError, ValueError):
+            return super().__repr__()
 
     @property
     def code(self) -> str:

@@ -32,8 +32,12 @@ coverage:
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-.PHONY: record # Re-generate cassette files used by pytest
+.PHONY: record # Record missing HTTP requests needed by pytest
 record:
+	pytest --record-mode=new_episodes
+
+.PHONY: record-all # Re-record all HTTP requests needed by pytest
+record-all:
 	rm tests/cassettes/test_media/cassette.yaml
 	pytest --record-mode=new_episodes
 
@@ -41,11 +45,11 @@ record:
 docs:
 	sphinx-build -M clean docs docs/_build
 	sphinx-build -M html docs docs/_build
-	$(BROWSER) docs/_build/html/index.html
 
 .PHONY: watchdocs # Re-build documentation whenever it changes
 watchdocs: docs
-	watchmedo shell-command --recursive --patterns '*.rst;*.py' --ignore-directories . --command 'make -C docs html'
+	$(BROWSER) docs/_build/html/index.html
+	watchmedo shell-command --recursive --patterns '*.rst;*.py' --ignore-directories . --command 'make docs'
 
 .PHONY: requirements # Update the requirements file used by readthedocs
 requirements:

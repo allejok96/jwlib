@@ -1,0 +1,737 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/tokens/jworg.jwt
+  response:
+    body:
+      string: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=1800
+      Connection:
+      - close
+      Content-Length:
+      - '1077'
+      Content-Type:
+      - text/plain
+      Date:
+      - Sat, 25 Apr 2026 20:02:07 GMT
+      ETag:
+      - '"d9ec5b7c4c26df20de11fd88866caef2"'
+      Last-Modified:
+      - Sat, 25 Apr 2026 14:00:33 GMT
+      Server:
+      - AmazonS3
+      Via:
+      - 1.1 41ee0215556e0543d529d912519eb46a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - r1LWX6Z4vupDZFGwFBIGwqwcnPrTEopCjIyvKRwC2SuCXohcNA8tmg==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Cache:
+      - RefreshHit from cloudfront
+      x-amz-server-side-encryption:
+      - AES256
+      x-amz-version-id:
+      - J7fPUEEnxV155slGD5CwKcF4Pd4y1o5.
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/E/all?sort=&q=Caleb
+  response:
+    body:
+      string: "{\"layout\":[\"flat\"],\"results\":[{\"type\":\"group\",\"links\":[],\"layout\":[\"flat\"],\"results\":[{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1200000863&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200000863&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200000863\",\"context\":\"Insight
+        on the Scriptures\",\"title\":\"Caleb\",\"snippet\":\"also a direct descendant
+        of <strong>Caleb</strong> the son of Hezron.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":1,\"lank\":\"pa-1200000863\",\"group\":{\"rank\":1,\"key\":\"all\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010852&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010852\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Caleb\",\"snippet\":\"<strong>CALEB</strong>\\n(<strong>Ca\u02B9leb</strong>)
+        [dog, or, snappish].\\n1. Son of Hezron, brother of Jerahmeel and greatgrandson
+        of Judah and Tamar (1\_Chron. 2:3-5,\_18); also called Chelubai (vs. 9).\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":2,\"lank\":\"pa-1200010852\",\"group\":{\"rank\":1,\"key\":\"all\",\"itemRank\":2}}}]},{\"type\":\"group\",\"label\":\"Index
+        Subjects\",\"links\":[{\"type\":\"more\",\"label\":\"See All\",\"link\":\"/results/E/indexes?sort=rel&q=Caleb\"}],\"layout\":[\"linkGroup\"],\"results\":[{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200271013&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200271013\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Caleb (Son of Jephunneh)
+        (dx86-26)\",\"snippet\":\"<strong>CALEB</strong> (Son of Jephunneh)\\nbrother
+        of Kenaz: it-2 563\\nconfidence in Jehovah: w13 8/15 14;\_w03 3/1 14;\_w98
+        8/15 13-14\\ncourage: wcg 62-64;\_w11 7/15 10-11;\_w06 10/1 16-17;\_w99 9/1
+        10-11;\_w93 11/15 14\\ndaughter Achsah: it-1 42,\_389\\nfield requested when
+        wed: it-1 1012\\nDebir taken: it-1 599\\ndiscussion: wcg 62\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":3,\"lank\":\"pa-1200271013\",\"group\":{\"rank\":2,\"key\":\"indexes\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200271962&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200271962\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Ephrathah (Wife of Caleb)\",\"snippet\":\"EPHRATHAH
+        (Wife of <strong>Caleb</strong>)\\ndiscussion: it-1 755\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":5,\"lank\":\"pa-1200271962\",\"group\":{\"rank\":2,\"key\":\"indexes\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200021387&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200021387\",\"context\":\"Watch
+        Tower Publications Index 1930-1985\",\"title\":\"Caleb\",\"snippet\":\"<strong>CALEB</strong>\\npersons:
+        ad 276-277\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":7,\"lank\":\"pa-1200021387\",\"group\":{\"rank\":2,\"key\":\"indexes\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200021388&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200021388\",\"context\":\"Watch
+        Tower Publications Index 1930-1985\",\"title\":\"Caleb (Son of Jephunneh)
+        (dx30-85)\",\"snippet\":\"<strong>CALEB</strong> (Son of Jephunneh)\\ndiscussion:
+        ad 276-277;\_w43 380-382;\_g32 9/14 795-799\\nname: ad 276;\_w43 380;\_g32
+        9/14 795\\nprophetic significance: w43 382;\_w34 180;\_jh 286\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":11,\"lank\":\"pa-1200021388\",\"group\":{\"rank\":2,\"key\":\"indexes\",\"itemRank\":4}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200273093&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200273093\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Jephunneh\",\"snippet\":\"JEPHUNNEH\\nfather
+        of <strong>Caleb</strong>: it-2 29\\nKenizzite: it-2 146\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":24,\"lank\":\"pa-1200273093\",\"group\":{\"rank\":2,\"key\":\"indexes\",\"itemRank\":5}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200274277&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200274277\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Othniel\",\"snippet\":\"OTHNIEL\\narea
+        served: it-1 743\\ndefeats Cushan-rishathaim: it-1 561\\ndiscussion: it-2
+        563\\neffectiveness as judge: si 47\\nmarries <strong>Caleb\u2019s</strong>
+        daughter: it-1 42,\_389\\nnephew of <strong>Caleb</strong>: it-2 563\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":40,\"lank\":\"pa-1200274277\",\"group\":{\"rank\":2,\"key\":\"indexes\",\"itemRank\":6}}}]},{\"type\":\"group\",\"links\":[],\"layout\":[\"flat\"],\"results\":[{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=503000608&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=503000608&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-503000608\",\"context\":\"LEARN
+        FROM JEHOVAH\u2019S FRIENDS\u200B\u2014ACTIVITIES\",\"title\":\"Joshua and
+        Caleb\",\"snippet\":\"Use this printed activity to learn from Jehovah\u2019s
+        friends Joshua and <strong>Caleb</strong>.\\n\\n\\n\\n\\n\\n\\nParents, read
+        and discuss Numbers 13:30\u201314:10 with your children.\\n\\nDownload and
+        print out the activity.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/503000608/univ/art/503000608_univ_sqs_lg.jpg\"},\"insight\":{\"rank\":4,\"lank\":\"pa-503000608\",\"group\":{\"rank\":3,\"key\":\"all\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102025912&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1102025912&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1102025912\",\"context\":\"WALK
+        COURAGEOUSLY WITH GOD\",\"title\":\"Caleb\u200B\u2014He Fought Loyally for
+        His God\",\"snippet\":\"In what situations might we imitate <strong>Caleb\u2019s</strong>
+        example?\\nYour answer\\n How does the example of <strong>Caleb</strong> help
+        us resist pressure to \u201Cfollow after the crowd\u201D? (Ex. 23:2) C\\nYour
+        answer\\nPicture C\\n In what other ways might you imitate <strong>Caleb\u2019s</strong>
+        courage?\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102025912/univ/art/1102025912_univ_sqs_lg.jpg\",\"altText\":\"Caleb
+        speaking to fellow Israelites, showing them samples of produce from the Promised
+        Land. Joshua, Moses, and Aaron are standing nearby.\"},\"insight\":{\"rank\":6,\"lank\":\"pa-1102025912\",\"group\":{\"rank\":3,\"key\":\"all\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1200000864&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200000864&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200000864\",\"context\":\"Insight
+        on the Scriptures\",\"title\":\"Caleb-ephrathah\",\"snippet\":\"(<strong>Ca\u02B9leb</strong>-eph\u02B9ra\xB7thah).\\nThis
+        name appears at 1\_Chronicles 2:24 in the Masoretic text as the place of the
+        death of Hezron of the tribe of Judah. (Compare LXX.) No further mention is
+        made of it, nor has any identification been made with a geographic site.\u200B\u2014See
+        HEZRON No.\_2.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":8,\"lank\":\"pa-1200000864\",\"group\":{\"rank\":3,\"key\":\"all\",\"itemRank\":3}}}]},{\"type\":\"group\",\"label\":\"Videos\",\"links\":[{\"type\":\"more\",\"label\":\"See
+        All\",\"link\":\"/results/E/videos?sort=rel&q=Caleb\"}],\"layout\":[\"carousel\",\"videos\"],\"results\":[{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=503000119&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-ljf_6_VIDEO\",\"title\":\"Learn
+        From Jehovah\u2019s Friends\u2014Joshua and Caleb\",\"snippet\":\"What did
+        Joshua and <strong>Caleb</strong> do to become Jehovah\u2019s friends? When
+        have you been afraid of something\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/503000119/univ/art/503000119_univ_lss_lg.jpg\"},\"duration\":\"2:40\",\"insight\":{\"rank\":9,\"lank\":\"pub-ljf_6_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102014323&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_12_VIDEO\",\"title\":\"Caleb
+        and Sophia Visit Bethel\",\"snippet\":\"Hey, <strong>Caleb</strong>,\\ndo
+        you remember our trip to Bethel? We got to go to Bethel,\\nand I\u2019m really,
+        really glad.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102014323/univ/art/1102014323_univ_lss_lg.jpg\"},\"duration\":\"1:46\",\"insight\":{\"rank\":16,\"lank\":\"pub-pk_12_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-125_6_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 5:26\",\"snippet\":\"Now, <strong>Caleb</strong> has a personal promise:\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-125_6_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=326.764\"},\"insight\":{\"rank\":20,\"lank\":\"pub-jwb-125_6_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":3}}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 0:01\",\"snippet\":\"And in the crowd is an older, seasoned, spiritual
+        man, <strong>Caleb</strong>. Now, Deuteronomy chapter 1 records what Moses
+        recalls at that time.\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-125_6_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=1.9809999999999999\"},\"insight\":{\"rank\":20,\"lank\":\"pub-jwb-125_6_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":3}}}],\"lank\":\"pub-jwb-125_6_VIDEO\",\"title\":\"Jeremy
+        Clarke: Recall Eshcol\",\"snippet\":\"Now, <strong>Caleb</strong> has a personal
+        promise:\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/jwb-125/univ/art/jwb-125_univ_lss_06_lg.jpg\"},\"duration\":\"11:28\",\"insight\":{\"rank\":20,\"lank\":\"pub-jwb-125_6_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600169&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_58_VIDEO\",\"title\":\"Become
+        Jehovah\u2019s Friend Preview: Jehovah Is a Real Person\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600169/univ/art/501600169_univ_lss_lg.jpg\"},\"duration\":\"0:51\",\"insight\":{\"rank\":68,\"lank\":\"pub-pk_58_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":4}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600162&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_56_VIDEO\",\"title\":\"You
+        Could Pioneer!\",\"snippet\":\"That\u2019s wonderful, <strong>Caleb</strong>.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600162/univ/art/501600162_univ_lss_lg.jpg\"},\"duration\":\"2:33\",\"insight\":{\"rank\":69,\"lank\":\"pub-pk_56_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":5}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600101&prefer=lang&wtlocale=E\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 1:49\",\"snippet\":\"Oh, <strong>Caleb</strong>. I love you, Dad. If discipline
+        is love, you must love me a whole lot! Yes, <strong>Caleb</strong>. Yes, I
+        do.\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600101&prefer=lang&wtlocale=E&ts=109.266\"},\"insight\":{\"rank\":70,\"lank\":\"pub-pk_36_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":6}}}],\"lank\":\"pub-pk_36_VIDEO\",\"title\":\"Discipline
+        Is Love\",\"snippet\":\"Oh, <strong>Caleb</strong>. I love you, Dad. If discipline
+        is love, you must love me a whole lot! Yes, <strong>Caleb</strong>. Yes, I
+        do.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600101/univ/art/501600101_univ_lss_lg.jpg\"},\"duration\":\"2:10\",\"insight\":{\"rank\":70,\"lank\":\"pub-pk_36_VIDEO\",\"group\":{\"rank\":4,\"key\":\"videos\",\"itemRank\":6}}}]},{\"type\":\"group\",\"label\":\"Audio\",\"links\":[{\"type\":\"more\",\"label\":\"See
+        All\",\"link\":\"/results/E/audio?sort=rel&q=Caleb\"}],\"layout\":[\"carousel\",\"audio\"],\"results\":[{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102014323&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_12_AUDIO\",\"title\":\"Caleb
+        and Sophia Visit Bethel\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102014323/univ/art/1102014323_univ_lss_lg.jpg\"},\"duration\":\"1:40\",\"insight\":{\"rank\":10,\"lank\":\"pub-pk_12_AUDIO\",\"group\":{\"rank\":5,\"key\":\"audio\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013546&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_7_AUDIO\",\"title\":\"Giving
+        Makes You Happy\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013546/univ/art/1102013546_univ_lss_lg.jpg\"},\"duration\":\"1:15\",\"insight\":{\"rank\":35,\"lank\":\"pub-pk_7_AUDIO\",\"group\":{\"rank\":5,\"key\":\"audio\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013357&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pksjj_89_AUDIO\",\"title\":\"89.
+        \ Listen, Obey, and Be Blessed\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013357/univ/art/1102013357_univ_lss_lg.jpg\"},\"duration\":\"3:26\",\"insight\":{\"rank\":79,\"lank\":\"pub-pksjj_89_AUDIO\",\"group\":{\"rank\":5,\"key\":\"audio\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=502019528&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pkon_13_AUDIO\",\"title\":\"Become
+        Jehovah\u2019s Friend\u2014Theme Song\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/502019528/univ/art/502019528_univ_lss_lg.jpg\"},\"duration\":\"1:41\",\"insight\":{\"rank\":90,\"lank\":\"pub-pkon_13_AUDIO\",\"group\":{\"rank\":5,\"key\":\"audio\",\"itemRank\":4}}}]},{\"type\":\"group\",\"links\":[],\"layout\":[\"flat\"],\"results\":[{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010853&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010853\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Caleb-ephrathah\",\"snippet\":\"<strong>CALEB</strong>-EPHRATHAH\\n(<strong>Ca\u02B9leb</strong>-eph\u02B9ra\xB7thah).\\nThis
+        name appears at 1\_Chronicles 2:24 as the place of the death of Hezron of
+        the tribe of Judah. No further mention is made of it, nor has any identification
+        been made with a geographical site.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":12,\"lank\":\"pa-1200010853\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102014316&prefer=lang&wtlocale=E\"},\"lank\":\"pa-1102014316\",\"context\":\"BECOME
+        JEHOVAH\u2019S FRIEND\u200B\u2014ACTIVITIES\",\"title\":\"Make Caleb\u2019s
+        Car\",\"snippet\":\"Make a car like <strong>Caleb\u2019s</strong> and give
+        it as a gift to someone.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102014316/univ/art/1102014316_univ_sqs_lg.jpg\"},\"insight\":{\"rank\":13,\"lank\":\"pa-1102014316\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013553&prefer=lang&wtlocale=E\"},\"lank\":\"pa-1102013553\",\"context\":\"BECOME
+        JEHOVAH\u2019S FRIEND\u200B\u2014ACTIVITIES\",\"title\":\"What Book Is Caleb
+        Reading?\",\"snippet\":\"What book is <strong>Caleb</strong> reading? What
+        did he learn?\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013553/univ/art/1102013553_univ_sqs_lg.jpg\"},\"insight\":{\"rank\":14,\"lank\":\"pa-1102013553\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013430&prefer=lang&wtlocale=E\"},\"lank\":\"pa-1102013430\",\"context\":\"BECOME
+        JEHOVAH\u2019S FRIEND\u200B\u2014ACTIVITIES\",\"title\":\"Help Caleb Clean
+        Up!\",\"snippet\":\"Download this activity, and help <strong>Caleb</strong>
+        find five toys. <strong>Caleb</strong> wants to obey his mom by putting his
+        things away.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013430/univ/art/1102013430_univ_sqs_lg.jpg\"},\"insight\":{\"rank\":15,\"lank\":\"pa-1102013430\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":4}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=502015539&prefer=lang&wtlocale=E\"},\"lank\":\"pa-502015539\",\"context\":\"PUBLISHING
+        WORK\",\"title\":\"Photo Gallery\u200B\u2014Children Love the Videos\",\"snippet\":\"\u201CI
+        can\u2019t wait for the next <strong>Caleb</strong> video! Keep up the good
+        work!\u201D\u200B\u2014Vance, aged\_8.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/502015539/univ/art/502015539_univ_sqs_lg.jpg\",\"altText\":\"An
+        older girl watches a little girl draw a picture\"},\"insight\":{\"rank\":18,\"lank\":\"pa-502015539\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":5}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102016036&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1102016036&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1102016036\",\"context\":\"LESSONS
+        YOU CAN LEARN FROM THE BIBLE\",\"title\":\"The Twelve Spies\",\"snippet\":\"The
+        12 spies, including Joshua and <strong>Caleb</strong>, left for Canaan.\\n\\n\\n\\n\\n\\nAfter
+        40 days, the spies returned, bringing back figs, pomegranates, and grapes.
+        The spies reported: \u2018It is a good land, but the people are strong and
+        the cities have high walls.\u2019 Then <strong>Caleb</strong> said: \u2018We
+        can conquer them.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102016036/univ/art/1102016036_univ_sqs_lg.jpg\",\"altText\":\"Israelite
+        men spy out the land of Canaan\"},\"insight\":{\"rank\":22,\"lank\":\"pa-1102016036\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":6}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1101978092&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1101978092&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1101978092\",\"context\":\"MY
+        BOOK OF BIBLE STORIES\",\"title\":\"The 12 Spies\",\"snippet\":\"Their names
+        are Joshua and <strong>Ca\u02B9leb</strong>. They say: \u2018Don\u2019t be
+        afraid. Jehovah is with us. It will be easy to take the land.\u2019 But the
+        people don\u2019t listen. They even want to kill Joshua and <strong>Ca\u02B9leb</strong>.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1101978092/univ/art/1101978092_univ_sqs_lg.jpg\",\"altText\":\"Joshua
+        holding a very large grape from the land of Canaan\"},\"insight\":{\"rank\":25,\"lank\":\"pa-1101978092\",\"group\":{\"rank\":6,\"key\":\"all\",\"itemRank\":7}}}]}],\"messages\":[],\"insight\":{\"query\":\"Caleb\",\"filter\":\"all\",\"sort\":\"rel\",\"offset\":0,\"page\":1,\"total\":{\"value\":531,\"relation\":\"eq\"}},\"pagination\":{\"label\":\"Showing
+        1 - 12 of 338\",\"links\":[{\"type\":\"first\",\"label\":\"1\",\"link\":\"/results/E/all?sort=rel&offset=0&limit=12&q=Caleb\",\"selected\":true},{\"type\":\"page\",\"label\":\"2\",\"link\":\"/results/E/all?sort=rel&offset=12&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"3\",\"link\":\"/results/E/all?sort=rel&offset=24&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"4\",\"link\":\"/results/E/all?sort=rel&offset=36&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"5\",\"link\":\"/results/E/all?sort=rel&offset=48&limit=12&q=Caleb\"},{\"type\":\"spacer\"},{\"type\":\"last\",\"label\":\"29\",\"link\":\"/results/E/all?sort=rel&offset=336&limit=12&q=Caleb\"},{\"type\":\"next\",\"label\":\">\",\"link\":\"/results/E/all?sort=rel&offset=12&limit=12&q=Caleb\"}]},\"filters\":[{\"label\":\"All\",\"link\":\"/results/E/all?q=\",\"selected\":true},{\"label\":\"Publications\",\"link\":\"/results/E/publications?q=\"},{\"label\":\"Videos\",\"link\":\"/results/E/videos?q=\"},{\"label\":\"Audio\",\"link\":\"/results/E/audio?q=\"},{\"label\":\"Bible\",\"link\":\"/results/E/bible?q=\"}],\"sorts\":[{\"label\":\"Relevance\",\"link\":\"/results/E/all?sort=rel&q=\",\"selected\":true},{\"label\":\"Newest\",\"link\":\"/results/E/all?sort=newest&q=\"},{\"label\":\"Oldest\",\"link\":\"/results/E/all?sort=oldest&q=\"}]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '19326'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 20:02:06 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 ce6aa43c72ee1bea26f47b9ee0b4eafc.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 1t5H6AycQKN4vzReEGmlJpaPLyb7ZFJ5bqmn_dSbbSKLhuhf0VO27w==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '236'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 20:02:06 GMT
+      X-RequestID:
+      - e13e07f5-a684-4792-a521-ec2dd14affc3
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/Z/audio?sort=newest&q=Kevin
+  response:
+    body:
+      string: "{\"layout\":[\"grid\",\"audio\"],\"results\":[{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501800168&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pkon_35_AUDIO\",\"title\":\"Jehova
+        \xE4r verklig\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501800168/univ/art/501800168_univ_lss_lg.jpg\"},\"duration\":\"2:55\",\"insight\":{\"rank\":1,\"lank\":\"pub-pkon_35_AUDIO\"}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102014323&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pk_12_AUDIO\",\"title\":\"Kevin
+        och Sofia bes\xF6ker Betel\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102014323/univ/art/1102014323_univ_lss_lg.jpg\"},\"duration\":\"1:41\",\"insight\":{\"rank\":2,\"lank\":\"pub-pk_12_AUDIO\"}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013557&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pksjj_134_AUDIO\",\"title\":\"134.
+        \u201DBarn \xE4r en g\xE5va fr\xE5n Jehova\u201D\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013557/univ/art/1102013557_univ_lss_lg.jpg\"},\"duration\":\"2:53\",\"insight\":{\"rank\":3,\"lank\":\"pub-pksjj_134_AUDIO\"}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013357&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pksjj_89_AUDIO\",\"title\":\"89.
+        Lyssna till Gud och bli v\xE4lsignad\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013357/univ/art/1102013357_univ_lss_lg.jpg\"},\"duration\":\"3:47\",\"insight\":{\"rank\":4,\"lank\":\"pub-pksjj_89_AUDIO\"}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013540&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pksjj_46_AUDIO\",\"title\":\"46.
+        Vi tackar dig, Jehova\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013540/univ/art/1102013540_univ_lss_lg.jpg\"},\"duration\":\"2:44\",\"insight\":{\"rank\":5,\"lank\":\"pub-pksjj_46_AUDIO\"}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013555&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pksjj_67_AUDIO\",\"title\":\"67.
+        Sprid Guds ord!\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013555/univ/art/1102013555_univ_lss_lg.jpg\"},\"duration\":\"2:16\",\"insight\":{\"rank\":6,\"lank\":\"pub-pksjj_67_AUDIO\"}},{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=502019528&prefer=lang&wtlocale=Z\"},\"deepLinks\":[],\"lank\":\"pub-pkon_13_AUDIO\",\"title\":\"Bli
+        Jehovas v\xE4n \u2013 Temas\xE5ng\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/502019528/univ/art/502019528_univ_lss_lg.jpg\"},\"duration\":\"1:41\",\"insight\":{\"rank\":7,\"lank\":\"pub-pkon_13_AUDIO\"}}],\"messages\":[],\"insight\":{\"query\":\"Kevin\",\"filter\":\"audio\",\"sort\":\"newest\",\"offset\":0,\"page\":1,\"total\":{\"value\":7,\"relation\":\"eq\"}},\"pagination\":{\"label\":\"Visar
+        1\u20137 av 7\",\"links\":[{\"type\":\"first\",\"label\":\"1\",\"link\":\"/results/Z/audio?sort=newest&offset=0&limit=12&q=Kevin\",\"selected\":true}]},\"filters\":[{\"label\":\"Alla\",\"link\":\"/results/Z/all?q=\"},{\"label\":\"Publikationer\",\"link\":\"/results/Z/publications?q=\"},{\"label\":\"Videor\",\"link\":\"/results/Z/videos?q=\"},{\"label\":\"Ljud\",\"link\":\"/results/Z/audio?q=\",\"selected\":true},{\"label\":\"Bibeln\",\"link\":\"/results/Z/bible?q=\"}],\"sorts\":[{\"label\":\"Relevans\",\"link\":\"/results/Z/audio?sort=rel&q=\"},{\"label\":\"Nyaste
+        f\xF6rst\",\"link\":\"/results/Z/audio?sort=newest&q=\",\"selected\":true},{\"label\":\"\xC4ldsta
+        f\xF6rst\",\"link\":\"/results/Z/audio?sort=oldest&q=\"}]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '3479'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 20:02:08 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 5dbb5d54ce8d1d6f8480679ed6115d1c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - -CooMLguTp5XB0gcxiXr9e3CHACgiWPX9RjRcZ0HF3QeYcwZhYcTkw==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '769'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 20:02:07 GMT
+      X-RequestID:
+      - 7243d4e2-bfdd-4621-89fe-e21bca8b83c2
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/E/videos?sort=&q=vederm%C3%B6dan
+  response:
+    body:
+      string: "{\"layout\":[\"grid\",\"videos\"],\"results\":[],\"messages\":[{\"type\":\"primary\",\"message\":\"Sorry,
+        the search returned no results.\"},{\"type\":\"primary\",\"message\":\"<p
+        > Suggestions: </p> <ul> <li>Make sure search terms are spelled correctly.
+        </li> <li>Try using less specific search criteria. </li> <li>Try reducing
+        the number of search terms. </li></ul>\"}],\"insight\":{\"query\":\"vederm\xF6dan\",\"filter\":\"videos\",\"sort\":\"rel\",\"offset\":0,\"page\":1,\"total\":{\"value\":0,\"relation\":\"eq\"}},\"filters\":[{\"label\":\"All\",\"link\":\"/results/E/all?q=\"},{\"label\":\"Publications\",\"link\":\"/results/E/publications?q=\"},{\"label\":\"Videos\",\"link\":\"/results/E/videos?q=\",\"selected\":true},{\"label\":\"Audio\",\"link\":\"/results/E/audio?q=\"},{\"label\":\"Bible\",\"link\":\"/results/E/bible?q=\"}],\"sorts\":[]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '753'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 20:02:08 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 88ba1d0c348c5f253432165d46a14a82.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - PEjZFpEIzuENsNlUdECHzZlF7Z9QqajfVnZsvNLbx4c0UC9UMLhIBg==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '42'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 20:02:08 GMT
+      X-RequestID:
+      - 1abe90cc-da5e-4e7f-8b78-1109d6b95294
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/E/publications?q=Caleb
+  response:
+    body:
+      string: "{\"layout\":[\"grid\",\"publications\"],\"results\":[{\"type\":\"item\",\"subtype\":\"publication\",\"links\":{\"jw.org\":\"https://www.jw.org/open?pub=ijwpkps&prefer=lang&wtlocale=E\"},\"lank\":\"pub-ijwpkps\",\"context\":\"ARTICLE
+        SERIES\",\"title\":\"Become Jehovah\u2019s Friend\u200B\u2014Posters\",\"snippet\":\"Download
+        and print your favorite poster!\",\"image\":{\"type\":\"cvr\"},\"printReference\":\"ijwpkps\",\"insight\":{\"rank\":1,\"lank\":\"pub-ijwpkps\"}},{\"type\":\"item\",\"subtype\":\"publication\",\"links\":{\"jw.org\":\"https://www.jw.org/open?pub=ijwpk&prefer=lang&wtlocale=E\"},\"lank\":\"pub-ijwpk\",\"context\":\"VIDEOS\",\"title\":\"Become
+        Jehovah\u2019s Friend\u200B\u2014Video Lessons\",\"snippet\":\"Watch or download
+        animated videos that teach children valuable Bible lessons.\",\"image\":{\"type\":\"cvr\"},\"printReference\":\"ijwpk\",\"insight\":{\"rank\":2,\"lank\":\"pub-ijwpk\"}}],\"messages\":[],\"insight\":{\"query\":\"Caleb\",\"filter\":\"publications\",\"sort\":\"rel\",\"offset\":0,\"page\":1,\"total\":{\"value\":2,\"relation\":\"eq\"}},\"pagination\":{\"label\":\"Showing
+        1 - 2 of 2\",\"links\":[{\"type\":\"first\",\"label\":\"1\",\"link\":\"/results/E/publications?sort=rel&offset=0&limit=12&q=Caleb\",\"selected\":true}]},\"filters\":[{\"label\":\"All\",\"link\":\"/results/E/all?q=\"},{\"label\":\"Publications\",\"link\":\"/results/E/publications?q=\",\"selected\":true},{\"label\":\"Videos\",\"link\":\"/results/E/videos?q=\"},{\"label\":\"Audio\",\"link\":\"/results/E/audio?q=\"},{\"label\":\"Bible\",\"link\":\"/results/E/bible?q=\"}],\"sorts\":[{\"label\":\"Relevance\",\"link\":\"/results/E/publications?sort=rel&q=\",\"selected\":true},{\"label\":\"Newest\",\"link\":\"/results/E/publications?sort=newest&q=\"},{\"label\":\"Oldest\",\"link\":\"/results/E/publications?sort=oldest&q=\"}]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '1601'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 20:13:53 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 42bac5f1aabdd1402109b9e5f2ab1414.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Oon_Y5tUAYkx4dEYqfVTHinNt6lvUCA1Vy37E8ZM57pb8E6bXkFlwg==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '49'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 20:13:53 GMT
+      X-RequestID:
+      - 418a0827-388e-4c31-927c-d25d595de38a
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/E/all?sort=newest&q=Caleb
+  response:
+    body:
+      string: "{\"layout\":[\"flat\"],\"results\":[{\"type\":\"group\",\"label\":\"Videos\",\"links\":[{\"type\":\"more\",\"label\":\"See
+        All\",\"link\":\"/results/E/videos?sort=newest&q=Caleb\"}],\"layout\":[\"carousel\",\"videos\"],\"results\":[{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-pk_557_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[],\"lank\":\"pub-pk_557_VIDEO\",\"title\":\"Be
+        Hospitable (With Audio Descriptions)\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/pk/univ/art/pk_univ_lss_557_lg.jpg\"},\"duration\":\"2:07\",\"insight\":{\"rank\":1,\"lank\":\"pub-pk_557_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-pk_520_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[],\"lank\":\"pub-pk_520_VIDEO\",\"title\":\"Lesson
+        20: Be Truthful (With Audio Descriptions)\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/pk/univ/art/pk_univ_lss_520_lg.jpg\"},\"duration\":\"1:44\",\"insight\":{\"rank\":2,\"lank\":\"pub-pk_520_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-134_9_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 1:27:26\",\"snippet\":\"I love you, <strong>Caleb</strong>!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-134_9_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=5246.303\"},\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-134_9_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":3}}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 1:22:31\",\"snippet\":\"That was a message\\ntraveling through <strong>Caleb\u2019s</strong>
+        neurons. They\u2019re everywhere! It\u2019s amazing! Jehovah is so wise!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-134_9_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=4951.342\"},\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-134_9_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":3}}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 1:17:29\",\"snippet\":\"Over the last few years, we\u2019ve had epic stories
+        with <strong>Caleb</strong> and Sophia. So we\u2019re happy to tell you there
+        is another Become Jehovah\u2019s Friend  epic.\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-134_9_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=4649.707\"},\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-134_9_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":3}}}],\"lank\":\"pub-jwb-134_9_VIDEO\",\"title\":\"JW
+        Broadcasting\u2014February 2026: Annual Meeting 2025, Part 2\",\"snippet\":\"I
+        love you, <strong>Caleb</strong>!\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/jwb-134/univ/art/jwb-134_univ_lss_09_lg.jpg\"},\"duration\":\"1:53:42\",\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-134_9_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-pk_559_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[],\"lank\":\"pub-pk_559_VIDEO\",\"title\":\"Jehovah
+        Is a Real Person (With Audio Descriptions)\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/pk/univ/art/pk_univ_lss_559_lg.jpg\"},\"duration\":\"10:35\",\"insight\":{\"rank\":4,\"lank\":\"pub-pk_559_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":4}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600168&prefer=lang&wtlocale=E\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 9:32\",\"snippet\":\"I love you, <strong>Caleb</strong>!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600168&prefer=lang&wtlocale=E&ts=572.551\"},\"insight\":{\"rank\":5,\"lank\":\"pub-pk_59_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":5}}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 4:37\",\"snippet\":\"That was a message\\ntraveling through <strong>Caleb\u2019s</strong>
+        neurons. They\u2019re everywhere! It\u2019s amazing! Jehovah is so wise! Wow!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600168&prefer=lang&wtlocale=E&ts=277.59\"},\"insight\":{\"rank\":5,\"lank\":\"pub-pk_59_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":5}}}],\"lank\":\"pub-pk_59_VIDEO\",\"title\":\"Jehovah
+        Is a Real Person\",\"snippet\":\"I love you, <strong>Caleb</strong>!\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600168/univ/art/501600168_univ_lss_lg.jpg\"},\"duration\":\"10:35\",\"insight\":{\"rank\":5,\"lank\":\"pub-pk_59_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":5}}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501800168&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pkon_35_VIDEO\",\"title\":\"Jehovah
+        Is Real\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501800168/univ/art/501800168_univ_lss_lg.jpg\"},\"duration\":\"3:05\",\"insight\":{\"rank\":6,\"lank\":\"pub-pkon_35_VIDEO\",\"group\":{\"rank\":1,\"key\":\"videos\",\"itemRank\":6}}}]},{\"type\":\"group\",\"label\":\"Audio\",\"links\":[{\"type\":\"more\",\"label\":\"See
+        All\",\"link\":\"/results/E/audio?sort=newest&q=Caleb\"}],\"layout\":[\"carousel\",\"audio\"],\"results\":[{\"type\":\"item\",\"subtype\":\"audio\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501800168&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pkon_35_AUDIO\",\"title\":\"Jehovah
+        Is Real\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501800168/univ/art/501800168_univ_lss_lg.jpg\"},\"duration\":\"2:55\",\"insight\":{\"rank\":7,\"lank\":\"pub-pkon_35_AUDIO\",\"group\":{\"rank\":2,\"key\":\"audio\",\"itemRank\":1}}}]},{\"type\":\"group\",\"label\":\"Index
+        Subjects\",\"links\":[{\"type\":\"more\",\"label\":\"See All\",\"link\":\"/results/E/indexes?sort=newest&q=Caleb\"}],\"layout\":[\"linkGroup\"],\"results\":[{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200270162&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200270162\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Achsah\",\"snippet\":\"ACHSAH\\ndaughter
+        of <strong>Caleb</strong>: it-1 42,\_389\\nfield requested when wed: it-1
+        1012\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":8,\"lank\":\"pa-1200270162\",\"group\":{\"rank\":3,\"key\":\"indexes\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200270630&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200270630\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Babel\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":9,\"lank\":\"pa-1200270630\",\"group\":{\"rank\":3,\"key\":\"indexes\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200270997&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200270997\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Cabul\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":10,\"lank\":\"pa-1200270997\",\"group\":{\"rank\":3,\"key\":\"indexes\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200271005&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200271005\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Cain\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":11,\"lank\":\"pa-1200271005\",\"group\":{\"rank\":3,\"key\":\"indexes\",\"itemRank\":4}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200271013&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200271013\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Caleb (Son of Jephunneh)\",\"snippet\":\"<strong>CALEB</strong>
+        (Son of Jephunneh)\\nbrother of Kenaz: it-2 563\\nconfidence in Jehovah: w13
+        8/15 14;\_w03 3/1 14;\_w98 8/15 13-14\\ncourage: wcg 62-64;\_w11 7/15 10-11;\_w06
+        10/1 16-17;\_w99 9/1 10-11;\_w93 11/15 14\\ndaughter Achsah: it-1 42,\_389\\nfield
+        requested when wed: it-1 1012\\nDebir taken: it-1 599\\ndiscussion: wcg 62\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":12,\"lank\":\"pa-1200271013\",\"group\":{\"rank\":3,\"key\":\"indexes\",\"itemRank\":5}}},{\"type\":\"item\",\"subtype\":\"index\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200271026&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200271026\",\"context\":\"Watch
+        Tower Publications Index 1986-2026\",\"title\":\"Camel\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":13,\"lank\":\"pa-1200271026\",\"group\":{\"rank\":3,\"key\":\"indexes\",\"itemRank\":6}}}]},{\"type\":\"group\",\"links\":[],\"layout\":[\"flat\"],\"results\":[{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=2025682&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=2025682&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-2025682\",\"context\":\"THE
+        WATCHTOWER\u2014STUDY EDITION\",\"title\":\"The Book of Job Can Help You When
+        You Suffer\",\"snippet\":\"For example, Joshua and <strong>Caleb</strong>
+        had spent their youth as slaves. Then through no fault of their own, they
+        wandered for 40 years in the wilderness.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/2025682/univ/art/2025682_univ_sqs_lg.jpg\",\"altText\":\"An
+        Israelite man reflecting as he stacks bricks in Egypt. Nearby, an Egyptian
+        uses a rod to beat a hardworking Israelite.\"},\"insight\":{\"rank\":32,\"lank\":\"pa-2025682\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":1}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=2025688&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=2025688&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-2025688\",\"context\":\"THE
+        WATCHTOWER\u2014STUDY EDITION\",\"title\":\"Study Project\u200B\u2014Build
+        Trust in Jehovah\u2019s Saving Power\",\"snippet\":\"(Deut. 1:26-28) What
+        kind of trust in Jehovah did Joshua and <strong>Caleb</strong> manifest?\u200B\u2014Num.
+        14:6-9.\\nDig deeper. What could the Israelites have done to increase their
+        confidence in Jehovah? (Ps. 9:10; 22:4; 78:11) What is the connection between
+        trusting in Jehovah and respecting him?\u200B\u2014Num. 14:11.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":33,\"lank\":\"pa-2025688\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":2}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=702025082&prefer=lang&wtlocale=E\"},\"lank\":\"pa-702025082\",\"context\":\"NEWS
+        RELEASES\",\"title\":\"Witnesses in Bolivia Host First of Nineteen 2025 \u201CPure
+        Worship\u201D Special Conventions\",\"snippet\":\"Brother\_<strong>Caleb</strong>
+        Loyola, a member of the Colombia Branch Committee, recalled: \u201CIt was
+        exciting and very moving to see how quickly the brothers and sisters responded
+        to the invitation to assist.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/702025082/univ/art/702025082_univ_sqs_lg.jpg\"},\"insight\":{\"rank\":44,\"lank\":\"pa-702025082\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":3}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1001070508&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1001070508&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1001070508\",\"context\":\"BIBLE
+        BOOKS\",\"title\":\"Numbers\u2014Outline of Contents\",\"snippet\":\"punished
+        for greed\_(31-35)\\n\\n\\n\\n12 \\n\\nMiriam and Aaron oppose Moses\_(1-3)\\n\\nMoses
+        the meekest of all\_(3)\\n\\n\\n\\nJehovah defends Moses\_(4-8)\\n\\nMiriam
+        struck with leprosy\_(9-16)\\n\\n\\n\\n13 \\n\\nThe 12 spies sent into Canaan\_(1-24)\\n\\nBad
+        report from ten spies\_(25-33)\\n\\n\\n\\n14 \\n\\nPeople want to return to
+        Egypt\_(1-10)\\n\\nJoshua and <strong>Caleb</strong>\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":48,\"lank\":\"pa-1001070508\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":4}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1001070510&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1001070510&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1001070510\",\"context\":\"BIBLE
+        BOOKS\",\"title\":\"Joshua\u2014Outline of Contents\",\"snippet\":\"inherits
+        Hebron\_(6-15)\\n\\n\\n\\n15 \\n\\nJudah\u2019s inheritance\_(1-12)\\n\\n<strong>Caleb\u2019s</strong>
+        daughter gets land\_(13-19)\\n\\nCities of Judah\_(20-63)\\n\\n\\n\\n16 \\n\\nInheritance
+        of Joseph\u2019s descendants\_(1-4)\\n\\nEphraim\u2019s inheritance\_(5-10)\\n\\n\\n\\n17
+        \\n\\nManasseh\u2019s inheritance in the west\_(1-13)\\n\\nAdditional land
+        for Joseph\u2019s descendants\_(14-18)\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":49,\"lank\":\"pa-1001070510\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":5}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102025912&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1102025912&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1102025912\",\"context\":\"WALK
+        COURAGEOUSLY WITH GOD\",\"title\":\"Caleb\u200B\u2014He Fought Loyally for
+        His God\",\"snippet\":\"In what situations might we imitate <strong>Caleb\u2019s</strong>
+        example?\\nYour answer\\n How does the example of <strong>Caleb</strong> help
+        us resist pressure to \u201Cfollow after the crowd\u201D? (Ex. 23:2) C\\nYour
+        answer\\nPicture C\\n In what other ways might you imitate <strong>Caleb\u2019s</strong>
+        courage?\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102025912/univ/art/1102025912_univ_sqs_lg.jpg\",\"altText\":\"Caleb
+        speaking to fellow Israelites, showing them samples of produce from the Promised
+        Land. Joshua, Moses, and Aaron are standing nearby.\"},\"insight\":{\"rank\":50,\"lank\":\"pa-1102025912\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":6}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102025962&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1102025962&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1102025962\",\"context\":\"WALK
+        COURAGEOUSLY WITH GOD\",\"title\":\"Section\_1\_Timeline\u200B\u2014From the
+        Days of the Patriarchs to the Time of the Judges\",\"snippet\":\"<strong>Caleb</strong>\\n1552-1450*
+        B.C.E.\\nJoshua\\n1560*-1450* B.C.E.\\nRahab\\n1500*-1400* B.C.E.\\n*Approximate
+        date.\\nTime of the Judges\\nPERSON\\nDATE\\nNaomi, Ruth, Deborah, Barak,
+        Jael, Gideon, Samson, Jephthah and his daughter\_\\n1450*-1120* B.C.E.\\nSamuel\\n1180*-1080*
+        B.C.E.\\n*Approximate date.\\nMajor Events\\n2370\_B.C.E.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102025962/univ/art/1102025962_univ_sqs_lg.jpg\",\"altText\":\"The
+        ark floating on top of the floodwaters.\"},\"insight\":{\"rank\":51,\"lank\":\"pa-1102025962\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":7}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1102026209&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1102026209\",\"context\":\"Examining
+        the Scriptures Daily\u20142026\",\"title\":\"October\",\"snippet\":\"An entire
+        generation of Israelites failed to recognize the truth that Joshua and <strong>Caleb</strong>
+        spoke. As a result, they lost the opportunity to enter the Promised Land.\u2014Num.
+        14:10,\_22,\_23. w24.07 10 \xB67\\nMonday, October\_5\\nJehovah is the examiner
+        of hearts.\u2014Prov. 17:3.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":52,\"lank\":\"pa-1102026209\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":8}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=503000608&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=503000608&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-503000608\",\"context\":\"LEARN
+        FROM JEHOVAH\u2019S FRIENDS\u200B\u2014ACTIVITIES\",\"title\":\"Joshua and
+        Caleb\",\"snippet\":\"Use this printed activity to learn from Jehovah\u2019s
+        friends Joshua and <strong>Caleb</strong>.\\n\\n\\n\\n\\n\\n\\nParents, read
+        and discuss Numbers 13:30\u201314:10 with your children.\\n\\nDownload and
+        print out the activity.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/503000608/univ/art/503000608_univ_sqs_lg.jpg\"},\"insight\":{\"rank\":53,\"lank\":\"pa-503000608\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":9}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=2024641&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=2024641&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-2024641\",\"context\":\"THE
+        WATCHTOWER\u2014STUDY EDITION\",\"title\":\"Learn From the Parting Words of
+        Faithful Men\",\"snippet\":\"(Num. 14:29) However, Joshua, <strong>Caleb</strong>,
+        and many of the younger generation and of the tribe of Levi did survive to
+        see Jehovah fulfill his promise when Israel crossed the Jordan River and entered
+        Canaan.\u200B\u2014Deut. 1:24-40.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/2024641/univ/art/2024641_univ_sqs_lg.jpg\",\"altText\":\"David
+        on his deathbed talking to King Solomon, who holds his hand.\"},\"insight\":{\"rank\":56,\"lank\":\"pa-2024641\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":10}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=2024481&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=2024481&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-2024481\",\"context\":\"THE
+        WATCHTOWER\u2014STUDY EDITION\",\"title\":\"Do You Recognize the Truth?\",\"snippet\":\"Unlike
+        those faithless spies, Joshua and <strong>Caleb</strong> wanted to have Jehovah\u2019s
+        approval. They told the people: \u201CIf Jehovah is pleased with us, he will
+        certainly bring us into this land and give it to us.\u201D\u200B\u2014Num.
+        14:6-9.\\n 7. How can we strengthen our fear of Jehovah? (See also picture.)\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/2024481/univ/art/2024481_univ_sqs_lg.jpg\",\"altText\":\"Joshua
+        and Caleb pleading with angry Israelites who are about to stone them. The
+        pillar of cloud is in the background.\"},\"insight\":{\"rank\":60,\"lank\":\"pa-2024481\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":11}}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=2024285&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=2024285&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-2024285\",\"context\":\"THE
+        WATCHTOWER\u2014STUDY EDITION\",\"title\":\"Keep Following Jehovah\u2019s
+        Guidance\",\"snippet\":\"For example, Jehovah noted: \u201C<strong>Caleb</strong>
+        .\_.\_. kept following after me wholeheartedly.\u201D (Read Numbers 14:24.)
+        God rewarded <strong>Caleb</strong>, even granting him his preferred choice
+        of land in Canaan. (Josh. 14:12-14) The next generation of Israelites also
+        set a good example in following Jehovah\u2019s guidance.\",\"image\":{\"type\":\"sqs\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/2024285/univ/art/2024285_univ_sqs_lg.jpg\",\"altText\":\"A
+        large group of Israelite men, women, and children following the pillar of
+        cloud in the wilderness.\"},\"insight\":{\"rank\":64,\"lank\":\"pa-2024285\",\"group\":{\"rank\":4,\"key\":\"all\",\"itemRank\":12}}}]}],\"messages\":[],\"insight\":{\"query\":\"Caleb\",\"filter\":\"all\",\"sort\":\"newest\",\"offset\":0,\"page\":1,\"total\":{\"value\":501,\"relation\":\"eq\"}},\"pagination\":{\"label\":\"Showing
+        1 - 12 of 341\",\"links\":[{\"type\":\"first\",\"label\":\"1\",\"link\":\"/results/E/all?sort=newest&offset=0&limit=12&q=Caleb\",\"selected\":true},{\"type\":\"page\",\"label\":\"2\",\"link\":\"/results/E/all?sort=newest&offset=12&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"3\",\"link\":\"/results/E/all?sort=newest&offset=24&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"4\",\"link\":\"/results/E/all?sort=newest&offset=36&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"5\",\"link\":\"/results/E/all?sort=newest&offset=48&limit=12&q=Caleb\"},{\"type\":\"spacer\"},{\"type\":\"last\",\"label\":\"29\",\"link\":\"/results/E/all?sort=newest&offset=336&limit=12&q=Caleb\"},{\"type\":\"next\",\"label\":\">\",\"link\":\"/results/E/all?sort=newest&offset=12&limit=12&q=Caleb\"}]},\"filters\":[{\"label\":\"All\",\"link\":\"/results/E/all?q=\",\"selected\":true},{\"label\":\"Publications\",\"link\":\"/results/E/publications?q=\"},{\"label\":\"Videos\",\"link\":\"/results/E/videos?q=\"},{\"label\":\"Audio\",\"link\":\"/results/E/audio?q=\"},{\"label\":\"Bible\",\"link\":\"/results/E/bible?q=\"}],\"sorts\":[{\"label\":\"Relevance\",\"link\":\"/results/E/all?sort=rel&q=\"},{\"label\":\"Newest\",\"link\":\"/results/E/all?sort=newest&q=\",\"selected\":true},{\"label\":\"Oldest\",\"link\":\"/results/E/all?sort=oldest&q=\"}]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '19666'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 20:15:43 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 42bac5f1aabdd1402109b9e5f2ab1414.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - dKHBQDRKdqrjmfY8dE1AxohUS9zZ4r0wrJfiO59AZwlFetBUlhYcJA==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '431'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 20:15:42 GMT
+      X-RequestID:
+      - f7c1ac59-16a3-4924-a730-c4220f740dbe
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/E/all?sort=rel&offset=336&limit=12&q=Caleb
+  response:
+    body:
+      string: "{\"layout\":[\"flat\"],\"results\":[{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010858&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010858\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Calneh\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":337,\"lank\":\"pa-1200010858\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010838&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010838\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Cab\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":338,\"lank\":\"pa-1200010838\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200014246&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200014246\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Tel-abib\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":339,\"lank\":\"pa-1200014246\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010839&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010839\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Cabbon\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":340,\"lank\":\"pa-1200010839\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010921&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010921\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Chelal\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":341,\"lank\":\"pa-1200010921\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1101990066&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1101990066&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1101990066\",\"context\":\"\u201CAll
+        Scripture Is Inspired of God and Beneficial\u201D\",\"title\":\"Bible Book
+        Number 5\u2014Deuteronomy\",\"snippet\":\"For their lack of faith, Jehovah
+        told that evil generation that none of them, except <strong>Caleb</strong>
+        and Joshua, would see the good land.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":342,\"lank\":\"pa-1101990066\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1102017007&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1102017007\",\"context\":\"Examining
+        the Scriptures Daily\u20142017\",\"title\":\"August\",\"snippet\":\"This was
+        true of <strong>Caleb</strong> and Joshua. They showed faith in Jehovah when
+        they spied out the Promised Land. However, as they saw Jehovah\u2019s direction
+        at each turn in their life thereafter, their faith grew even more.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":343,\"lank\":\"pa-1102017007\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1101976034&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1101976034&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1101976034\",\"context\":\"Holy
+        Spirit\u2014The Force Behind the Coming New Order!\",\"title\":\"Holy Spirit
+        in Action upon Persons of Earlier Times\",\"snippet\":\"Then Jehovah raised
+        a savior up for the sons of Israel that he might save them, Othniel the son
+        of Kenaz, the younger brother of <strong>Caleb</strong>. What took place now?
+        \u201CThe spirit of Jehovah now came upon him, and he became the judge of
+        Israel.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":344,\"lank\":\"pa-1101976034\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1200004211&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200004211&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200004211\",\"context\":\"Insight
+        on the Scriptures\",\"title\":\"Spirit\",\"snippet\":\"The basic sense of
+        a force that moves and gives \u201Cdrive\u201D or \u201Cthrust\u201D to one\u2019s
+        actions and speech is also seen in the reference to Joshua as \u201Ca man
+        in whom there is spirit\u201D (Nu 27:18), and to <strong>Caleb</strong> as
+        demonstrating \u201Ca different spirit\u201D from that of the majority of
+        the Israelites who had become demoralized\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":345,\"lank\":\"pa-1200004211\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200014114&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200014114\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Spirit\",\"snippet\":\"The basic sense
+        of a force that moves and gives \u201Cdrive\u201D or \u201Cthrust\u201D to
+        one\u2019s actions and speech is also seen in the reference to Joshua as \u201Ca
+        man in whom there is spirit\u201D (Num. 27:18), and to <strong>Caleb</strong>
+        as demonstrating a \u201Cdifferent spirit\u201D from that of the majority
+        of the Israelites who had become demoralized\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":346,\"lank\":\"pa-1200014114\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=1200010959&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-1200010959\",\"context\":\"Aid
+        to Bible Understanding\",\"title\":\"Chronology\",\"snippet\":\"(Josh. 23:1;\_24:29-31)
+        This is seen from the following facts:\\nSince he and <strong>Caleb</strong>
+        gave a faithful report after the spying trip, Joshua was exempt from the divine
+        judgment sentencing those twenty years old and upward to die in the wilderness.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":347,\"lank\":\"pa-1200010959\"}},{\"type\":\"item\",\"subtype\":\"article\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=301979004&prefer=lang&wtlocale=E\",\"wol\":\"https://wol.jw.org/wol/finder?wtlocale=E&docid=301979004&q=Caleb&p=doc&srcid=sch&srctype=jwo\"},\"lank\":\"pa-301979004\",\"context\":\"1979
+        Yearbook of Jehovah\u2019s Witnesses\",\"title\":\"Canada\",\"snippet\":\"No
+        study group was formed there at the time, but we know that <strong>Caleb</strong>
+        made at least one trip to hear C.\_T.\_Russell speak at Massey Hall in Toronto.
+        Crandell was delighted with what he saw and heard.\",\"image\":{\"type\":\"sqs\"},\"insight\":{\"rank\":348,\"lank\":\"pa-301979004\"}}],\"messages\":[],\"insight\":{\"query\":\"Caleb\",\"filter\":\"all\",\"sort\":\"rel\",\"offset\":336,\"page\":29,\"total\":{\"value\":354,\"relation\":\"eq\"}},\"pagination\":{\"label\":\"Showing
+        337 - 348 of 354\",\"links\":[{\"type\":\"previous\",\"label\":\"<\",\"link\":\"/results/E/all?sort=rel&offset=324&limit=12&q=Caleb\"},{\"type\":\"first\",\"label\":\"1\",\"link\":\"/results/E/all?sort=rel&offset=0&limit=12&q=Caleb\"},{\"type\":\"spacer\"},{\"type\":\"page\",\"label\":\"26\",\"link\":\"/results/E/all?sort=rel&offset=300&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"27\",\"link\":\"/results/E/all?sort=rel&offset=312&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"28\",\"link\":\"/results/E/all?sort=rel&offset=324&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"29\",\"link\":\"/results/E/all?sort=rel&offset=336&limit=12&q=Caleb\",\"selected\":true},{\"type\":\"last\",\"label\":\"30\",\"link\":\"/results/E/all?sort=rel&offset=348&limit=12&q=Caleb\"},{\"type\":\"next\",\"label\":\">\",\"link\":\"/results/E/all?sort=rel&offset=348&limit=12&q=Caleb\"}]},\"filters\":[{\"label\":\"All\",\"link\":\"/results/E/all?q=\",\"selected\":true},{\"label\":\"Publications\",\"link\":\"/results/E/publications?q=\"},{\"label\":\"Videos\",\"link\":\"/results/E/videos?q=\"},{\"label\":\"Audio\",\"link\":\"/results/E/audio?q=\"},{\"label\":\"Bible\",\"link\":\"/results/E/bible?q=\"}],\"sorts\":[{\"label\":\"Relevance\",\"link\":\"/results/E/all?sort=rel&q=\",\"selected\":true},{\"label\":\"Newest\",\"link\":\"/results/E/all?sort=newest&q=\"},{\"label\":\"Oldest\",\"link\":\"/results/E/all?sort=oldest&q=\"}]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '7319'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 20:31:20 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 aee4cdab0c79f3c4e94a27882c60be92.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 2AhcofyKoKt6tkg96aDxHzB7Ueipgp4JJEWkEaRH9owjsXCn9uqsUg==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '91'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 20:31:20 GMT
+      X-RequestID:
+      - 29db090f-ce3e-4ac7-a5d4-3728a4dd5c56
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJRdmlDaV9yalVRc3lQVWhPRUxHaHpuU0F3aDFnb3NlY1lHOHVwVEUzbU0ifQ.eyJqdGkiOiJkZGNmMmQ2Ni1hZTgyLTQ4YmItYTlhMy0yZmNjZjkzZWIwMGMiLCJzdWIiOiJ3d3cuancub3JnLXB1YmxpYyIsImlzcyI6Imp3b3JnOmF1dGg6cHJkIiwiaWF0IjoxNzc3MTI1NjI4LCJuYmYiOjE3NzcxMjU2MjgsImV4cCI6MTc3NzczMDQyOCwicG1hcGkiOnsiYXVkaWVuY2VzIjpbImdlbmVyYWwtcHVibGljIl0sInN0YXRlcyI6WyJwcm9kdWN0aW9uIl19LCJhdWQiOlsiSldCTWVkaWF0b3I6cHJkIiwiQWxlcnRzOnByZCIsIk9tbmlTZWFyY2g6cHJkIiwiZGFtczpwdWItbWVkaWEtYXBpOnByZCJdLCJwZXJtcyI6eyJvbW5pLXNlYXJjaCI6eyJzaXRlcyI6WyJqdy5vcmc6cHJkIiwid29sOnByZCJdLCJmaWx0ZXJzIjpbImFsbCIsInB1YmxpY2F0aW9ucyIsInZpZGVvcyIsImF1ZGlvIiwiYmlibGUiLCJpbmRleGVzIl0sInRhZ3MiOnsiZXhjbHVkZWQiOlsiU2VhcmNoRXhjbHVkZSIsIldXV0V4Y2x1ZGUiXX19fX0.UkPeV3WmFsk0U_QsCpVaQJVBxNmz33yUfDXJqbDu3uCrAdINJM5Lo2O8Vo8Jv9R-Wv5JnS9mQpVo49PZE-gi88zHuwsx-39n-KBi5RmwoyxPPabfq5Qg5YG2moi4MIdT9K6C2VG4E8EygWx-DIkpBwbQpwYwZTVc_w416fQHqpXIjJfnZ9HMPT6nxpP_ZNqV80TcUykeJhNTEo_ci8h2qP75wJZ1JSDXj0wbMh1PU11C7dM4mOF1udXAJULz_kpvB38WbT9arG6snUQ_eN0JlSzcf3040581w00ga3m3KepCDQyUeQtG3s7hK6dGTwthcYXwFF9x_brQiAVo_ZXjZQ
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/search/results/E/videos?q=Caleb
+  response:
+    body:
+      string: "{\"layout\":[\"grid\",\"videos\"],\"results\":[{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=503000119&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-ljf_6_VIDEO\",\"title\":\"Learn
+        From Jehovah\u2019s Friends\u2014Joshua and Caleb\",\"snippet\":\"What did
+        Joshua and <strong>Caleb</strong> do to become Jehovah\u2019s friends? When
+        have you been afraid of something\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/503000119/univ/art/503000119_univ_lss_lg.jpg\"},\"duration\":\"2:40\",\"insight\":{\"rank\":1,\"lank\":\"pub-ljf_6_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102014323&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_12_VIDEO\",\"title\":\"Caleb
+        and Sophia Visit Bethel\",\"snippet\":\"Hey, <strong>Caleb</strong>,\\ndo
+        you remember our trip to Bethel? We got to go to Bethel,\\nand I\u2019m really,
+        really glad.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102014323/univ/art/1102014323_univ_lss_lg.jpg\"},\"duration\":\"1:46\",\"insight\":{\"rank\":2,\"lank\":\"pub-pk_12_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-125_6_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 5:26\",\"snippet\":\"Now, <strong>Caleb</strong> has a personal promise:\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-125_6_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=326.764\"},\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-125_6_VIDEO\"}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 0:01\",\"snippet\":\"And in the crowd is an older, seasoned, spiritual
+        man, <strong>Caleb</strong>. Now, Deuteronomy chapter 1 records what Moses
+        recalls at that time.\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-125_6_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=1.9809999999999999\"},\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-125_6_VIDEO\"}}],\"lank\":\"pub-jwb-125_6_VIDEO\",\"title\":\"Jeremy
+        Clarke: Recall Eshcol\",\"snippet\":\"Now, <strong>Caleb</strong> has a personal
+        promise:\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/jwb-125/univ/art/jwb-125_univ_lss_06_lg.jpg\"},\"duration\":\"11:28\",\"insight\":{\"rank\":3,\"lank\":\"pub-jwb-125_6_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600169&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_58_VIDEO\",\"title\":\"Become
+        Jehovah\u2019s Friend Preview: Jehovah Is a Real Person\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600169/univ/art/501600169_univ_lss_lg.jpg\"},\"duration\":\"0:51\",\"insight\":{\"rank\":4,\"lank\":\"pub-pk_58_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600162&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_56_VIDEO\",\"title\":\"You
+        Could Pioneer!\",\"snippet\":\"That\u2019s wonderful, <strong>Caleb</strong>.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600162/univ/art/501600162_univ_lss_lg.jpg\"},\"duration\":\"2:33\",\"insight\":{\"rank\":5,\"lank\":\"pub-pk_56_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-089_16_VIDEO&wtlocale=E&appLanguage=E&prefer=content\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 4:10\",\"snippet\":\"After watching <strong>Caleb\u2019s</strong> father
+        lovingly talking to <strong>Caleb</strong>\\nand seeing <strong>Caleb</strong>
+        listening when his father used Bible characters to teach <strong>Caleb</strong>,
+        I tried it with\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-089_16_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=250.896\"},\"insight\":{\"rank\":6,\"lank\":\"pub-jwb-089_16_VIDEO\"}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 0:53\",\"snippet\":\"Well, one clever idea was to have\\n<strong>Caleb</strong>
+        portrayed as a small boy with a big, vivid imagination.\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=1011214&item=pub-jwb-089_16_VIDEO&wtlocale=E&appLanguage=E&prefer=content&ts=53.157\"},\"insight\":{\"rank\":6,\"lank\":\"pub-jwb-089_16_VIDEO\"}}],\"lank\":\"pub-jwb-089_16_VIDEO\",\"title\":\"A
+        Decade of Animated Bible Lessons\",\"snippet\":\"After watching <strong>Caleb\u2019s</strong>
+        father lovingly talking to <strong>Caleb</strong>\\nand seeing <strong>Caleb</strong>
+        listening when his father used Bible characters to teach <strong>Caleb</strong>,
+        I tried it with\",\"image\":{\"type\":\"lss\",\"url\":\"https://assetsnffrgf-a.akamaihd.net/assets/m/jwb-089/univ/art/jwb-089_univ_lss_16_lg.jpg\"},\"duration\":\"5:35\",\"insight\":{\"rank\":6,\"lank\":\"pub-jwb-089_16_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600101&prefer=lang&wtlocale=E\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 1:49\",\"snippet\":\"Oh, <strong>Caleb</strong>. I love you, Dad. If discipline
+        is love, you must love me a whole lot! Yes, <strong>Caleb</strong>. Yes, I
+        do.\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600101&prefer=lang&wtlocale=E&ts=109.266\"},\"insight\":{\"rank\":7,\"lank\":\"pub-pk_36_VIDEO\"}}],\"lank\":\"pub-pk_36_VIDEO\",\"title\":\"Discipline
+        Is Love\",\"snippet\":\"Oh, <strong>Caleb</strong>. I love you, Dad. If discipline
+        is love, you must love me a whole lot! Yes, <strong>Caleb</strong>. Yes, I
+        do.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600101/univ/art/501600101_univ_lss_lg.jpg\"},\"duration\":\"2:10\",\"insight\":{\"rank\":7,\"lank\":\"pub-pk_36_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=502018390&prefer=lang&wtlocale=E\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 5:27\",\"snippet\":\"<strong>Caleb</strong>! <strong>Caleb</strong>! <strong>Caleb</strong>!
+        <strong>Caleb</strong>! <strong>Caleb</strong>! \u200E<strong>Caleb</strong>?
+        <strong>Caleb</strong>? <strong>Caleb</strong>? \u200EYou going to play? \u200EHey,
+        Sophia! \u200EYou want the answer?\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=502018390&prefer=lang&wtlocale=E&ts=327.104\"},\"insight\":{\"rank\":8,\"lank\":\"pub-pk_33_VIDEO\"}}],\"lank\":\"pub-pk_33_VIDEO\",\"title\":\"Make
+        Jehovah Happy\",\"snippet\":\"<strong>Caleb</strong>! <strong>Caleb</strong>!
+        <strong>Caleb</strong>! <strong>Caleb</strong>! <strong>Caleb</strong>! \u200E<strong>Caleb</strong>?
+        <strong>Caleb</strong>? <strong>Caleb</strong>? \u200EYou going to play? \u200EHey,
+        Sophia! \u200EYou want the answer?\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/502018390/univ/art/502018390_univ_lss_lg.jpg\"},\"duration\":\"8:16\",\"insight\":{\"rank\":8,\"lank\":\"pub-pk_33_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600136&prefer=lang&wtlocale=E\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 0:58\",\"snippet\":\"<strong>Caleb</strong>, you\u2019re already doing
+        very well. One last thing: Do you want to be\\none of Jehovah\u2019s Witnesses
+        and preach? I do! I think I\u2019m ready!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600136&prefer=lang&wtlocale=E&ts=58.302\"},\"insight\":{\"rank\":9,\"lank\":\"pub-pk_48_VIDEO\"}}],\"lank\":\"pub-pk_48_VIDEO\",\"title\":\"Become
+        an Unbaptized Publisher\",\"snippet\":\"<strong>Caleb</strong>, you\u2019re
+        already doing very well. One last thing: Do you want to be\\none of Jehovah\u2019s
+        Witnesses and preach? I do! I think I\u2019m ready!\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600136/univ/art/501600136_univ_lss_lg.jpg\"},\"duration\":\"1:50\",\"insight\":{\"rank\":9,\"lank\":\"pub-pk_48_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600168&prefer=lang&wtlocale=E\"},\"deepLinks\":[{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 9:32\",\"snippet\":\"I love you, <strong>Caleb</strong>!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600168&prefer=lang&wtlocale=E&ts=572.551\"},\"insight\":{\"rank\":10,\"lank\":\"pub-pk_59_VIDEO\"}},{\"title\":\"\",\"jumpLabel\":\"Jump
+        to 4:37\",\"snippet\":\"That was a message\\ntraveling through <strong>Caleb\u2019s</strong>
+        neurons. They\u2019re everywhere! It\u2019s amazing! Jehovah is so wise! Wow!\",\"urls\":{\"jw.org\":\"https://www.jw.org/open?docid=501600168&prefer=lang&wtlocale=E&ts=277.59\"},\"insight\":{\"rank\":10,\"lank\":\"pub-pk_59_VIDEO\"}}],\"lank\":\"pub-pk_59_VIDEO\",\"title\":\"Jehovah
+        Is a Real Person\",\"snippet\":\"I love you, <strong>Caleb</strong>!\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600168/univ/art/501600168_univ_lss_lg.jpg\"},\"duration\":\"10:35\",\"insight\":{\"rank\":10,\"lank\":\"pub-pk_59_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=501600165&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_57_VIDEO\",\"title\":\"Be
+        Hospitable\",\"snippet\":\"My name is <strong>Caleb</strong>. Do you like
+        dinosaurs? Yeah! You can also make others feel welcome\\nwhen they come to
+        your home.\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/501600165/univ/art/501600165_univ_lss_lg.jpg\"},\"duration\":\"2:07\",\"insight\":{\"rank\":11,\"lank\":\"pub-pk_57_VIDEO\"}},{\"type\":\"item\",\"subtype\":\"video\",\"links\":{\"jw.org\":\"https://www.jw.org/open?docid=1102013428&prefer=lang&wtlocale=E\"},\"deepLinks\":[],\"lank\":\"pub-pk_6_VIDEO\",\"title\":\"Please
+        and Thank You\",\"snippet\":\"It looks like <strong>Caleb</strong> is getting
+        hungry. Let\u2019s see how <strong>Caleb</strong> asks his mom for food. Mom,
+        I need food now! I\u2019m hungry! <strong>Caleb</strong>!\",\"image\":{\"type\":\"lss\",\"url\":\"https://cms-imgp.jw-cdn.org/img/p/1102013428/univ/art/1102013428_univ_lss_lg.jpg\"},\"duration\":\"1:43\",\"insight\":{\"rank\":12,\"lank\":\"pub-pk_6_VIDEO\"}}],\"messages\":[],\"insight\":{\"query\":\"Caleb\",\"filter\":\"videos\",\"sort\":\"rel\",\"offset\":0,\"page\":1,\"total\":{\"value\":117,\"relation\":\"eq\"}},\"pagination\":{\"label\":\"Showing
+        1 - 12 of 117\",\"links\":[{\"type\":\"first\",\"label\":\"1\",\"link\":\"/results/E/videos?sort=rel&offset=0&limit=12&q=Caleb\",\"selected\":true},{\"type\":\"page\",\"label\":\"2\",\"link\":\"/results/E/videos?sort=rel&offset=12&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"3\",\"link\":\"/results/E/videos?sort=rel&offset=24&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"4\",\"link\":\"/results/E/videos?sort=rel&offset=36&limit=12&q=Caleb\"},{\"type\":\"page\",\"label\":\"5\",\"link\":\"/results/E/videos?sort=rel&offset=48&limit=12&q=Caleb\"},{\"type\":\"spacer\"},{\"type\":\"last\",\"label\":\"10\",\"link\":\"/results/E/videos?sort=rel&offset=108&limit=12&q=Caleb\"},{\"type\":\"next\",\"label\":\">\",\"link\":\"/results/E/videos?sort=rel&offset=12&limit=12&q=Caleb\"}]},\"filters\":[{\"label\":\"All\",\"link\":\"/results/E/all?q=\"},{\"label\":\"Publications\",\"link\":\"/results/E/publications?q=\"},{\"label\":\"Videos\",\"link\":\"/results/E/videos?q=\",\"selected\":true},{\"label\":\"Audio\",\"link\":\"/results/E/audio?q=\"},{\"label\":\"Bible\",\"link\":\"/results/E/bible?q=\"}],\"sorts\":[{\"label\":\"Relevance\",\"link\":\"/results/E/videos?sort=rel&q=\",\"selected\":true},{\"label\":\"Newest\",\"link\":\"/results/E/videos?sort=newest&q=\"},{\"label\":\"Oldest\",\"link\":\"/results/E/videos?sort=oldest&q=\"}]}"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - close
+      Content-Length:
+      - '10728'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Apr 2026 21:15:37 GMT
+      Server:
+      - awselb/2.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Cookie
+      Via:
+      - 1.1 fe0e9f973c9ac868eacfdb9b14bf55f0.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 8pJhafB6Ju6zoVIfGCXiieJFwGy2-H-fdE94k8Ycx7tmNvMToIyD9w==
+      X-Amz-Cf-Pop:
+      - ARN53-P1
+      X-Built-On:
+      - eu-west-1:search-omni-search-api-prd:$LATEST:4c95ac104
+      X-Cache:
+      - Miss from cloudfront
+      X-Elapsed-Millis:
+      - '136'
+      X-Page-Built:
+      - Sat, 25 Apr 2026 21:15:37 GMT
+      X-RequestID:
+      - e66a2f8f-6be2-44b9-bb32-ec257f8d990d
+    status:
+      code: 200
+      message: OK
+version: 1

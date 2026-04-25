@@ -3,6 +3,6 @@ jwlib.pub
 =========
 
 .. note::
-    Under construction.
+    Under construction, the API may be subject to change.
 
 .. automodule:: jwlib.pub
