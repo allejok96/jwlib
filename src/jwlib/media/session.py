@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging as _logging
 import os as _os
 import urllib.parse as _urllib_parse
-from typing import Iterable, Iterator
+from typing import Iterable, Iterator, Optional
 
 from ..common import _DictWrapper
 from .const import (
@@ -113,7 +113,7 @@ class Session:
             include_media=include_media
         ))
 
-    def create_category(self, category_data: dict, *, parent_key: str | None = None) -> Category:
+    def create_category(self, category_data: dict, *, parent_key: Optional[str] = None) -> Category:
         """Create or update a cached :class:`Category` using the given data."""
 
         # Create a new category instance, this is cheap and verifies 'key' for us
@@ -141,7 +141,7 @@ class Session:
 
 
 class _ItemWithImage(_DictWrapper):
-    def get_image(self, ratios: Iterable[str] = (), sizes: Iterable[str] = ()) -> str | None:
+    def get_image(self, ratios: Iterable[str] = (), sizes: Iterable[str] = ()) -> Optional[str]:
         """Return URL to first matching image.
 
         :param ratios: list of image ratios.
@@ -183,7 +183,7 @@ class Category(_ItemWithImage):
     Use :meth:`Session.get_category` instead.
     """
 
-    def __init__(self, session: Session, data: dict, parent_key: str | None = None):
+    def __init__(self, session: Session, data: dict, parent_key: Optional[str] = None):
         super().__init__(data)
         self.session = session
 
@@ -226,7 +226,7 @@ class Category(_ItemWithImage):
         """
         return _MediaIterator(self)
 
-    def get_parent(self) -> Category | None:
+    def get_parent(self) -> Optional[Category]:
         """Return parent :class:`Category`.
 
         If the parent is unknown, a request will be sent to the server.
@@ -322,7 +322,7 @@ class Media(_ItemWithImage):
     Use :meth:`Session.get_media` or :meth:`Category.get_media` instead.
     """
 
-    def __init__(self, session: Session, data: dict, parent: Category | None):
+    def __init__(self, session: Session, data: dict, parent: Optional[Category]):
         super().__init__(data)
         self.session = session
         self.parent = parent
@@ -430,7 +430,7 @@ class Media(_ItemWithImage):
         return self._get_string('firstPublished')[:19]
 
     @property
-    def subtitle_url(self) -> str | None:
+    def subtitle_url(self) -> Optional[str]:
         """Convenience method to get first available subtitle URL."""
         try:
             return next(f.subtitle_url for f in self.get_files() if f.subtitled_soft)
@@ -529,7 +529,7 @@ class File(_DictWrapper):
         return self._get_float('bitRate', 0.0)
 
     @property
-    def checksum(self) -> str | None:
+    def checksum(self) -> Optional[str]:
         """MD5 checksum."""
         return self.data.get('checksum')
 
@@ -588,7 +588,7 @@ class File(_DictWrapper):
         return self._get_int('filesize', 0)
 
     @property
-    def subtitle_checksum(self) -> str | None:
+    def subtitle_checksum(self) -> Optional[str]:
         """MD5 checksum for the subtitle file."""
         try:
             return self.data['subtitles']['checksum']
@@ -596,7 +596,7 @@ class File(_DictWrapper):
             return None
 
     @property
-    def subtitle_date(self) -> str | None:
+    def subtitle_date(self) -> Optional[str]:
         """Subtitle modification time, formatted according to :const:`TIME_FORMAT`."""
         try:
             return self.data['subtitles']['modifiedDatetime'][:19]
@@ -604,7 +604,7 @@ class File(_DictWrapper):
             return None
 
     @property
-    def subtitle_url(self) -> str | None:
+    def subtitle_url(self) -> Optional[str]:
         try:
             return self.data['subtitles']['url']
         except (KeyError, TypeError):

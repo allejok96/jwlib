@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from functools import lru_cache
+from typing import Optional
 from urllib.error import HTTPError
 
 from .common import NotFoundError, _DictWrapper, _get_json
@@ -65,7 +66,7 @@ class Marker(_DictWrapper):
         return _timestamp_to_float(self.data['startTime'])
 
     @property
-    def verse(self) -> int | None:
+    def verse(self) -> Optional[int]:
         return self.data.get('verseNumber')
 
 
@@ -141,7 +142,7 @@ class File(_DictWrapper):
         return self.data['file']['checksum']
 
     @property
-    def date(self) -> datetime | None:
+    def date(self) -> Optional[datetime]:
         """Modification date"""
         try:
             # Example 2019-01-20T10:28:27+00:00
@@ -187,7 +188,7 @@ class File(_DictWrapper):
         return self.data['hasTrack']
 
     @property
-    def image(self) -> str | None:
+    def image(self) -> Optional[str]:
         return self.data['trackImage']['url'] or None
 
     @property
@@ -196,7 +197,7 @@ class File(_DictWrapper):
         return self.data['label']
 
     @property
-    def markers(self) -> MarkerGroup | None:
+    def markers(self) -> Optional[MarkerGroup]:
         """MarkerCollection - holds list of Markers plus some metadata"""
         if not self.data.get('markers'):
             return None
@@ -276,7 +277,7 @@ class Publication(_DictWrapper):
         return string
 
     @property
-    def bible_book(self) -> int | None:
+    def bible_book(self) -> Optional[int]:
         """Number of bible book (0 is index page)"""
         return self.data.get('booknum') or None
 
@@ -296,11 +297,11 @@ class Publication(_DictWrapper):
         return self.data['fileformat']
 
     @property
-    def image(self) -> str | None:
+    def image(self) -> Optional[str]:
         return self.data.get('pubImage', {}).get('url')
 
     @property
-    def issue(self) -> str | None:
+    def issue(self) -> Optional[str]:
         """Magazine issue code"""
         return self.data.get('issue') or None
 
@@ -334,7 +335,7 @@ class Publication(_DictWrapper):
         return self.data['speciality']
 
     @property
-    def track(self) -> int | None:
+    def track(self) -> Optional[int]:
         """Track number (chapter of a book etc when dealing with sound recordings)"""
         return self.data.get('track')
 
@@ -352,10 +353,10 @@ def _timestamp_to_float(string: str) -> float:
 def get_publication(pub: str,
                     lang: str,
                     *,
-                    issue: int | None = None,
-                    bible_book: int | None = None,
+                    issue: Optional[int] = None,
+                    bible_book: Optional[int] = None,
                     all_langs=False,
-                    filetype: str | None = None
+                    filetype: Optional[str] = None
                     ) -> Publication:
     query = {
         'output': 'json',
