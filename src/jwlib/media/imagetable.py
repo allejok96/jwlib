@@ -1,5 +1,4 @@
-"""Script that generates an image format table.
-
+"""
 The values from the table can be fed into :meth:`~jwlib.media.Media.get_image`.
 
 .. rubric:: Category images

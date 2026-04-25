@@ -9,11 +9,12 @@ work your way from there using :meth:`~Category.get_subcategories` and
 .. doctest::
 
     >>> import jwlib.media as jw
-    >>> english_session = jw.Session()
-    >>> root = english_session.get_category()
-    >>> for category in root.get_subcategories():
-    >>>     for media in category.get_media():
-    >>>         print(media.title)
+    >>> session = jw.Session(language='E')
+    >>> broadcasting = session.get_category('VODStudio')
+    >>> for subcategory in broadcasting.get_subcategories():
+    >>>     for media in subcategory.get_media():
+    >>>         file = media.get_file()
+    >>>         print(media.title, file.url)
 """
 
 from ..common import NotFoundError

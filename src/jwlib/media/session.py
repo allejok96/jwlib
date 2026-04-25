@@ -319,7 +319,7 @@ class Media(_ItemWithImage):
     """Information about a media item.
 
     You wouldn't normally initialize this yourself.
-    Use :meth:`Session.get_media` or :meth:`Category.get_media` instead.
+    Use :meth:`Session.request_media` or :meth:`Category.get_media` instead.
     """
 
     def __init__(self, session: Session, data: dict, parent: Optional[Category]):
