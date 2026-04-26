@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import logging
 from typing import Optional, List, Dict
-from urllib.parse import quote
+from urllib.error import HTTPError
+from urllib.parse import quote, urlencode
 from urllib.request import urlopen
 
 from ..common import _get_json, _DictWrapper
@@ -23,27 +24,55 @@ logger = logging.getLogger(__name__)
 _API_BASE = 'https://b.jw-cdn.org/apis/search'
 _TOKEN_URL = 'https://b.jw-cdn.org/tokens/jworg.jwt'
 
+# Cached authentication token
+_jwt_token = ''
 
-def search(query: str, *, filter_type=FILTER_ALL, language='E', sort='') -> ResultPage:
+
+def _make_search_request(url: str, token: str, retry: bool) -> tuple[dict, str]:
+    """Get search result from the server.
+
+    Retries if the token has expired.
+    Returns the token used and the decoded JSON data.
+    """
+
+    global _jwt_token
+
+    if token:
+        _jwt_token = token
+
+    if not _jwt_token:
+        _jwt_token = urlopen(_TOKEN_URL).read().decode('utf-8')
+        retry = False
+
+    try:
+        data = _get_json(url, headers={'Authorization': 'Bearer ' + _jwt_token})
+        return data, _jwt_token
+    except HTTPError as e:
+        if e.code != 401 or retry is False:
+            raise
+
+    return _make_search_request(url, token='', retry=False)
+
+
+def search(query: str, *, filter_type='', language='E', sort='', token='') -> ResultPage:
     """Perform a search and return a :class:`ResultPage`.
 
     :param query: search term
     :param filter_type: see ``FILTER_*`` in :mod:`~jwlib.search.const`
     :param language: language code
     :param sort: see ``SORT_*`` in :mod:`~jwlib.search.const`
+    :param token: authentication token, acquired if empty (see :meth:`ResultPage.token`)
     """
     assert query
-    assert filter_type
     assert language
 
-    token = urlopen(_TOKEN_URL).read().decode('utf-8')
-    response = _get_json(
-        url=f'{_API_BASE}/results/{language}/{filter_type}',
-        query={'sort': sort, 'q': query},
-        headers={'Authorization': 'Bearer ' + token}
-    )
+    query_dict = {"q": query}
+    if sort:
+        query_dict['sort'] = sort
 
-    return ResultPage(response, token)
+    url = f'{_API_BASE}/results/{language}/{filter_type or FILTER_ALL}/?{urlencode(query_dict)}'
+
+    return ResultPage.from_url(url, token)
 
 
 class ResultPage(_DictWrapper):
@@ -54,10 +83,14 @@ class ResultPage(_DictWrapper):
         self._token = token
 
     @classmethod
-    def _from_link(cls, link: PageLink):
-        """Loads page data from a URL."""
-        response = _get_json(_API_BASE + link.path, headers={'Authorization': 'Bearer ' + link._token})
-        return ResultPage(response, token=link._token)
+    def from_url(cls, url: str, token: str = ''):
+        """Load a search page from a URL.
+
+        :param url: complete search query URL, like the one from :meth:`PageLink.url`.
+        :param token: authentication token, acquired if empty (see :meth:`ResultPage.token`).
+        """
+        response, valid_token = _make_search_request(url, token, retry=True)
+        return ResultPage(response, token=valid_token)
 
     def _generate_links(self, link_data_list: List[dict]) -> List[PageLink]:
         """Generates PageLinks from link data."""
@@ -68,7 +101,7 @@ class ResultPage(_DictWrapper):
             # We must add the query to Filter and Sort links
             if link_data.get('link', '').endswith('q='):
                 link_data['link'] += query
-            links.append(PageLink(link_data, self._token))
+            links.append(PageLink(link_data, self))
 
         return links
 
@@ -133,7 +166,7 @@ class ResultPage(_DictWrapper):
     def pagination(self) -> List[PageLink]:
         """List of navigation links."""
         return [
-            PageLink(link, self._token)
+            PageLink(link, self)
             for link in self.data.get('pagination', {}).get('links', [])
             # Some items in this list are just {"type": "spacer"}
             if link.get('link')
@@ -177,11 +210,11 @@ class ResultPage(_DictWrapper):
         """
 
         groups = []
-        default_group = ResultGroup({}, self._token)
+        default_group = ResultGroup({}, self)
 
         for r in self.data.get('results', []):
             if r.get('type') == 'group':
-                groups.append(ResultGroup(r, self._token))
+                groups.append(ResultGroup(r, self))
             else:
                 default_group.data.setdefault('results', []).append(r)
 
@@ -195,13 +228,18 @@ class ResultPage(_DictWrapper):
         """Links to pages where the results are sorted in some other order."""
         return self._generate_links(self.data.get('sorts', []))
 
+    @property
+    def token(self) -> str:
+        """JWT authentication token"""
+        return self._token
+
 
 class ResultGroup(_DictWrapper):
     """Group of :class:`Result` s of similar type."""
 
-    def __init__(self, data: dict, token: str):
+    def __init__(self, data: dict, parent: ResultPage):
         super().__init__(data)
-        self._token = token
+        self._parent = parent
 
     def __repr__(self):
         try:
@@ -233,7 +271,7 @@ class ResultGroup(_DictWrapper):
     @property
     def links(self) -> List[PageLink]:
         """Links found in the group header."""
-        return [PageLink(link, self._token)
+        return [PageLink(link, self._parent)
                 for link in self.data.get('links', [])]
 
     @property
@@ -340,9 +378,9 @@ class Result(_DictWrapper):
 class PageLink(_DictWrapper):
     """Link to a :class:`ResultPage`."""
 
-    def __init__(self, data: dict, token: str):
+    def __init__(self, data: dict, parent: ResultPage):
         super().__init__(data)
-        self._token = token
+        self._parent = parent
 
     def __repr__(self):
         try:
@@ -357,12 +395,7 @@ class PageLink(_DictWrapper):
 
     def open(self) -> ResultPage:
         """Fetch and return the :class:`ResultPage`."""
-        return ResultPage._from_link(self)
-
-    @property
-    def path(self) -> str:
-        """Relative link destination, use :meth:`PageLink.open` to open it."""
-        return self._get_string('link')
+        return ResultPage.from_url(self.url, self._parent.token)
 
     @property
     def selected(self) -> bool:
@@ -381,6 +414,21 @@ class PageLink(_DictWrapper):
         - ``more`` - more items of this type (video, audio, etc.)
         """
         return self.data.get('type')
+
+    @property
+    def url(self) -> str:
+        """Link destination, use :meth:`PageLink.open` to open it."""
+        url = self._get_string('link')
+
+        # Links are relative to the API base
+        if not url.startswith('http'):
+            url = f'{_API_BASE}/{url.lstrip("/")}'
+
+        # Links does not contain the search term
+        if url.endswith('q='):
+            url += self._parent.insight.query
+
+        return url
 
 
 class DeepLink(_DictWrapper):
