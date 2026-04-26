@@ -50,7 +50,3 @@ docs:
 watchdocs: docs
 	$(BROWSER) docs/_build/html/index.html
 	watchmedo shell-command --recursive --patterns '*.rst;*.py' --ignore-directories . --command 'make docs'
-
-.PHONY: requirements # Update the requirements file used by readthedocs
-requirements:
-	pip-compile --extra=docs --output-file=docs/requirements.txt
