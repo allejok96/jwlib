@@ -40,7 +40,6 @@ dev = [
     "tabulate", # needed by media/imagetable.py
 ]
 docs = [
-    "pip-tools", # pip-compile needed by `make requirements`
     "Sphinx",
     "sphinx_rtd_theme",
     "watchdog", # needed by `make watchdocs`
