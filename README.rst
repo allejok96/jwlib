@@ -16,7 +16,7 @@ Installation
 Usage
 =====
 
-Video API
+Browsing JW Broadcasting
 ---------
 
 .. code-block:: python
@@ -43,20 +43,62 @@ Video API
 
 See the media_ documentation for more details.
 
-Publication API
----------------
-
-TODO
-
-Search API
+Searching at jw.org
 ----------
 
-TODO
+.. code-block:: python
 
-Language API
+    import jwlib.search as jw
+
+    # Search for videos only
+    page = jw.search('Caleb', filter_type=jw.FILTER_VIDEO, language='S')
+    for result in page.results:
+        print(result.title, result.url_jw)
+
+    # Print page number info
+    print(page.pagination_label)
+
+    # Continue on next page
+    if page.next:
+        next_page = page.next.open()
+        for result in next_page.results:
+            print(result.title, result.url_jw)
+
+See the search_ documentation for more details.
+
+Downloading publications
+---------------
+
+Alpha version, may be subject to change.
+
+Listing languages
 ------------
 
-TODO
+Alpha version, may be subject to change.
+
+Development
+===========
+
+An example on how to setup the dev environment:
+
+.. code-block:: shell
+
+    # Create a virtual Python environment
+    python -m venv venv
+    . venv/bin/activate
+
+    # Install dependencies
+    # -e keeps the installed jwlib in sync with your changes
+    # [dev] installs the dependencies for testing
+    # [dev,docs] if you also want to build documentation
+    pip install -e '.[dev]'
+
+    # Run the tests
+    make test
+
+    # Show more convenience functions
+    make help
+
 
 .. |build| image:: https://github.com/allejok96/jwlib/actions/workflows/build.yml/badge.svg
     :target: https://github.com/allejok96/jwlib/actions/workflows/build.yml
@@ -70,25 +112,4 @@ TODO
 
 .. _jw.org: https://www.jw.org/
 .. _media: https://jwlib.readthedocs.io/en/latest/jwlib.media.html
-
-Development
-===========
-
-An example on how to setup the dev environment:
-
-.. code-block:: shell
-
-    # Create a virtual Python environement
-    python -m venv venv
-    . venv/bin/activate
-
-    # Install dependencies
-    # -e keeps the installed jwlib in sync with your changes
-    # [dev] installs the dependencies for testing
-    pip install -e '.[dev]'
-
-    # If you also want to build documentation:
-    pip install -e '.[dev,docs]'
-
-    # Show some convenience functions
-    make help
+.. _search: https://jwlib.readthedocs.io/en/latest/jwlib.search.html
