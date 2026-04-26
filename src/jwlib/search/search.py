@@ -61,7 +61,7 @@ def search(query: str, *, filter_type='', language='E', sort='', token='') -> Re
     :param filter_type: see ``FILTER_*`` in :mod:`~jwlib.search.const`
     :param language: language code
     :param sort: see ``SORT_*`` in :mod:`~jwlib.search.const`
-    :param token: authentication token, acquired if empty (see :meth:`ResultPage.token`)
+    :param token: authentication token, acquired if empty (see :attr:`ResultPage.token`)
     """
     assert query
     assert language
@@ -86,8 +86,8 @@ class ResultPage(_DictWrapper):
     def from_url(cls, url: str, token: str = ''):
         """Load a search page from a URL.
 
-        :param url: complete search query URL, like the one from :meth:`PageLink.url`.
-        :param token: authentication token, acquired if empty (see :meth:`ResultPage.token`).
+        :param url: complete search query URL, like the one from :attr:`PageLink.url`.
+        :param token: authentication token, acquired if empty (see :attr:`ResultPage.token`).
         """
         response, valid_token = _make_search_request(url, token, retry=True)
         return ResultPage(response, token=valid_token)
@@ -441,19 +441,14 @@ class DeepLink(_DictWrapper):
             return super().__repr__()
 
     @property
-    def title(self) -> str:
-        """Use-case unknown."""
-        return self.data.get('title', '')
+    def key(self) -> int:
+        """Media code name, similar to :attr:`Result.key`."""
+        return self.data.get('insight', {}).get('lank', '')
 
     @property
     def label(self) -> str:
         """Label like "Jump to 3:00"."""
         return self.data.get('jumpLabel', '')
-
-    @property
-    def lank(self) -> int:
-        """Media code name, similar to :meth:`Result.key`."""
-        return self.data.get('insight', {}).get('lank', '')
 
     @property
     def rank(self) -> int:
@@ -462,12 +457,17 @@ class DeepLink(_DictWrapper):
 
     @property
     def snippet(self) -> str:
-        """Blurb, similar to :meth:`Result.snippet`"""
+        """Blurb, similar to :attr:`Result.snippet`"""
         return self.data.get('snippet', '')
 
     @property
+    def title(self) -> str:
+        """Use-case unknown."""
+        return self.data.get('title', '')
+
+    @property
     def urls(self) -> Dict[str, str]:
-        """Dictionary of links, similar to :meth:`Result.urls`."""
+        """Dictionary of links, similar to :attr:`Result.urls`."""
         return self.data.get('urls', {})
 
     @property
