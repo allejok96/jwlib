@@ -2,6 +2,14 @@
 Changelog
 =========
 
+1.1.2_ (2026-04-26)
+===================
+
+Fixed
+-----
+
+- Updated documentation
+
 1.1.1_ (2026-04-26)
 ===================
 
@@ -51,6 +59,7 @@ Added
 
 - First release on PyPI.
 
+.. _1.1.2: https://github.com/allejok96/jwlib/releases/tag/v1.1.2
 .. _1.1.1: https://github.com/allejok96/jwlib/releases/tag/v1.1.1
 .. _1.1.0: https://github.com/allejok96/jwlib/releases/tag/v1.1.0
 .. _1.0.0: https://github.com/allejok96/jwlib/releases/tag/v1.0.0

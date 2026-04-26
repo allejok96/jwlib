@@ -38,8 +38,8 @@ def test_search_default(caplog) -> None:
     deep = next(r.deep_links[0] for r in filter_page.results if r.deep_links)
 
     assert isinstance(deep.title, str)
+    assert deep.key
     assert deep.label
-    assert deep.lank
     assert deep.rank > -1
     assert deep.snippet
     assert deep.urls

@@ -17,7 +17,7 @@ Usage
 =====
 
 Browsing JW Broadcasting
----------
+------------------------
 
 .. code-block:: python
 
@@ -44,7 +44,7 @@ Browsing JW Broadcasting
 See the media_ documentation for more details.
 
 Searching at jw.org
-----------
+-------------------
 
 .. code-block:: python
 
@@ -67,12 +67,12 @@ Searching at jw.org
 See the search_ documentation for more details.
 
 Downloading publications
----------------
+------------------------
 
 Alpha version, may be subject to change.
 
 Listing languages
-------------
+-----------------
 
 Alpha version, may be subject to change.
 
