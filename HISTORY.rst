@@ -51,7 +51,7 @@ Added
 
 - First release on PyPI.
 
-.. _1.1.1: https://github.com/allejok96/jw-scripts/releases/tag/v1.1.1
-.. _1.1.0: https://github.com/allejok96/jw-scripts/releases/tag/v1.1.0
-.. _1.0.0: https://github.com/allejok96/jw-scripts/releases/tag/v1.0.0
-.. _1.0.0-beta1: https://github.com/allejok96/jw-scripts/releases/tag/v1.0.0-beta1
+.. _1.1.1: https://github.com/allejok96/jwlib/releases/tag/v1.1.1
+.. _1.1.0: https://github.com/allejok96/jwlib/releases/tag/v1.1.0
+.. _1.0.0: https://github.com/allejok96/jwlib/releases/tag/v1.0.0
+.. _1.0.0-beta1: https://github.com/allejok96/jwlib/releases/tag/v1.0.0-beta1
