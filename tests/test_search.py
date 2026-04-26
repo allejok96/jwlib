@@ -1,8 +1,13 @@
+import logging
 import jwlib.search as jw
 
 
-def test_search_default() -> None:
+def test_search_default(caplog) -> None:
+    caplog.set_level(logging.DEBUG)
+
     page = jw.search('Caleb')
+    assert 'opening: https://b.jw-cdn.org/apis/search/results/E/all/?q=Caleb' in caplog.messages
+    caplog.clear()
 
     assert isinstance(page.layout, list)
     assert page.insight  # TODO
@@ -20,8 +25,10 @@ def test_search_default() -> None:
 
     # Check filtering links
     assert sum(1 for f in page.filters if f.selected)
-    filter_link = next(f for f in page.filters if not f.selected and jw.FILTER_VIDEO in f.path)
+    filter_link = next(f for f in page.filters if not f.selected and jw.FILTER_VIDEO in f.url)
     filter_page = filter_link.open()
+    assert 'opening: https://b.jw-cdn.org/apis/search/results/E/videos?q=Caleb' in caplog.messages
+    caplog.clear()
     assert filter_page.insight.filter != insight.filter
     assert filter_page.insight.total < insight.total
 
@@ -40,8 +47,10 @@ def test_search_default() -> None:
 
     # Check sorting links
     assert sum(1 for s in page.sorts if s.selected)
-    sort_link = next(s for s in page.sorts if not s.selected)
+    sort_link = next(s for s in page.sorts if not s.selected and jw.SORT_NEWEST in s.url)
     sort_page = sort_link.open()
+    assert 'opening: https://b.jw-cdn.org/apis/search/results/E/all?sort=newest&q=Caleb' in caplog.messages
+    caplog.clear()
     assert sort_page.insight.sort != insight.sort
     # sometimes the sorting order changes the total
     # assert sort_page.insight.total == insight.total
