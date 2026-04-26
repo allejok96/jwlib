@@ -10,7 +10,7 @@ Wrapper for the `jw.org <http://jw.org>`_ search API.
 """
 
 from .const import *
-from .search import Result, ResultGroup, SearchInsight, ResultPage, PageLink, search
+from .search import DeepLink, Result, ResultGroup, SearchInsight, ResultPage, PageLink, search
 
 __all__ = (
     'search',
@@ -18,5 +18,6 @@ __all__ = (
     'ResultGroup',
     'Result',
     'PageLink',
+    'DeepLink',
     'SearchInsight',
 )

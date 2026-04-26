@@ -9,6 +9,7 @@ from ..common import _get_json, _DictWrapper
 from .const import FILTER_ALL
 
 __all__ = (
+    'DeepLink',
     'PageLink',
     'Result',
     'ResultGroup',
