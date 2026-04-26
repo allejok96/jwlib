@@ -2,6 +2,15 @@
 Changelog
 =========
 
+1.1.1_ (2026-04-26)
+===================
+
+Added
+-----
+
+- [search] DeepLinks to specific positions in a video
+- [search] Ability to load a search page from a URL
+- [search] Ability to re-use authentication tokens across searches
 
 1.1.0_ (2026-04-25)
 ===================
@@ -9,7 +18,14 @@ Changelog
 Changed
 -------
 
-- First stable version of search API (breaking backwards compatibility with 1.0)
+- [search] First stable release (breaking backwards compatibility with jwlib.search 1.0)
+
+Added
+-----
+
+- [search] Navigation using links
+- [search] Search result groups
+- [search] Search insight
 
 
 1.0.0_ (2026-03-24)
@@ -23,8 +39,8 @@ Changed
 Fixed
 -----
 
-- Fixed MyPy warnings
-- Better test coverage
+- [media] Fixed MyPy warnings
+- [media] Better test coverage
 - Require pytest-recording
 
 1.0.0-beta1_ (2024-11-02)
@@ -35,6 +51,7 @@ Added
 
 - First release on PyPI.
 
-.. 1.1.0: https://github.com/allejok96/jw-scripts/releases/tag/v1.1.0
-.. 1.0.0: https://github.com/allejok96/jw-scripts/releases/tag/v1.0.0
+.. _1.1.1: https://github.com/allejok96/jw-scripts/releases/tag/v1.1.1
+.. _1.1.0: https://github.com/allejok96/jw-scripts/releases/tag/v1.1.0
+.. _1.0.0: https://github.com/allejok96/jw-scripts/releases/tag/v1.0.0
 .. _1.0.0-beta1: https://github.com/allejok96/jw-scripts/releases/tag/v1.0.0-beta1
