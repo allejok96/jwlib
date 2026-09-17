@@ -8,7 +8,9 @@ from functools import lru_cache
 from typing import Optional
 from urllib.error import HTTPError
 
-from .common import NotFoundError, _DictWrapper, _get_json
+from .._dictwrapper import _DictWrapper
+from .._request import get_json as _get_json
+from ..common import NotFoundError as _NotFoundErrorBase
 
 TYPE_MP3 = 'MP3'
 TYPE_PDF = 'PDF'
@@ -16,8 +18,13 @@ TYPE_EPUB = 'EPUB'
 TYPE_JWPUB = 'JWPUB'
 TYPE_RTF = 'RTF'
 
-
 _API_BASE = 'https://b.jw-cdn.org/apis/pub-media/GETPUBMEDIALINKS'
+
+
+class NotFoundError(_NotFoundErrorBase):
+    """Raised when a publication/languge was not found"""
+    ...
+
 
 class Language(_DictWrapper):
     def __init__(self, code: str, data: dict):
@@ -374,6 +381,6 @@ def get_publication(pub: str,
     try:
         return _get_json(_API_BASE, query)
     except HTTPError as e:
-        if e.code != 404:
-            raise
-    raise NotFoundError
+        if e.code == 404:
+            raise NotFoundError from e
+        raise

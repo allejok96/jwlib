@@ -1,6 +1,7 @@
 """
 Constants used in the mediator API
 """
+from typing import Literal
 
 # General
 # =======
@@ -26,15 +27,18 @@ CLIENT_RWLS = 'rwls'
 CLIENT_SATELLITE = 'satellite'
 CLIENT_WWW = 'www'  # Used by jw.org.
 
+
 # Category type
 # =============
-CATEGORY_CONTAINER = 'container'
-CATEGORY_ONDEMAND = 'ondemand'
+CategoryType = Literal['container', 'ondemand']
+CATEGORY_CONTAINER: CategoryType = 'container'
+CATEGORY_ONDEMAND: CategoryType = 'ondemand'
 
 # Media type
 # ==========
-MEDIA_AUDIO = 'audio'
-MEDIA_VIDEO = 'video'
+MediaType = Literal['audio', 'video']
+MEDIA_AUDIO: MediaType = 'audio'
+MEDIA_VIDEO: MediaType = 'video'
 
 # Image selection
 # ===============

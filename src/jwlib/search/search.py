@@ -6,8 +6,9 @@ from urllib.error import HTTPError
 from urllib.parse import quote, urlencode
 from urllib.request import urlopen
 
-from ..common import _get_json, _DictWrapper
 from .const import FILTER_ALL
+from .._dictwrapper import _DictWrapper
+from .._request import get_json as _get_json
 
 __all__ = (
     'DeepLink',

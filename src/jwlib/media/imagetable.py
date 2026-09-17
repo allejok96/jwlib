@@ -102,7 +102,7 @@ from typing import Dict, NamedTuple, Set
 from urllib.request import urlopen
 
 from .const import CLIENT_APPLETV, CLIENT_FIRETV, CLIENT_NONE, CLIENT_ROKU, CLIENT_WWW
-from .session import Session
+from ._session_impl import Session
 
 __all__ = (
     'generate_image_table',
@@ -170,10 +170,10 @@ def generate_image_table(*client_types: str) -> None:
         session = Session(client_type=client_name)
 
         cat = session.get_category('VODStudio')
-        parse_images(cat.data['images'], category_image_availability, client_name)
+        parse_images(cat.images, category_image_availability, client_name)
 
-        media = next(next(cat.get_subcategories()).get_media())
-        parse_images(media.data['images'], media_image_availability, client_name)
+        media = cat.get_subcategories()[0].get_media()[0]
+        parse_images(media.images, media_image_availability, client_name)
 
     headers = ['ratio', 'dimensions', 'ratio alias', 'size alias', 'available for client type']
 
