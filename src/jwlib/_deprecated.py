@@ -14,7 +14,7 @@ def deprecated(reason: str):
             )
             return func(*args, **kwargs)
 
-        wrapper.__doc__ = wrapper.__doc__ or '' + f'\n\n    .. warning::\n        Deprecated: {reason}'
+        wrapper.__doc__ = wrapper.__doc__ or '' + '\n\n:meta private:'
         return wrapper
 
     return decorator
