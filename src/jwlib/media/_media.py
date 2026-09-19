@@ -155,9 +155,6 @@ class Media(ItemWithImages):
     def data(self) -> dict:
         return asdict(self)
 
-    def get_date(self) -> datetime:
-        """Return :attr:`published` as a :class:`datetime`."""
-        return datetime.strptime(self.published, const.TIME_FORMAT)
     def get_file(self, *, resolution=1080, subtitles=False) -> File:
         """Return the `File` that best matches these criteria.
 
@@ -194,6 +191,10 @@ class Media(ItemWithImages):
         if self.primary_category_key is None:
             return None
         return self.session.get_category(self.primary_category_key, include_media=include_media)
+
+    def get_published(self) -> datetime:
+        """Return `Media.published` as a `datetime`."""
+        return datetime.strptime(self.published, const.TIME_FORMAT)
 
     @property
     def subtitle_url(self) -> Optional[str]:

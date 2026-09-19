@@ -112,8 +112,8 @@ class File:
         """File name of downloadable file."""
         return os.path.basename(urlparse(self.url).path)
 
-    def get_date(self) -> datetime:
-        """Return :attr:`modified` as a :class:`datetime`."""
+    def get_modified(self) -> datetime:
+        """Return `File.modified` as a `datetime`."""
         return datetime.strptime(self.modified, const.TIME_FORMAT)
 
     @property
@@ -163,3 +163,7 @@ class Subtitle:
             date=date,
             url=url,
         )
+
+    def get_date(self) -> datetime:
+        """Return `Subtitle.date` as a `datetime`."""
+        return datetime.strptime(self.date, const.TIME_FORMAT)
