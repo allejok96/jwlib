@@ -1,4 +1,5 @@
 import io
+import json
 import logging
 import sys
 import time
@@ -9,7 +10,6 @@ import pytest
 
 import jwlib.media as jw
 import jwlib.media.imagetable
-from jwlib.media import Media
 
 
 class LogHook(logging.Handler):
@@ -229,7 +229,6 @@ def test_category(rex):
         vod = jw.Session('Z', client_type=jw.CLIENT_APPLETV).get_category(TOP_LEVEL)
 
     assert vod.description
-    assert isinstance(vod.data, dict)
     image = vod.get_image(jw.RATIOS_3_1)
     assert image is not None and '_pnr_' in image
     assert vod.name
@@ -263,13 +262,12 @@ def test_category(rex):
 def test_media(rex):
     session = jw.Session('Z', client_type=jw.CLIENT_APPLETV)
     with rex.expect(mediaid='pub-mwbv_202003_4_VIDEO', client=jw.CLIENT_APPLETV, lang='Z'):
-        media = session.request_media('pub-mwbv_202003_4_VIDEO')
+        media = session.get_media('pub-mwbv_202003_4_VIDEO')
 
     with rex.expect(cat='SeriesOrgAccomplishments', client=jw.CLIENT_APPLETV, lang='Z', include_media=False):
         primary_category = media.get_primary_category()
 
     time.strptime(media.published, jw.TIME_FORMAT)
-    assert isinstance(media.data, dict)
     assert media.description == ''
     assert media.duration > 299
     assert media.duration_HHMM == '5:00'
@@ -294,7 +292,6 @@ def test_media(rex):
     assert file.bitrate > 50
     assert file.checksum
     time.strptime(file.modified, jw.TIME_FORMAT)
-    assert isinstance(file.data, dict)
     assert file.duration > 299
     assert file.filename == 'mwbv_Z_202003_04_r720P.mp4'
     assert round(file.frame_rate) == 24
@@ -303,21 +300,23 @@ def test_media(rex):
     assert file.resolution == 720
     assert file.size > 30000000
     assert file.subtitled_hard is False
-    assert file.subtitled_soft is True
-    assert file.subtitle_url is not None and 'mwbv_Z_202003_04.vtt' in file.subtitle_url
-    assert file.subtitle_checksum
-    assert file.subtitle_date is not None and time.strptime(file.subtitle_date, jw.TIME_FORMAT)
     assert 'mwbv_Z_202003_04_r720P.mp4' in file.url
     assert file.width == 1280
 
+    subtitles = file.subtitles
+    assert subtitles is not None
+    assert subtitles.url is not None and 'mwbv_Z_202003_04.vtt' in subtitles.url
+    assert subtitles.checksum
+    assert subtitles.date is not None and time.strptime(subtitles.date, jw.TIME_FORMAT)
+
     with rex.expect(mediaid='pub-osg_8_VIDEO', client=jw.CLIENT_APPLETV, lang='Z'):
-        video = session.request_media('pub-osg_8_VIDEO')
+        video = session.get_media('pub-osg_8_VIDEO')
     assert video.type == jw.MEDIA_VIDEO
 
 
 def test_languages(rex):
     with rex.expect(raw=['languages/Z/web']):
-        language = next(L for L in jw.request_languages('Z') if L.code == 'E')
+        language = next(L for L in jw.get_session('Z').get_languages() if L.code == 'E')
     assert language.iso == 'en'
     assert language.name == 'Engelska'
     assert language.rtl is False
@@ -328,7 +327,7 @@ def test_languages(rex):
 
 def test_translations(rex):
     with rex.expect(raw=['translations/Z']):
-        translations = jw.request_translations('Z')
+        translations = jw.get_session('Z').get_translations()
     assert translations['btnPlay'] == 'Spela'
 
 
@@ -344,7 +343,7 @@ def test_invalid_requests(rex):
 
     with pytest.raises(jw.NotFoundError):
         with rex.expect(mediaid='jwlibInvalidMediaTest'):
-            jw.Session().request_media('jwlibInvalidMediaTest')
+            jw.Session().get_media('jwlibInvalidMediaTest')
 
 
 def test_cache_dump(rex):
@@ -353,10 +352,13 @@ def test_cache_dump(rex):
         cat = session.get_category(LATEST_VIDEOS)
     media_count = len(list(cat.get_media()))
     assert media_count > 0
-    dump = session.dump_categories()
+    cat_list = session.dump_categories()
+
+    serialized = json.dumps(cat_list)
+    deserialized = json.loads(serialized)
 
     session = jw.Session()
-    session.load_categories(dump)
+    session.load_categories(deserialized)
     with rex.expect():  # Expect nothing, it should be cached
         cat = session.get_category(LATEST_VIDEOS)
     assert len(list(cat.get_media())) == media_count
@@ -376,19 +378,91 @@ def test_generate_table(rex):
     assert '| 16:9    | 640x360      | wss           | lg           | appletv, firetv, none, www' in buffer.getvalue()
 
 
-def test_supports_next(rex):
+def test_deprecated_dict(rex):
+    """All items used to have a dict property where data was stored.
+
+    Now that we use dataclasses this is no longer needed, and instead is more costly to generate.
+    """
+
+    with rex.expect(cat=BOTTOM_LEVEL):
+        bottom = jw.get_session().get_category(BOTTOM_LEVEL)
+    with pytest.deprecated_call():
+        assert isinstance(bottom.data, dict)
+
+    media = bottom.get_media()[0]
+    with pytest.deprecated_call():
+        assert isinstance(media.data, dict)
+
+    file = media.get_file()
+    with pytest.deprecated_call():
+        assert isinstance(file.data, dict)
+
+
+def test_deprecated_functions(rex):
+    # request_media() was renamed get_media()
+    session = jw.Session('Z', client_type=jw.CLIENT_APPLETV)
+    with rex.expect(mediaid='pub-mwbv_202003_4_VIDEO', client=jw.CLIENT_APPLETV, lang='Z'):
+        with pytest.deprecated_call():
+            media = session.request_media('pub-mwbv_202003_4_VIDEO')
+
+    # request_languages() was moved to session.get_languages()
+    with rex.expect(raw=['languages/Z/web']):
+        with pytest.deprecated_call():
+            assert jw.request_languages('Z')
+
+    # request_translations() was moved to session.get_translations()
+    with rex.expect(raw=['translations/Z']):
+        with pytest.deprecated_call():
+            assert jw.request_translations('Z')
+
+    file = media.get_file()
+
+    # subtitle_checksum was replaced by subtitles.checksum
+    with pytest.deprecated_call():
+        assert file.subtitle_checksum
+
+    # subtitle_date was replaced by subtitles.date
+    with pytest.deprecated_call():
+        assert file.subtitle_date
+
+    # subtitle_url was replaced by subtitles.url
+    with pytest.deprecated_call():
+        assert file.subtitle_url
+
+    # subtitled_soft was replaced by subtitles is not None
+    with pytest.deprecated_call():
+        assert file.subtitled_soft
+
+
+def test_deprecated_supports_next(rex):
+    """The getter methods used to return an iterator...
+
+    This works the same as a list with regard to iteration, but if you want the first item you'd call next()
+    but this doesn't work for a list. So a compatibility layer has been added in between.
+
+    Check that next() works for the calls below.
+    """
     with rex.expect(cat=MIDDLE_LEVEL):
         cat_list = jw.Session().get_category(MIDDLE_LEVEL).get_subcategories()
+
     bottom: jw.Category
-    bottom = next(cat_list)  # type: ignore
+    with pytest.deprecated_call():
+        bottom = next(cat_list)  # type: ignore
     assert bottom
+
     media_list = bottom.get_media()
     media: jw.Media
-    media = next(media_list)  # type: ignore
+    with pytest.deprecated_call():
+        media = next(media_list)  # type: ignore
     assert media
-    file_list = media.get_files()
+
+    # media.get_files() has been replaced by media.files
+    with pytest.deprecated_call():
+        file_list = media.get_files()
+
     file: jw.File
-    file = next(file_list)  # type:ignore
+    with pytest.deprecated_call():
+        file = next(file_list)  # type:ignore
     assert file
 
 
