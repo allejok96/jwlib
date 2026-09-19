@@ -155,25 +155,24 @@ class Media(ItemWithImages):
     def data(self) -> dict:
         return asdict(self)
 
-    def get_file(self, *, resolution=1080, subtitles=False) -> File:
+    def get_file(self, *, resolution=0, subtitles=False) -> File:
         """Return the `File` that best matches these criteria.
 
-        :param resolution: max resolution
+        :param resolution: max resolution (0 = no limit)
         :param subtitles: whether file should have subtitles (soft is preferred over hard)
 
-        Raises IndexError if no file is found.
-
-        .. note::
-            New instances of `File` are returned on each run, so they cannot be compared by identity,
-            but their underlying dictionary `File.data` *can* because it remains the same.
+        Raises LookupError if no file is found.
         """
 
-        return max(self.files, key=lambda f: (
-            f.resolution <= resolution,
-            f.subtitles is not None == subtitles,
-            f.subtitled_hard == subtitles,
-            f.resolution
-        ))
+        try:
+            return max(self.files, key=lambda f: (
+                (resolution == 0) or (f.resolution <= resolution),
+                (f.subtitles is not None) == subtitles,
+                f.subtitled_hard == subtitles,
+                f.resolution
+            ))
+        except ValueError as e:
+            raise LookupError from e
 
     @deprecated("Use `Media.files` instead.")
     def get_files(self) -> Iterable[File]:
