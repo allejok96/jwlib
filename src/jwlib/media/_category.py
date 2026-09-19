@@ -87,7 +87,7 @@ class Category(ItemWithImages):
             description=description,
             images=images if images is not None else {},
             key=key,
-            media=[m if isinstance(m, Media) else Media.create(**m) for m in media or []],
+            media=[m if isinstance(m, Media) else Media.create(**m, session=session) for m in media or []],
             media_count=media_count,
             name=name,
             parent=parent,

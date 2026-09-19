@@ -42,7 +42,6 @@ class BaseSession(ABC):
         self.client_type = client_type
         self.categories: dict[str, Category] = {}
 
-
     # ================
     # Cache management
     # ================
@@ -58,8 +57,7 @@ class BaseSession(ABC):
 
         dump = []
         for cat in self.categories.values():
-            cat_dict = asdict(cat)
-            del cat_dict['session']
+            cat_dict = asdict(cat, dict_factory=lambda pairs: dict(filter(lambda pair: pair[0] != 'session', pairs)))
             dump.append(cat_dict)
         return dump
 
