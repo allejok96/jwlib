@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ._category import Category
     from ._session_base import BaseSession
 
-
 T = TypeVar('T')
 
 
@@ -23,7 +22,7 @@ class Media(ItemWithImages):
     """Information about a media item.
 
     Do not initialize directly, since arguments may be subject to change.
-    Use :meth:`Session.get_media`, :meth:`Category.get_media` or :meth:`create` instead.
+    Use `Session.get_media()`, `Category.get_media()` or `create()` instead.
     """
 
     description: str
@@ -38,7 +37,7 @@ class Media(ItemWithImages):
     """Duration as a string, like ``2m 16s``."""
 
     files: list[File]
-    """List of :class:`File`."""
+    """List of `File`."""
 
     guid: str
     """24 character long hexadecimal identifier."""
@@ -66,9 +65,9 @@ class Media(ItemWithImages):
     a property of the Media itself, but rather a reflection of
     how the tree was traversed.
 
-    If :meth:`Session.get_media` was used, this will be `None`.
+    If `Session.get_media()` was used, this will be `None`.
 
-    See also :attr:`primary_category`.
+    See also `primary_category_key`.
     """
 
     primary_category_key: Optional[str]
@@ -76,6 +75,8 @@ class Media(ItemWithImages):
 
     This will be common between all duplicates of some Media item,
     no matter where in the hierarchy they were taken from.
+
+    See also `get_primary_category()`.
     """
     # Note to self:
     # In theory this should always be non-zero, but IRL it has been
@@ -84,13 +85,16 @@ class Media(ItemWithImages):
     published: str
     """Date when first published, as yyyy-mm-ddThh:mm:ss
 
-    See :const:`TIME_FORMAT`.
+    See `const.TIME_FORMAT <jwlib.media.const>` and `get_published()`.
     """
 
     print_references: list[str]
 
     session: BaseSession
-    """Session, used for :meth:`get_primary_category`"""
+    """Session that created this Media.
+
+    Needed by `get_primary_category()`.
+    """
 
     title: str
     """Display name."""
@@ -147,16 +151,15 @@ class Media(ItemWithImages):
             return super().__repr__()
 
     @property
-    @deprecated("Use dataclass.asdict() instead.")
+    @deprecated("Use `dataclasses.asdict()` instead.")
     def data(self) -> dict:
         return asdict(self)
 
     def get_date(self) -> datetime:
         """Return :attr:`published` as a :class:`datetime`."""
         return datetime.strptime(self.published, const.TIME_FORMAT)
-
     def get_file(self, *, resolution=1080, subtitles=False) -> File:
-        """Return the :class:`File` that best matches these criteria.
+        """Return the `File` that best matches these criteria.
 
         :param resolution: max resolution
         :param subtitles: whether file should have subtitles (soft is preferred over hard)
@@ -164,8 +167,8 @@ class Media(ItemWithImages):
         Raises IndexError if no file is found.
 
         .. note::
-            New instances of :class:`File` are returned on each run, so they cannot be compared by identity,
-            but their underlying dictionary :attr:`File.data` *can* because it remains the same.
+            New instances of `File` are returned on each run, so they cannot be compared by identity,
+            but their underlying dictionary `File.data` *can* because it remains the same.
         """
 
         return max(self.files, key=lambda f: (
@@ -175,7 +178,7 @@ class Media(ItemWithImages):
             f.resolution
         ))
 
-    @deprecated("Use Media.files instead.")
+    @deprecated("Use `Media.files` instead.")
     def get_files(self) -> Iterable[File]:
         return IteratorCompatibleList(self.files)
 
@@ -184,7 +187,9 @@ class Media(ItemWithImages):
 
         If the category is not in the cache, a request will be sent to the server.
 
-        :param include_media: see :meth:`Session.get_category`
+        :param include_media: see `Session.get_category()`
+
+        See also `primary_category_key`.
         """
         if self.primary_category_key is None:
             return None

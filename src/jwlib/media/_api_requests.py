@@ -6,15 +6,10 @@ from urllib.error import HTTPError
 from . import const
 from ._api_responses import CategoryResponse, LanguageResponse, MediaResponse, RootResponse, TranslationResponse
 from ._api_responses import CompleteCategoryDict, LanguageDict, MediaDict
+from ._api_responses import NotFoundError
 from .._request import get_json as _unsafe_get_json
-from ..common import NotFoundError as _NotFoundErrorBase
 
 API_BASE = 'https://b.jw-cdn.org/apis/mediator/v1'
-
-
-class NotFoundError(_NotFoundErrorBase):
-    """Raised when the server returns HTTP 404"""
-    # The base class is for backwards compatibility
 
 
 def get_json(url: str, query: Optional[dict] = None, *, headers: Optional[dict] = None):

@@ -33,7 +33,7 @@ class File:
     modified: str
     """Modification time, as yyyy-mm-ddThh:mm:ss
 
-    See :const:`TIME_FORMAT`.
+    See `const.TIME_FORMAT <jwlib.media.const>` and `get_modified()`.
     """
 
     resolution: int
@@ -103,7 +103,7 @@ class File:
             return super().__repr__()
 
     @property
-    @deprecated("Use dataclass.asdict() instead.")
+    @deprecated("Use `dataclasses.asdict()` instead.")
     def data(self) -> dict:
         return asdict(self)
 
@@ -117,22 +117,22 @@ class File:
         return datetime.strptime(self.modified, const.TIME_FORMAT)
 
     @property
-    @deprecated("Use File.subtitles.checksum instead.")
+    @deprecated("Use `File.subtitles.checksum` instead.")
     def subtitle_checksum(self) -> Optional[str]:
         return self.subtitles.checksum if self.subtitles else None
 
     @property
-    @deprecated("Use File.subtitles.date instead.")
+    @deprecated("Use `File.subtitles.date` instead.")
     def subtitle_date(self) -> Optional[str]:
         return self.subtitles.date if self.subtitles else None
 
     @property
-    @deprecated("Use File.subtitles.url instead.")
+    @deprecated("Use `File.subtitles.url` instead.")
     def subtitle_url(self) -> Optional[str]:
         return self.subtitles.url if self.subtitles else None
 
     @property
-    @deprecated("Check File.subtitles is not None instead.")
+    @deprecated("Check `File.subtitles` is not None instead.")
     def subtitled_soft(self) -> bool:
         return self.subtitles is not None
 
@@ -149,7 +149,7 @@ class Subtitle:
     date: str
     """Modification time, as yyyy-mm-ddThh:mm:ss
 
-    See :const:`TIME_FORMAT`.
+    See `const.TIME_FORMAT <jwlib.media.const>`.
     """
 
     @staticmethod

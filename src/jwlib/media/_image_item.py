@@ -12,11 +12,11 @@ class ItemWithImages:
     images: ImageDict
     """Dictionary with image URLs
 
-    See also :meth:`get_image`.
+    See also `get_image()`.
     """
 
     tags: list[str]
-    """List of tags, see :mod:`~const`."""
+    """List of tags, see `~jwlib.media.const`."""
 
     def get_image(self, ratios: Iterable[str] = (), sizes: Iterable[str] = ()) -> Optional[str]:
         """Return URL to first matching image.
@@ -24,13 +24,13 @@ class ItemWithImages:
         :param ratios: list of image ratios.
         :param sizes: list of image sizes.
 
-        To select the desired image use ``RATIOS_*`` and ``SIZES_*`` found in the :mod:`~jwlib.media.const` module.
-        Alternatively hand pick ratios and sizes from the :mod:`~jwlib.media.imagetable`.
+        To select the desired image use one of `const.RATIOS_* <jwlib.media.const>` and `const.SIZES_* <jwlib.media.const>`.
+        Alternatively hand pick ratios and sizes from `~jwlib.media.imagetable`.
 
-        By default, return the largest 16:9 image, or 1:1 if the item is tagged :const:`TAG_PREFER_SQUARE_IMAGES`.
+        By default, return the largest 16:9 image, or 1:1 if the item is tagged `const.TAG_PREFER_SQUARE_IMAGES <jwlib.media.const>`.
 
         .. note::
-            The client type affects what images are available.
+            `Session.client_type` affects what images are available.
         """
         if not ratios:
             ratios = RATIOS_SQUARE if TAG_PREFER_SQUARE_IMAGES in self.tags else RATIOS_16_9

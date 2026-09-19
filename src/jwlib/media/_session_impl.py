@@ -23,15 +23,28 @@ logger = logging.getLogger(__name__)
 
 
 class Session(BaseSession):
+    """A session is used to makes requests to the jw.org media API.
 
+    To create a new session, call `get_session()`.
+
+    This implementation keeps `Category` items cached to minimize the need for requests.
+    Direct requests for `Media` items, languages and translations are not cached.
+
+    If you want to create a dummy session for testing, derive it from `BaseSession`.
+    """
     # --------------
     # Public methods
     # --------------
 
     def get_languages(self) -> list[Language]:
+        """Return list of language info for all languages"""
         return [create_language(ld) for ld in fetch_languages(self.language)]
 
     def get_media(self, key: str) -> Media:
+        """Return a `Media` item.
+
+        Unlike `get_category()` this makes a request to the API each time it is called.
+        """
         return create_media(
             fetch_media_dict(language=self.language, key=key, client=self.client_type),
             parent=None,
@@ -39,9 +52,14 @@ class Session(BaseSession):
         )
 
     def get_translations(self) -> dict[str, str]:
+        """Return a dict of string IDs and translations used at the website"""
         return fetch_translations(self.language)
 
     def request_category(self, key: str, *, include_media=True) -> Category:
+        """Implementation of request_category
+
+        :meta private: mainly needed for internal use, no need for documentation
+        """
         if key == const.ROOT_CATEGORY:
             has_requested_root_before = const.ROOT_CATEGORY in self.categories
             root = self._add_root()
@@ -60,6 +78,10 @@ class Session(BaseSession):
         return self.categories[key]
 
     def request_category_media(self, key: str, offset: int) -> tuple[list[Media], int]:
+        """Implementation of request_category_media
+
+        :meta private: mainly needed for internal use, no need for documentation
+        """
         category_page, media_count = fetch_category_dict(
             self.language,
             key,
@@ -119,11 +141,11 @@ class Session(BaseSession):
     # Deprecated
     # ----------
 
-    @deprecated("Use Session.categories.values() instead.")
+    @deprecated("Use `Session.categories.values()` instead.")
     def cached_categories(self) -> Iterable[Category]:
         return self.categories.values()
 
-    @deprecated("Use Category.create() instead (construction from API data is no longer public).")
+    @deprecated("Use `Category.create()` instead (construction from API data is no longer public).")
     def create_category(self, category_data: CompleteCategoryDict, *, parent_key: Optional[str] = None) -> Category:
         try:
             media_count = len(category_data.get('media', []))
@@ -132,7 +154,7 @@ class Session(BaseSession):
             parent = UNKNOWN_PARENT if parent_key is None else parent_key
             return self._add_partial(category_data, media_count=None, parent=parent)
 
-    @deprecated("Use get_media() instead.")
+    @deprecated("Use `get_media()` instead.")
     def request_media(self, key: str) -> Media:
         return self.get_media(key)
 

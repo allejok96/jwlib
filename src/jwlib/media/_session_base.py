@@ -11,25 +11,33 @@ from ._media import Media
 
 
 class BaseSession(ABC):
-    """Used to fetch :class:`Category` and :class:`Media` from the server."""
+    """Abstract base class of Session.
+
+    Useful if you need to create mock sessions for testing,
+    or other custom behavior.
+
+    For regular use, see `Session`.
+    """
 
     categories: dict[str, Category]
-    """Cached categories.
+    """Cached categories, indexed by `Category.key`.
 
-    The categories are indexed by :attr:`Category.key`.
+    See `get_category()`.
+    """
 
-    See also: :meth:`get_category`.
+    client_type: str
+    """Client type, affects available images and media.
+
+    See `const.CLIENT_* <jwlib.media.const>`
+    """
+
+    language: str
+    """JW language code.
+
+    To get a list of valid codes, call `Session.get_languages()`.
     """
 
     def __init__(self, language: str = 'E', client_type: str = const.CLIENT_FIRETV):
-        """Set up a session used to fetch :class:`Category` and :class:`Media`.
-
-        Fetched categories are cached within the session.
-
-        :param language: JW language code.
-        :param client_type: The default is :const:`CLIENT_FIRETV`.
-                            To get as much data as possible use :const:`CLIENT_NONE`.
-        """
         self.language = language
         self.client_type = client_type
         self.categories: dict[str, Category] = {}
@@ -40,10 +48,7 @@ class BaseSession(ABC):
     # ================
 
     def load_categories(self, cache: Iterable[dict]) -> None:
-        """Load category data from a cache dump.
-
-        This updates existing categories similar to :meth:`dict.update`.
-        """
+        """Load categories from a cache dump."""
         for category_data in cache:
             cat = Category.create(**category_data, session=self)
             self.categories[cat.key] = cat
@@ -63,11 +68,11 @@ class BaseSession(ABC):
     # ==============
 
     def get_category(self, key=const.ROOT_CATEGORY, *, include_media=True) -> Category:
-        """Get a :class:`Category` from cache or from the server.
+        """Get a `Category` from cache or request it if missing.
 
         :param key: Code name.
         :param include_media: Setting this to False may speed up JSON parsing significantly
-            for some categories, but will result in extra requests if :meth:`get_media` is called later.
+            for some categories, but will result in extra requests if `get_media()` is called later.
         """
         if key not in self.categories:
             self.categories[key] = self.request_category(key, include_media=include_media)
@@ -76,20 +81,26 @@ class BaseSession(ABC):
 
     @abstractmethod
     def get_languages(self) -> list[Language]:
-        """Return list of available Languages"""
+        """Return list of language info.
+
+        Must be implemented by child class.
+        """
         ...
 
     @abstractmethod
     def get_media(self, key: str) -> Media:
-        """Request a :class:`Media` object from the server.
+        """Return a media item.
 
-        Unlike :meth:`get_category` this returns a new instance each time.
+        Must be implemented by child class.
         """
         ...
 
     @abstractmethod
     def get_translations(self) -> dict[str, str]:
-        """Return a dict of string IDs and translated string used at the website"""
+        """Return a dictionary of string IDs paired with translations.
+
+        Must be implemented by child class.
+        """
         ...
 
     # ============
@@ -98,32 +109,28 @@ class BaseSession(ABC):
 
     @abstractmethod
     def request_category(self, key: str, *, include_media=True) -> Category:
-        """Fetch and create a new :class:`Category` instance.
+        """Create a new category instance.
 
-        Mainly for internal use, but may be overridden for unit testing, etc.
+        Called by `get_category()` when a category is missing from the cache.
 
-        Called by :meth:`get_category` when a category is missing from the cache.
-        The main implementation fetches data from jw.org.
+        Must be implemented by child class.
         """
         ...
 
     @abstractmethod
     def request_category_media(self, key: str, *, offset: int) -> tuple[list[Media], int]:
-        """Fetch a (partial) list of :class:`Media` for the given category.
+        """Return a list of media for the given category, along with the total count.
 
-        Mainly for internal use, but may be overridden for unit testing, etc.
+        :param offset: is used to get the next "page" of very long lists.
 
-        Called by :meth:`Category.get_media` when the media list got truncated
-        because it was too long, or because include_media=False was used.
-        The main implementation fetches data from jw.org.
+        Called by `Category.get_media()` when the media list is missing or incomplete.
 
-        :param:`offset` is used to get the next "page".
-        :returns: a list of :class:`Media` together with the category's total media count.
+        Must be implemented by child class.
 
         .. note::
-            As of 2026-09, the server has not yet enforced an upper limit of the media list.
-            "VODPgmEvtMorningWorship" delivers 380+ items in a single response.
+            The `offset` parameter is not actively being used.
+            The max limit of how long lists can be, has not yet been reached.
+            In fact, the server side seems to bump up this limit once in a while.
+            As of 2026-09 the category ``VODPgmEvtMorningWorship`` serves 380+ items in a single response.
         """
         ...
-
-

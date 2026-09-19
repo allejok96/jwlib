@@ -19,7 +19,7 @@ class Language:
     code: str
     """JW language code
 
-    The one that can be passed to :class:`Session` etc.
+    The one that can be passed to `Session` etc.
     """
 
     iso: str = ''
@@ -46,6 +46,6 @@ class Language:
     """Display name in the language itself"""
 
     @property
-    @deprecated("Use dataclass.asdict() instead.")
+    @deprecated("Use `dataclasses.asdict()` instead.")
     def data(self) -> dict:
         return asdict(self)

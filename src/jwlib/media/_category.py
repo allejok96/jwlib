@@ -21,10 +21,9 @@ ROOT_PARENT = True
 
 @dataclass
 class Category(ItemWithImages):
-    """Information about a category and its subcategories and media.
+    """Category info, including with subcategories and media.
 
-    Do not initialize directly, since arguments may be subject to change.
-    Use :meth:`Session.get_category` or :meth:`create` instead.
+    Use `Session.get_category()` or `Category.create()` to create an instance.
     """
 
     description: str
@@ -35,13 +34,13 @@ class Category(ItemWithImages):
     media: list[Media]
     """List of media items.
 
-    Lazy loaded - use :meth:`get_media` instead.
+    Lazy loaded - use `get_media()` instead.
     """
 
     media_count: Optional[int]
     """Total number of available media items.
 
-    Used by :meth:`get_media` for lazy-loading.
+    Used by `get_media()` for lazy-loading.
     """
 
     name: str
@@ -50,7 +49,7 @@ class Category(ItemWithImages):
     parent: Union[str, bool]
     """Parent category key.
 
-    Lazy loaded - use :meth:`get_parent` instead.
+    Lazy loaded - use `get_parent()` instead.
     """
 
     session: BaseSession
@@ -59,7 +58,7 @@ class Category(ItemWithImages):
     subcategories: Optional[list[str]]
     """List of subcategory keys.
 
-    Lazy loaded - use :meth:`get_subcategories` instead.
+    Lazy loaded - use `get_subcategories()` instead.
     """
 
     type: const.CategoryType
@@ -104,15 +103,17 @@ class Category(ItemWithImages):
         except Exception:
             return super().__repr__()
 
+
     @property
-    @deprecated("Use dataclass.asdict() instead.")
+    @deprecated("Use `dataclasses.asdict()` instead.")
     def data(self) -> dict:
         return asdict(self)
 
-    def get_media(self) -> list[Media]:
-        """Return list of :class:`Media` items.
 
-        If :attr:`media` is unset or truncated, it will be requested from the server.
+    def get_media(self) -> list[Media]:
+        """Return list of `Media` items.
+
+        If `media` is unset or truncated, it will be requested from the server.
         """
         if not isinstance(self.media, IteratorCompatibleList):
             self.media = IteratorCompatibleList(self.media)
@@ -135,9 +136,9 @@ class Category(ItemWithImages):
         return self.media
 
     def get_parent(self) -> Optional[Category]:
-        """Return parent :class:`Category`.
+        """Return parent `Category`.
 
-        If :attr:`parent` is unset, it will be requested from the server.
+        If `parent` is unset, it will be requested from the server.
         """
         if self.parent is UNKNOWN_PARENT:
             # If we are traversing up, we assume we won't be traversing down again,
@@ -153,13 +154,13 @@ class Category(ItemWithImages):
     def get_subcategories(self, *, include_media=True) -> list[Category]:
         """Return list of subcategories.
 
-        If :attr:`subcategories` is unset, it will be requested from the server.
+        If `subcategories` is unset, it will be requested from the server.
 
-        :param include_media: see :meth:`Session.get_category`
+        :param include_media: see `Session.get_category()`
 
         .. note::
             The returned list is temporary, appending to or removing from it has no effect on the Category.
-            To edit the Category's subcategory list, use :attr:`subcategories`.
+            To edit the Category's subcategory list, use `subcategories`.
         """
         if self.subcategories is None:
             if self.type == const.CATEGORY_CONTAINER:
@@ -171,7 +172,7 @@ class Category(ItemWithImages):
         else:
             raise RuntimeError("Failed to fetch subcategories")
 
-    @deprecated("To truly refresh a Category, delete if from the session cache.")
+    @deprecated("To truly refresh a category, delete if from `Session.categories`.")
     def refresh(self, *, include_media=True) -> None:
         self._refresh(include_media=include_media)
 

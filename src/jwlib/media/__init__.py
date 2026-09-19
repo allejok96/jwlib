@@ -1,15 +1,14 @@
 """
 Wrappers for the "mediator" API used in the video section at `jw.org <http://jw.org>`_.
 
-The common way to start is to create a :class:`Session` in your language
-of choice, use :meth:`~Session.get_category` to get the root and
-work your way from there using :meth:`~Category.get_subcategories` and
-:meth:`~Category.get_media`:
+Start a new session by calling `get_session()` with your language of choice.
+Call `Session.get_category()` without arguments to get the root category.
+Work your way from there using `Category.get_subcategories()` and `Category.get_media()`.
 
 .. doctest::
 
-    >>> from jwlib.media import get_session
-    >>> session = get_session(language='E')
+    >>> import jwlib.media
+    >>> session = jwlib.media.get_session(language='E')
     >>> broadcasting = session.get_category('VODStudio')
     >>> for subcategory in broadcasting.get_subcategories():
     >>>     for media in subcategory.get_media():
@@ -19,7 +18,7 @@ work your way from there using :meth:`~Category.get_subcategories` and
 from typing import List, Dict
 
 from . import const
-from ._api_requests import NotFoundError
+from ._api_responses import NotFoundError
 from ._category import Category
 from ._file import File
 from ._language import Language
@@ -49,10 +48,10 @@ __all__ = (
 
 
 def get_session(language='E', client_type=const.CLIENT_FIRETV) -> BaseSession:
-    """Set up a session used to fetch :class:`Category` and :class:`Media`.
+    """Set up a session used to fetch `Category` and `Media`.
 
     :param language: JW language code.
-    :param client_type: To get as much data as possible (slower) use :const:`CLIENT_NONE`.
+    :param client_type: To get as much data as possible (slower) use `const.CLIENT_NONE <jwlib.media.const>`.
     """
     return Session(language, client_type)
 
@@ -62,11 +61,11 @@ def get_session(language='E', client_type=const.CLIENT_FIRETV) -> BaseSession:
 # ---------------------------
 
 
-@_deprecated("Use get_session().get_languages() instead")
+@_deprecated("Use `Session.get_languages()` instead")
 def request_languages(language='E') -> List[Language]:
     return get_session(language=language).get_languages()
 
 
-@_deprecated("Use get_session().get_translations() instead")
+@_deprecated("Use `Session.get_translations()` instead")
 def request_translations(language='E') -> Dict[str, str]:
     return get_session(language=language).get_translations()

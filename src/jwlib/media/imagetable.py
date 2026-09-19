@@ -1,5 +1,5 @@
 """
-The values from the table can be fed into :meth:`~jwlib.media.Media.get_image`.
+The values from the table can be fed into `~jwlib.media.Media.get_image()`.
 
 .. rubric:: Category images
 
