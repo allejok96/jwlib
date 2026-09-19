@@ -11,6 +11,47 @@ from .._request import get_json as _unsafe_get_json
 
 API_BASE = 'https://b.jw-cdn.org/apis/mediator/v1'
 
+# -------
+# Globals
+# -------
+
+# Default value of subcatmedialimit (grep that to see where it's used)
+#
+# This limit tracks how big the list of subcategory media can be in a single response.
+# It is used by Category.get_media() to know if it needs to send more requests to get the full media list.
+#
+# The API provides no way of knowing if the subcategory media list is capped, like it does for the main
+# media list by providing a totalCount. We just have to guess if there seems to be a max limit by looking
+# at all responses and using the biggest one as a reference. The API _does_ report a limit of 500 for
+# the main media list, but we don't know if that will apply to subcategories too...
+#
+# Historically the reported main limit has been lower, and then increased before any category got more
+# items than the limit, so we can't know if they will keep doing that (though 500 is a lot)...
+#
+# As of 2026-09 it seems like no subcategory has been capped by a limit.
+# The category `VODPgmEvtMorningWorship` serves 380+ items in a single response.
+#
+# To play it safe we default to a low limit. This might result in a few extra requests when parsing the tree,
+# but in return it is more future-proof, in case the server side decides to lower the limit.
+# If the server goes lower that this limit, it will break jwlib in two ways:
+# - subcategories won't detect if the media list is capped/incomplete
+# - the media list would differ depending on _how_ the category was created (directly vs from subcategory)
+#
+_inferred_subcategory_media_limit = 100
+
+
+def get_inferred_media_limit() -> int:
+    return _inferred_subcategory_media_limit
+
+
+def set_inferred_media_limit(limit: int) -> None:
+    global _inferred_subcategory_media_limit
+    _inferred_subcategory_media_limit = limit
+
+
+# ---------
+# Functions
+# ---------
 
 def get_json(url: str, query: Optional[dict] = None, *, headers: Optional[dict] = None):
     try:
@@ -65,6 +106,12 @@ def fetch_category_dict(language: str, key: str, *, client: str, include_media: 
         # get the media count anyway, which might result in an infinite loop, so we just return 0
         # and pretend like everything is fine
         media_count: int = response.get('pagination', {}).get('totalCount', 0)
+
+        # Increment subcatmedialimit (grep that for more info).
+        subcat_media_counts = (len(sc.get('media', []))
+                               for sc in response.get('category', {}).get('subcategories', []))
+        max_subcat_media_count = max(subcat_media_counts, default=0)
+        set_inferred_media_limit(max(max_subcat_media_count, get_inferred_media_limit()))
 
         return response['category'], media_count
     except (NotFoundError, KeyError) as e:

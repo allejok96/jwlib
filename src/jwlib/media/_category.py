@@ -4,7 +4,7 @@ from dataclasses import dataclass, asdict
 from typing import Union, Optional, TYPE_CHECKING, Iterable
 
 from . import const
-from ._api_responses import get_inferred_media_limit
+from ._api_requests import get_inferred_media_limit
 from ._image_item import ItemWithImages
 from ._iterator_compat import IteratorCompatibleList
 from ._media import Media
@@ -92,7 +92,7 @@ class Category(ItemWithImages):
             name=name,
             parent=parent,
             session=session,
-            subcategories=list(subcategories) if subcategories is not None else [],
+            subcategories=list(subcategories) if subcategories is not None else None,
             tags=list(tags) if tags is not None else [],
             type=type,
         )
@@ -189,11 +189,23 @@ class Category(ItemWithImages):
         if self.media_count is not None and len(self.media) >= self.media_count:
             return True
 
-        # We got the media from a subcategory, and it hasn't reached the observed limit
-        # of how many media items a subcategory can have, so we can assume it's all.
-        # (If we used include_media=False, it would be 0, thus continuing.)
-        if self.media_count is None and 0 < len(self.media) < get_inferred_media_limit():
+
+        # Check subcatmedialimit (grep that for more info)
+        #
+        # If the category came from a subcategory (media_count is None), and it contains media,
+        # and it's not capped at the limit, then we can assume we have all media.
+        #
+        # Why not use `0 < len(media) < inferred_limit` ?
+        # For regular use overshooting the inferred limit cannot happen, because the function that parses the
+        # subcategory media, will update the inferred limit accordingly. And as soon as media is taken from NON
+        # subcategory data, we will get an explicit media_count. But it IS possible to overshoot the inferred limit
+        # if a user manually writes to the media list without editing media_count, so we need to account for that,
+        # and assume that means we have all media.
+        #
+        if self.media_count is None and len(self.media) not in (0, get_inferred_media_limit()):
             return True
+
+
 
         # Tags like 'LimitToFive' govern how long the list should be.
         # In the case of FeaturedSetTopBoxes the list is actually longer, but to get all items
@@ -210,9 +222,19 @@ class Category(ItemWithImages):
 
 
 def update_category(cat: Category, other: Category) -> None:
-    """Set the missing values in one category using another category"""
+    """Set the missing values in one category using another category
 
-    if len(cat.media) < len(other.media):
+    This runs whenever fresh category data is gathered from a parent, subcategory, or a direct call to get_category.
+    It also runs when refresh() is called to update missing data for get_media() or get_subcategories().
+
+    We only want to update MISSING values, so that a refresh of another category does not overwrite
+    explicitly set values of this category.
+
+    Category.media is a bit special since the default value is [] instead of None, so we can't differentiate
+    unset from empty, but it doesn't matter that much in this case. Well, it would matter if the user wanted to
+    remove all media and not have it update back. But in any case they would have to set media_count to 0 too.
+    """
+    if not cat.media:
         cat.media = other.media
     if cat.media_count is None:
         cat.media_count = other.media_count

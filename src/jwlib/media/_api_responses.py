@@ -5,22 +5,6 @@ from typing import TypedDict, Optional, Dict
 from . import const
 from ..common import NotFoundError as _NotFoundErrorBase
 
-# -------
-# Globals
-# -------
-
-# TODO document
-_inferred_subcategory_media_limit = 300
-
-
-def get_inferred_media_limit() -> int:
-    return _inferred_subcategory_media_limit
-
-
-def set_inferred_media_limit(limit: int) -> None:
-    global _inferred_subcategory_media_limit
-    _inferred_subcategory_media_limit = limit
-
 
 # ------
 # Errors

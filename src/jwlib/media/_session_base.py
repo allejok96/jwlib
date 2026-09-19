@@ -124,11 +124,5 @@ class BaseSession(ABC):
         Called by `Category.get_media()` when the media list is missing or incomplete.
 
         Must be implemented by child class.
-
-        .. note::
-            The `offset` parameter is not actively being used.
-            The max limit of how long lists can be, has not yet been reached.
-            In fact, the server side seems to bump up this limit once in a while.
-            As of 2026-09 the category ``VODPgmEvtMorningWorship`` serves 380+ items in a single response.
         """
         ...
