@@ -22,7 +22,7 @@ class LogHook(logging.Handler):
         self.expectations: List[str] = []
 
     @contextmanager
-    def expect(self, *, cat='', client='firetv', include_media=True, mediaid='', lang='E',
+    def expect(self, *, cat='', client='firetv', include_media=True, mediaid='', lang='E', offset=0,
                raw: Optional[List[str]] = None):
         """Use in a with statement to add an expected string"""
 
@@ -42,6 +42,8 @@ class LogHook(logging.Handler):
                 args.append('detailed=1')
             if not include_media:
                 args.append('limit=0&mediaLimit=0')
+            if offset:
+                args.append('offset=' + str(offset))
             if args:
                 path += '?' + '&'.join(args)
             self.expectations.append(path)
@@ -153,8 +155,19 @@ def test_hidden_categories(rex):
 def test_get_category_include_media(rex):
     with rex.expect(cat=MIDDLE_LEVEL):
         middle = jw.Session().get_category(MIDDLE_LEVEL)
-    for bottom in middle.get_subcategories():
-        assert all(bottom.get_media())
+
+    middle_subcats = middle.get_subcategories()
+
+    # Real world example of subcatmedialimit (grep that for more info).
+    # As of 2026-09 "StudioMonthlyPrograms" exceeds the default value of inferred subcategory media limit (100+)
+    # thus triggering a second request to make sure all media is there. To make the test more flexible, we don't
+    # hardcode the key and amount, but derive it from whatever category is the biggest.
+    # Note that "rex" statement below will fail if no category has more than 100 items.
+    subcat_with_most_media = max((sc for sc in middle_subcats), key=lambda sc: len(sc.media))
+    with rex.expect(cat=subcat_with_most_media.key, offset=len(subcat_with_most_media.media)):
+
+        for bottom in middle_subcats:
+            assert all(bottom.get_media())
 
 
 def test_get_subcategories_include_media(rex):
@@ -162,8 +175,15 @@ def test_get_subcategories_include_media(rex):
         bottom = jw.Session().get_category(BOTTOM_LEVEL)
     middle = bottom.get_parent()
     assert middle is not None
+
     with rex.expect(cat=MIDDLE_LEVEL):
-        for sibling in middle.get_subcategories():
+        middle_subcats = middle.get_subcategories()
+
+    # See comment above
+    subcat_with_most_media = max((sc for sc in middle_subcats), key=lambda sc: len(sc.media))
+    with rex.expect(cat=subcat_with_most_media.key, offset=len(subcat_with_most_media.media)):
+
+        for sibling in middle_subcats:
             assert all(sibling.get_media())
 
 
@@ -447,13 +467,13 @@ def test_deprecated_supports_next(rex):
 
     bottom: jw.Category
     with pytest.deprecated_call():
-        bottom = next(cat_list)  # type: ignore
+        bottom = next(cat_list) # type: ignore[call-overload]
     assert bottom
 
     media_list = bottom.get_media()
     media: jw.Media
     with pytest.deprecated_call():
-        media = next(media_list)  # type: ignore
+        media = next(media_list)  # type: ignore[call-overload]
     assert media
 
     # media.get_files() has been replaced by media.files
@@ -462,7 +482,7 @@ def test_deprecated_supports_next(rex):
 
     file: jw.File
     with pytest.deprecated_call():
-        file = next(file_list)  # type:ignore
+        file = next(file_list)   # type: ignore[call-overload]
     assert file
 
 
@@ -478,4 +498,4 @@ if __name__ == '__main__':
             ...
 
 
-    test_get_category_exclude_media(DummyCaplog())  # type: ignore
+    test_get_category_exclude_media(DummyCaplog())  # types: ignore
