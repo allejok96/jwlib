@@ -245,7 +245,7 @@ class ResultGroup(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.label!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -294,7 +294,7 @@ class Result(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.title!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -386,7 +386,7 @@ class PageLink(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.label!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -438,7 +438,7 @@ class DeepLink(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.label!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property

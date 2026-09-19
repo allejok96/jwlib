@@ -13,7 +13,7 @@ class Language(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.code!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property

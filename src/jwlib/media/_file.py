@@ -99,7 +99,7 @@ class File:
     def __repr__(self):
         try:
             return f"<{self.__class__.__name__} {self.filename!r}>"
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property

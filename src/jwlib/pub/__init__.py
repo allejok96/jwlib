@@ -34,7 +34,7 @@ class Language(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.code!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -64,7 +64,7 @@ class Marker(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.start}-{self.duration}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -134,7 +134,7 @@ class File(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.url.split("/")[-1]!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -274,17 +274,17 @@ class Publication(_DictWrapper):
     def __repr__(self):
         try:
             string = f'<{self.__class__.__name__} code={self.code!r}'
-        except (TypeError, LookupError, ValueError):
-            return super().__repr__()
-        if self.bible_book is not None:
-            string += f' bible_book={self.bible_book!r}'
-        if self.issue is not None:
-            string += f' issue={self.issue!r}'
-        if self.track is not None:
-            string += f' track={self.track!r}'
-        string += '>'
 
-        return string
+            if self.bible_book is not None:
+                string += f' bible_book={self.bible_book!r}'
+            if self.issue is not None:
+                string += f' issue={self.issue!r}'
+            if self.track is not None:
+                string += f' track={self.track!r}'
+            string += '>'
+            return string
+        except Exception:
+            return super().__repr__()
 
     @property
     def bible_book(self) -> Optional[int]:
