@@ -159,18 +159,21 @@ class Media(ItemWithImages):
     def get_file(self, *, resolution=0, subtitles=False) -> File:
         """Return the `File` that best matches these criteria.
 
+        These are not hard limits - if there is no perfect match it will take the closest possible.
+
         :param resolution: max resolution (0 = no limit)
         :param subtitles: whether file should have subtitles (soft is preferred over hard)
-
-        Raises LookupError if no file is found.
         """
 
         try:
+            if resolution == 0:
+                resolution = max(f.resolution for f in self.files)
+
             return max(self.files, key=lambda f: (
-                (resolution == 0) or (f.resolution <= resolution),
+                (f.resolution <= resolution),
                 (f.subtitles is not None) == subtitles,
                 f.subtitled_hard == subtitles,
-                f.resolution
+                -abs(f.resolution - resolution)
             ))
         except ValueError as e:
             raise LookupError from e

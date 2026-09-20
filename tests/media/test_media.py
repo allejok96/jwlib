@@ -110,10 +110,24 @@ def test_get_file_never_exceeds_requested_resolution_if_lower_option_exists():
     assert media.get_file(resolution=480) is low
 
 
-def test_get_file_falls_back_to_lowest_when_all_exceed_resolution():
+def test_get_file_returns_only_option_even_if_it_exceeds_resolution():
     only_option = make_file(1080)
     media = make_media(files=[only_option])
     assert media.get_file(resolution=240) is only_option
+
+
+def test_get_file_picks_closest_resolution_when_all_exceed_limit():
+    close = make_file(480)
+    far = make_file(1080)
+    media = make_media(files=[far, close])
+    assert media.get_file(resolution=240) is close
+
+
+def test_get_file_respects_max_resolution_even_when_an_equally_close_match_exists():
+    under = make_file(400)  # 100 below the limit
+    over = make_file(600)  # 100 above the limit - equally close, but exceeds
+    media = make_media(files=[over, under])
+    assert media.get_file(resolution=500) is under
 
 
 def test_get_file_prefers_subtitled_when_requested():
