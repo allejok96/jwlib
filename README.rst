@@ -50,21 +50,27 @@ Searching at jw.org
 
 .. code-block:: python
 
-    import jwlib.search as jw
+    from jwlib.search import search
+    from jwlib.search.const import FILTER_VIDEO
 
     # Search for videos only
-    page = jw.search('Caleb', filter_type=jw.FILTER_VIDEO, language='S')
-    for result in page.results:
-        print(result.title, result.url_jw)
+    page = search('Caleb', filter_type=FILTER_VIDEO, language='E')
 
-    # Print page number info
+    # Print result page info
     print(page.pagination_label)
+
+    # Print results
+    for result in page.results:
+        print(result.title)
+        print(result.url_jw)
 
     # Continue on next page
     if page.next:
         next_page = page.next.open()
+        print(next_page.pagination_label)
         for result in next_page.results:
-            print(result.title, result.url_jw)
+            print(result.title)
+            print(result.url_jw)
 
 See the search_ documentation for more details.
 

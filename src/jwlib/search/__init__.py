@@ -3,16 +3,18 @@ Wrapper for the `jw.org <http://jw.org>`_ search API.
 
 .. doctest::
 
-    >>> import jwlib.search as jw
-    >>> page = jw.search('Caleb')
+    >>> from jwlib.search import search
+    >>> page = search('Caleb')
     >>> for r in page.results:
     >>>     print(r.title, r.url_jw)
 """
 
-from .const import *
-from .search import DeepLink, Result, ResultGroup, SearchInsight, ResultPage, PageLink, search
+from . import const
+from ._search import DeepLink, Result, ResultGroup, SearchInsight, ResultPage, PageLink, search
+from .const import *  # for compatibility
 
 __all__ = (
+    'const',
     'search',
     'ResultPage',
     'ResultGroup',
