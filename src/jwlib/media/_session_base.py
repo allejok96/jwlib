@@ -32,10 +32,7 @@ class BaseSession(ABC):
     """
 
     language: str
-    """JW language code.
-
-    To get a list of valid codes, call `Session.get_languages()`.
-    """
+    """JW language code."""
 
     def __init__(self, language: str = 'E', client_type: str = const.CLIENT_FIRETV):
         self.language = language
@@ -53,7 +50,7 @@ class BaseSession(ABC):
             self.categories[cat.key] = cat
 
     def dump_categories(self) -> list[dict]:
-        """Dump category cache to a format that may be serialized to JSON etc."""
+        """Dump category cache to a format that may be serialized to JSON."""
 
         dump = []
         for cat in self.categories.values():

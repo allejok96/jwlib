@@ -17,16 +17,16 @@ class Language:
     """Information about a language"""
 
     code: str
-    """JW language code
+    """JW language code.
 
-    The one that can be passed to `Session` etc.
+    This is the code that can be passed to `get_session()`.
     """
 
     iso: str = ''
-    """ISO 639 language code"""
+    """ISO 639 language code."""
 
     name: str = ''
-    """Display name"""
+    """Display name."""
 
     # This seems to always be False
     # @property
@@ -34,16 +34,16 @@ class Language:
     #    return self.dict.get('isLangPair', False)
 
     rtl: bool = False
-    """True if written right to left"""
+    """True if written right to left."""
 
     script: str = ''
-    """Type of script, like 'ROMAN' or 'CYRILLIC'"""
+    """Type of script, like ``ROMAN`` or ``CYRILLIC``."""
 
     signed: bool = False
-    """True if it's a sign language"""
+    """True if it's a sign language."""
 
     vernacular: str = ''
-    """Display name in the language itself"""
+    """Display name in the language itself."""
 
     @property
     @deprecated("Use `dataclasses.asdict()` instead.")

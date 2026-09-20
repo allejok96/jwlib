@@ -1,5 +1,6 @@
 """
-The values from the table can be fed into `~jwlib.media.Media.get_image()`.
+The values from the table can be fed into `Category.get_image() <jwlib.media.Category.get_image>`
+or `Media.get_image() <jwlib.media.Media.get_image>`.
 
 .. rubric:: Category images
 

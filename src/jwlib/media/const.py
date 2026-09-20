@@ -7,7 +7,7 @@ from typing import Literal
 # =======
 
 # Category.key of the root category.
-# This is not part of the mediator API, it belongs to jwlib.
+# This is not part of the jw.org API, it is made up by jwlib.
 ROOT_CATEGORY = 'All'
 
 # Time format used by the API, can be passed to time.strptime()
@@ -15,7 +15,7 @@ TIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
 
 # Client type
 # ===========
-# These can be passed to Session().
+# These can be passed to get_session().
 # They affect what data will be made available.
 
 CLIENT_APPLETV = 'appletv'

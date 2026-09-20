@@ -24,16 +24,18 @@ class File:
     """Duration in seconds."""
 
     frame_rate: float
+    """Frames per second."""
 
     height: int
     """Frame height."""
 
     mimetype: str
+    """MIME type, like ``video/mp4``."""
 
     modified: str
     """Modification time, as yyyy-mm-ddThh:mm:ss
 
-    See `const.TIME_FORMAT <jwlib.media.const>` and `get_modified()`.
+    See also `get_modified()` and `const.TIME_FORMAT <jwlib.media.const>`.
     """
 
     resolution: int
@@ -149,7 +151,7 @@ class Subtitle:
     date: str
     """Modification time, as yyyy-mm-ddThh:mm:ss
 
-    See `const.TIME_FORMAT <jwlib.media.const>`.
+    See also `get_date()` and `const.TIME_FORMAT <jwlib.media.const>`.
     """
 
     @staticmethod

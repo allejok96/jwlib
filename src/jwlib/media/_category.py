@@ -21,44 +21,48 @@ ROOT_PARENT = True
 
 @dataclass
 class Category(ItemWithImages):
-    """Category info, including with subcategories and media.
+    """Category info, including subcategories and media.
 
     Use `Session.get_category()` or `Category.create()` to create an instance.
     """
 
     description: str
+    """Category description, seems to be empty for the most part."""
 
     key: str
-    """Code name."""
+    """Code name.
+
+    This is the code that can be passed to `Session.get_category()`.
+    """
 
     media: list[Media]
     """List of media items.
 
-    Lazy loaded - use `get_media()` instead.
+    Lazy loaded - use `get_media()` to read it.
     """
 
     media_count: Optional[int]
     """Total number of available media items.
 
-    Used by `get_media()` for lazy-loading.
+    Used for lazy-loading.
     """
 
     name: str
     """Display name."""
 
-    parent: Union[str, bool]
+    parent: Optional[str]
     """Parent category key.
 
-    Lazy loaded - use `get_parent()` instead.
+    Lazy loaded - use `get_parent()` to read it.
     """
 
     session: BaseSession
-    """Session, used to fetch subcategories, etc."""
+    """Session used to fetch media, parent and subcategory info as needed."""
 
     subcategories: Optional[list[str]]
     """List of subcategory keys.
 
-    Lazy loaded - use `get_subcategories()` instead.
+    Lazy loaded - use `get_subcategories()` to read it.
     """
 
     type: const.CategoryType
@@ -82,7 +86,6 @@ class Category(ItemWithImages):
                tags: Optional[Iterable[str]] = None,
                type: const.CategoryType
                ) -> Category:
-        """Create a new category instance."""
         return Category(
             description=description,
             images=images if images is not None else {},
@@ -103,12 +106,10 @@ class Category(ItemWithImages):
         except Exception:
             return super().__repr__()
 
-
     @property
     @deprecated("Use `dataclasses.asdict()` instead.")
     def data(self) -> dict:
         return asdict(self)
-
 
     def get_media(self) -> list[Media]:
         """Return list of `Media` items.
@@ -159,8 +160,7 @@ class Category(ItemWithImages):
         :param include_media: see `Session.get_category()`
 
         .. note::
-            The returned list is temporary, appending to or removing from it has no effect on the Category.
-            To edit the Category's subcategory list, use `subcategories`.
+            The returned list is temporary. To make persistent changes, write to `subcategories`.
         """
         if self.subcategories is None:
             if self.type == const.CATEGORY_CONTAINER:
@@ -189,7 +189,6 @@ class Category(ItemWithImages):
         if self.media_count is not None and len(self.media) >= self.media_count:
             return True
 
-
         # Check subcatmedialimit (grep that for more info)
         #
         # If the category came from a subcategory (media_count is None), and it contains media,
@@ -204,8 +203,6 @@ class Category(ItemWithImages):
         #
         if self.media_count is None and len(self.media) not in (0, get_inferred_media_limit()):
             return True
-
-
 
         # Tags like 'LimitToFive' govern how long the list should be.
         # In the case of FeaturedSetTopBoxes the list is actually longer, but to get all items

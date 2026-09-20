@@ -23,12 +23,9 @@ logger = logging.getLogger(__name__)
 
 
 class Session(BaseSession):
-    """A session is used to makes requests to the jw.org media API.
+    """This implements a session that can make requests to the jw.org media API.
 
-    To create a new session, call `get_session()`.
-
-    This implementation keeps `Category` items cached to minimize the need for requests.
-    Direct requests for `Media` items, languages and translations are not cached.
+    To create a new instance, use `get_session()`.
 
     If you want to create a dummy session for testing, derive it from `BaseSession`.
     """
@@ -37,13 +34,13 @@ class Session(BaseSession):
     # --------------
 
     def get_languages(self) -> list[Language]:
-        """Return list of language info for all languages"""
+        """Return a list of `Language` info for all available languages."""
         return [create_language(ld) for ld in fetch_languages(self.language)]
 
     def get_media(self, key: str) -> Media:
         """Return a `Media` item.
 
-        Unlike `get_category()` this makes a request to the API each time it is called.
+        Unlike `get_category()` this is not cached.
         """
         return create_media(
             fetch_media_dict(language=self.language, key=key, client=self.client_type),

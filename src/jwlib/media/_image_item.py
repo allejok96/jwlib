@@ -16,7 +16,7 @@ class ItemWithImages:
     """
 
     tags: list[str]
-    """List of tags, see `~jwlib.media.const`."""
+    """List of tags, see `const.TAG_* <jwlib.media.const>`."""
 
     def get_image(self, ratios: Iterable[str] = (), sizes: Iterable[str] = ()) -> Optional[str]:
         """Return URL to first matching image.
@@ -30,7 +30,7 @@ class ItemWithImages:
         By default, return the largest 16:9 image, or 1:1 if the item is tagged `const.TAG_PREFER_SQUARE_IMAGES <jwlib.media.const>`.
 
         .. note::
-            `Session.client_type` affects what images are available.
+            `Session.client_type` affects which images are available.
         """
         if not ratios:
             ratios = RATIOS_SQUARE if TAG_PREFER_SQUARE_IMAGES in self.tags else RATIOS_16_9

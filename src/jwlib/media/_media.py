@@ -21,11 +21,11 @@ T = TypeVar('T')
 class Media(ItemWithImages):
     """Information about a media item.
 
-    Do not initialize directly, since arguments may be subject to change.
-    Use `Session.get_media()`, `Category.get_media()` or `create()` instead.
+    Use `Session.get_media()`, `Category.get_media()` or `Media.create()` to create an instance.
     """
 
     description: str
+    """Media description, seems to be empty for the most part."""
 
     duration: float
     """Duration in seconds."""
@@ -45,7 +45,7 @@ class Media(ItemWithImages):
     key: str
     """Code name, language agnostic.
 
-    This is the key you use to request media info from the server.
+    This is the code that can be passed to `Session.get_media()`.
     """
 
     key_with_language: str
@@ -58,14 +58,13 @@ class Media(ItemWithImages):
     """List of languages in which this item is available."""
 
     parent: Optional[str]
-    """Code name of the category that produced this item.
+    """Code name of the category that contained this item.
 
-    Multiple categories may contain the "same" media item
-    (compared by value, not by identity), so this value is not
-    a property of the Media itself, but rather a reflection of
-    how the tree was traversed.
+    This attribute does not come from the media itself, rather it's a reflection of the category tree traversal.
+    It may be useful in some scenarios, since multiple categories may contain the "same" media item, and in those
+    cases this is the only value that will differ.
 
-    If `Session.get_media()` was used, this will be `None`.
+    If the media item came from `Session.get_media()`, this will be `None`.
 
     See also `primary_category_key`.
     """
@@ -73,28 +72,30 @@ class Media(ItemWithImages):
     primary_category_key: Optional[str]
     """Code name of the primary parent category.
 
-    This will be common between all duplicates of some Media item,
-    no matter where in the hierarchy they were taken from.
+    Unlike `parent`, this will always be the same, no matter where in the category tree a media item was taken from.
+    It also works for media items returned by `Session.get_media()`.
+
+    (In theory this should always be non-zero, but IRL it has been None for some items.)
 
     See also `get_primary_category()`.
     """
-    # Note to self:
-    # In theory this should always be non-zero, but IRL it has been
-    # empty for some items.
 
     published: str
-    """Date when first published, as yyyy-mm-ddThh:mm:ss
+    """Date when first published, as yyyy-mm-ddThh:mm:ss.
 
-    See `const.TIME_FORMAT <jwlib.media.const>` and `get_published()`.
+    See also `get_published()` and `const.TIME_FORMAT <jwlib.media.const>`.
     """
 
     print_references: list[str]
+    """List of code names, similar to the ones you find printed in the literature.
+
+    For example, a broadcasting may be called ``jwb-141-1``.
+
+    AFAIK these code names are not used for any API requests.
+    """
 
     session: BaseSession
-    """Session that created this Media.
-
-    Needed by `get_primary_category()`.
-    """
+    """Session, needed by `get_primary_category()`."""
 
     title: str
     """Display name."""

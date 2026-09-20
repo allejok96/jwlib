@@ -50,7 +50,7 @@ __all__ = (
 def get_session(language='E', client_type=const.CLIENT_FIRETV) -> BaseSession:
     """Set up a session used to fetch `Category` and `Media`.
 
-    :param language: JW language code.
+    :param language: JW language code, see `Session.get_languages()`.
     :param client_type: To get as much data as possible (slower) use `const.CLIENT_NONE <jwlib.media.const>`.
     """
     return Session(language, client_type)
