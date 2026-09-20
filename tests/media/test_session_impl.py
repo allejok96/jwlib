@@ -1,7 +1,6 @@
 import pytest
 
 from jwlib.media import const
-from jwlib.media._category import UNKNOWN_PARENT
 from jwlib.media._session_impl import Session
 
 
@@ -33,7 +32,7 @@ def test_add_basic_adds_new_category():
 
 def test_add_basic_merging_fills_parent_but_keeps_existing_identifying_fields():
     session = Session()
-    original = session._add_basic(basic_dict('K', name='Original Name'), parent=UNKNOWN_PARENT)
+    original = session._add_basic(basic_dict('K', name='Original Name'), parent=None)
     updated = session._add_basic(basic_dict('K', name='New Name'), parent='Parent')
 
     # update_category() only merges parent/subcategories/media/media_count,
@@ -95,7 +94,7 @@ def test_add_complete_registers_parent_and_subcategories():
 
     # The parent was registered too, with an as-yet-unknown parent of its own
     assert 'Top' in session.categories
-    assert session.categories['Top'].parent is UNKNOWN_PARENT
+    assert session.categories['Top'].parent is None
 
     # The subcategory was registered with media, and its parent set to "Middle"
     bottom = session.categories['Bottom']
@@ -107,7 +106,7 @@ def test_add_complete_registers_parent_and_subcategories():
 def test_add_complete_merges_into_previously_partial_category():
     session = Session()
     # First seen as a bare parent reference (e.g. from another category's "parentCategory")
-    session._add_basic(basic_dict('Middle'), parent=UNKNOWN_PARENT)
+    session._add_basic(basic_dict('Middle'), parent=None)
     assert session.categories['Middle'].subcategories is None
 
     d = partial_dict('Middle', parentCategory=basic_dict('Top'), subcategories=[partial_dict('Bottom')])

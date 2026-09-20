@@ -13,11 +13,6 @@ from .._deprecated import deprecated
 if TYPE_CHECKING:
     from ._session_base import BaseSession
 
-# For Category.parent
-ParentType = Union[str, bool]
-UNKNOWN_PARENT = False
-ROOT_PARENT = True
-
 
 @dataclass
 class Category(ItemWithImages):
@@ -80,7 +75,7 @@ class Category(ItemWithImages):
                media: Optional[Iterable[Union[Media, dict]]] = None,
                media_count: Optional[int] = None,
                name='',
-               parent: Union[str, bool] = UNKNOWN_PARENT,
+               parent: Optional[str] = None,
                session: BaseSession,
                subcategories: Optional[Iterable[str]] = None,
                tags: Optional[Iterable[str]] = None,
@@ -141,13 +136,13 @@ class Category(ItemWithImages):
 
         If `parent` is unset, it will be requested from the server.
         """
-        if self.parent is UNKNOWN_PARENT:
+        if self.key == const.ROOT_CATEGORY:
+            return None
+        elif self.parent is None:
             # If we are traversing up, we assume we won't be traversing down again,
             # so skip media to save some time
             self._refresh(include_media=False)
-        if self.parent is ROOT_PARENT:
-            return None
-        elif isinstance(self.parent, str):
+        if self.parent is not None:
             return self.session.get_category(self.parent)
         else:
             raise RuntimeError("Failed to fetch parent category")
@@ -235,7 +230,7 @@ def update_category(cat: Category, other: Category) -> None:
         cat.media = other.media
     if cat.media_count is None:
         cat.media_count = other.media_count
-    if cat.parent is UNKNOWN_PARENT:
+    if cat.parent is None:
         cat.parent = other.parent
     if cat.subcategories is None:
         cat.subcategories = other.subcategories

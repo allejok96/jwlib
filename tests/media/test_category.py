@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from jwlib.media import const
-from jwlib.media._category import Category, ROOT_PARENT, UNKNOWN_PARENT, update_category
+from jwlib.media._category import Category, update_category
 from jwlib.media._media import Media
 
 
@@ -43,7 +43,7 @@ def test_category_create_defaults():
     assert cat.media == []
     assert cat.media_count is None
     assert cat.name == ''
-    assert cat.parent is UNKNOWN_PARENT
+    assert cat.parent is None
     assert cat.subcategories is None
     assert cat.tags == []
 
@@ -67,7 +67,7 @@ def test_category_repr():
 # ---------------
 
 def test_update_category_fills_missing_parent():
-    cat = make_category(parent=UNKNOWN_PARENT)
+    cat = make_category(parent=None)
     other = make_category(parent='ParentKey')
     update_category(cat, other)
     assert cat.parent == 'ParentKey'
@@ -138,10 +138,3 @@ def test_update_category_keeps_existing_media_when_other_is_empty():
     other = make_category(media=[])
     update_category(cat, other)
     assert cat.media == existing
-
-
-def test_update_category_root_parent_is_not_overwritten():
-    cat = make_category(parent=ROOT_PARENT)
-    other = make_category(parent='SomeParent')
-    update_category(cat, other)
-    assert cat.parent is ROOT_PARENT

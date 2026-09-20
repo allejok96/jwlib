@@ -1,7 +1,7 @@
 import pytest
 
 from jwlib.media import const
-from jwlib.media._category import Category, ROOT_PARENT, UNKNOWN_PARENT
+from jwlib.media._category import Category
 
 from .session_double import FakeSession
 
@@ -24,9 +24,9 @@ def test_get_parent_uses_cached_string_parent_without_refresh():
     assert session.request_category_calls == []
 
 
-def test_get_parent_returns_none_for_root_parent():
+def test_get_parent_returns_none_for_root():
     session = FakeSession()
-    cat = make_category(session, parent=ROOT_PARENT)
+    cat = make_category(session, parent=None, key=const.ROOT_CATEGORY)
     assert cat.get_parent() is None
     assert session.request_category_calls == []
 
@@ -42,7 +42,7 @@ def test_get_parent_refreshes_when_unknown_then_fetches_parent_without_media():
     session = Session()
     parent_cat = make_category(session, key='Middle')
     session.categories['Middle'] = parent_cat
-    cat = make_category(session, parent=UNKNOWN_PARENT)
+    cat = make_category(session, parent=None)
 
     assert cat.get_parent() is parent_cat
     # get_parent() should skip fetching media when refreshing, since we're
@@ -56,10 +56,10 @@ def test_get_parent_raises_if_still_unknown_after_refresh():
 
         def request_category(self, key, *, include_media=True):
             self.request_category_calls.append((key, include_media))
-            return make_category(self, key=key, parent=UNKNOWN_PARENT)
+            return make_category(self, key=key, parent=None)
 
     session = Session()
-    cat = make_category(session, parent=UNKNOWN_PARENT)
+    cat = make_category(session, parent=None)
 
     with pytest.raises(RuntimeError):
         cat.get_parent()

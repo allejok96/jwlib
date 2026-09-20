@@ -1,6 +1,6 @@
-from jwlib.media import const, BaseSession
+from jwlib.media import const
 from jwlib.media._category_factory import create_basic, create_partial, create_root
-from jwlib.media._category import Category, ROOT_PARENT, UNKNOWN_PARENT
+
 
 def test_create_basic_full():
     session = object()
@@ -34,14 +34,14 @@ def test_create_basic_minimal_defaults():
     session = object()
     cat = create_basic(
         {'key': 'SomeKey', 'type': const.CATEGORY_ONDEMAND},  # type: ignore[typeddict-item]
-        parent=UNKNOWN_PARENT,
+        parent=None,
         session=session,  # type: ignore[arg-type]
     )
 
     assert cat.description == ''
     assert cat.images == {}
     assert cat.name == ''
-    assert cat.parent is UNKNOWN_PARENT
+    assert cat.parent is None
     assert cat.tags == []
 
 
@@ -84,7 +84,7 @@ def test_create_partial_media_parent_is_none_for_non_string_parent():
             }],
         },
         media_count=1,
-        parent=ROOT_PARENT,
+        parent=None,
         session=session,  # type: ignore[arg-type]
     )
 
@@ -111,7 +111,7 @@ def test_create_root():
     assert root.key == const.ROOT_CATEGORY
     assert root.media == []
     assert root.media_count == 0
-    assert root.parent is ROOT_PARENT
+    assert root.parent is None
     assert root.session is session
     assert root.subcategories is None
     assert root.type == const.CATEGORY_CONTAINER

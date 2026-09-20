@@ -2,14 +2,14 @@ from typing import Optional
 
 from . import const
 from ._api_responses import PartialCategoryDict, BasicCategoryDict
-from ._category import ParentType, Category, ROOT_PARENT
+from ._category import Category
 from ._media_factory import create_media
 from ._session_base import BaseSession
 
 
 def create_partial(d: PartialCategoryDict, *,
                    media_count: Optional[int],
-                   parent: ParentType,
+                   parent: Optional[str],
                    session: BaseSession) -> Category:
     media_parent = parent if isinstance(parent, str) else None
     cat = create_basic(d, parent=parent, session=session)
@@ -25,7 +25,7 @@ def create_partial(d: PartialCategoryDict, *,
     return cat
 
 
-def create_basic(d: BasicCategoryDict, *, parent: ParentType, session: BaseSession) -> Category:
+def create_basic(d: BasicCategoryDict, *, parent: Optional[str], session: BaseSession) -> Category:
     return Category(
         description=d.get('description', ''),
         images=d.get('images', {}),
@@ -54,7 +54,7 @@ def create_root(*, session: BaseSession) -> Category:
         media=[],
         media_count=0,
         name='All Categories',
-        parent=ROOT_PARENT,
+        parent=None,
         session=session,
         subcategories=None,
         tags=[],

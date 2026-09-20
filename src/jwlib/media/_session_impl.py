@@ -6,7 +6,7 @@ from typing import Optional, Iterable
 from . import const
 from ._api_requests import fetch_media_dict, fetch_languages, fetch_translations, fetch_category_dict, fetch_top_level
 from ._api_responses import PartialCategoryDict, BasicCategoryDict, CompleteCategoryDict
-from ._category import Category, update_category, UNKNOWN_PARENT, ParentType
+from ._category import Category, update_category
 from ._category_factory import create_partial, create_basic, create_root
 from ._language import Language
 from ._language_factory import create_language
@@ -101,7 +101,7 @@ class Session(BaseSession):
             parent_key = const.ROOT_CATEGORY
         else:
             parent_key = parent_dict['key']
-            self._add_basic(parent_dict, parent=UNKNOWN_PARENT)
+            self._add_basic(parent_dict, parent=None)
 
         cat = create_partial(d, media_count=media_count, parent=parent_key, session=self)
         cat.subcategories = [self._add_partial(subcat_dict, media_count=None, parent=cat.key).key
@@ -111,13 +111,13 @@ class Session(BaseSession):
 
     def _add_partial(self, d: PartialCategoryDict, *,
                      media_count: Optional[int],
-                     parent: ParentType) -> Category:
+                     parent: Optional[str]) -> Category:
 
         return self._add_or_update(
             create_partial(d, media_count=media_count, parent=parent, session=self)
         )
 
-    def _add_basic(self, d: BasicCategoryDict, *, parent: ParentType) -> Category:
+    def _add_basic(self, d: BasicCategoryDict, *, parent: Optional[str]) -> Category:
         return self._add_or_update(
             create_basic(d, parent=parent, session=self)
         )
@@ -148,8 +148,7 @@ class Session(BaseSession):
             media_count = len(category_data.get('media', []))
             return self._add_complete(category_data, media_count=media_count)
         except KeyError:
-            parent = UNKNOWN_PARENT if parent_key is None else parent_key
-            return self._add_partial(category_data, media_count=None, parent=parent)
+            return self._add_partial(category_data, media_count=None, parent=parent_key)
 
     @deprecated("Use `get_media()` instead.")
     def request_media(self, key: str) -> Media:
