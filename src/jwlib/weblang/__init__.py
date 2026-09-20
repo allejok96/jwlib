@@ -3,7 +3,8 @@ Wrapper for website language API
 """
 from __future__ import annotations
 
-from .common import _DictWrapper, _get_json
+from .._dictwrapper import _DictWrapper
+from .._request import get_json as _get_json
 
 _LANGUAGE_API = 'https://www.jw.org/en/languages'
 
@@ -12,7 +13,7 @@ class Language(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.code!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property

@@ -10,7 +10,7 @@ BROWSER := python -c "$$BROWSER_PYSCRIPT"
 define PRINT_HELP_PYSCRIPT
 import re, sys
 for line in sys.stdin:
-	match = re.match(r'^[.]PHONY: (\w+).*?#\s*(.*)', line)
+	match = re.match(r'^[.]PHONY: ([\w-]+).*?#\s*(.*)', line)
 	if match:
 		print(f"{match.group(1):20}{match.group(2)}")
 endef

@@ -21,25 +21,27 @@ Browsing JW Broadcasting
 
 .. code-block:: python
 
-    import jwlib.media as jw
+    from jwlib.media import get_session
 
-    # Select Swedish
-    session = jw.Session(language='Z')
+    # Print a list of language codes
+    for lang in get_session().get_languages():
+         print(lang.code, lang.name)
 
-    # Fetch the JW Broadcasting category
-    studio_category = session.get_category('VODStudio')
+    # Select a language
+    session = get_session(language='E')
 
-    # Iterate through all its subcategories
-    # (this will make more API requests as needed)
-    for subcategory in studio_category.get_subcategories():
+    # Browse the category tree
+    root = session.get_category()
+    for subcategory in root.get_subcategories():
+        print(subcategory.key)
 
-        # Print a category header
-        print(f'\n{subcategory.name}\n-----------')
+    # Select a category
+    category = session.get_category('LatestVideos')
 
-        # Print title and URL of all media items
-        for media in subcategory.get_media():
-            print(media.title)
-            print(media.get_file().url)
+    # List media items
+    for media in category.get_media():
+        print(media.title)
+        print(media.get_file().url)
 
 See the media_ documentation for more details.
 

@@ -83551,4 +83551,59 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: null
+    headers:
+      Connection:
+      - close
+      Host:
+      - b.jw-cdn.org
+      User-Agent:
+      - Python-urllib/3.8
+    method: GET
+    uri: https://b.jw-cdn.org/apis/mediator/v1/categories/E/StudioMonthlyPrograms?clientType=firetv&detailed=1&offset=127
+  response:
+    body:
+      string: "{\"category\":{\"key\":\"StudioMonthlyPrograms\",\"type\":\"ondemand\",\"name\":\"Monthly
+        Programs\",\"description\":\"\",\"tags\":[\"AllowShuffleAsIconsInGrid\",\"AllowPlayAllAsIconsInGrid\",\"AllowShuffleInCategoryHeader\",\"AllowPlayAllInCategoryHeader\"],\"parentCategory\":{\"key\":\"VODStudio\",\"type\":\"container\",\"name\":\"JW
+        Broadcasting\",\"description\":\"Monthly programs hosted by members of the
+        Governing Body of Jehovah\u2019s Witnesses and helpers to their committees\",\"tags\":[\"RokuCategoryGridScreen\",\"JWORGExclude\",\"RokuCategoryCarouselList\",\"StreamThisChannelEnabled\"],\"images\":{\"wss\":{\"sm\":\"https://b.jw-cdn.org/images/jwb-categories/cat-jw-broadcasting/jw-broadcasting_univ_wss_sm.png\"}}},\"media\":[]},\"pagination\":{\"totalCount\":67,\"offset\":127,\"limit\":500},\"language\":{\"languageCode\":\"E\",\"locale\":\"en\",\"script\":\"ROMAN\",\"direction\":\"ltr\",\"isSignLanguage\":false}}"
+    headers:
+      Apigw-Requestid:
+      - D9bfIhy9DoEEPhA=
+      Cache-Control:
+      - must-revalidate, max-age=1800
+      Connection:
+      - close
+      Content-Length:
+      - '838'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 19 Sep 2026 18:49:17 GMT
+      Expires:
+      - Sat, 19 Sep 2026 19:19:17 GMT
+      Via:
+      - 1.1 b9e4cdf80c39fcc718f53aef89d46716.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - v-QrgiLWTOfsQX5Deozf-ejjRb80bqrk6HNF3sYwULmonZJXhZfosw==
+      X-Amz-Cf-Pop:
+      - ARN56-P4
+      X-Built-On:
+      - eu-west-1:jwb-mediator-api-prd:$LATEST:ac504f07a
+      X-Cache:
+      - Miss from cloudfront
+      X-Cvc:
+      - SE
+      X-Elapsed-Millis:
+      - '10'
+      X-Page-Built:
+      - Sat, 19 Sep 2026 18:49:17 GMT
+      X-Requestid:
+      - 460d0e9e-4cea-4bcd-803b-35fe96a8f530
+      strict-transport-security:
+      - max-age=31536000
+    status:
+      code: 200
+      message: OK
 version: 1

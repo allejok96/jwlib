@@ -1,12 +1,13 @@
 """
 Constants used in the mediator API
 """
+from typing import Literal
 
 # General
 # =======
 
 # Category.key of the root category.
-# This is not part of the mediator API, it belongs to jwlib.
+# This is not part of the jw.org API, it is made up by jwlib.
 ROOT_CATEGORY = 'All'
 
 # Time format used by the API, can be passed to time.strptime()
@@ -14,7 +15,7 @@ TIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
 
 # Client type
 # ===========
-# These can be passed to Session().
+# These can be passed to get_session().
 # They affect what data will be made available.
 
 CLIENT_APPLETV = 'appletv'
@@ -26,15 +27,18 @@ CLIENT_RWLS = 'rwls'
 CLIENT_SATELLITE = 'satellite'
 CLIENT_WWW = 'www'  # Used by jw.org.
 
+
 # Category type
 # =============
-CATEGORY_CONTAINER = 'container'
-CATEGORY_ONDEMAND = 'ondemand'
+CategoryType = Literal['container', 'ondemand']
+CATEGORY_CONTAINER: CategoryType = 'container'
+CATEGORY_ONDEMAND: CategoryType = 'ondemand'
 
 # Media type
 # ==========
-MEDIA_AUDIO = 'audio'
-MEDIA_VIDEO = 'video'
+MediaType = Literal['audio', 'video']
+MEDIA_AUDIO: MediaType = 'audio'
+MEDIA_VIDEO: MediaType = 'video'
 
 # Image selection
 # ===============

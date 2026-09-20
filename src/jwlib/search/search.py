@@ -6,8 +6,9 @@ from urllib.error import HTTPError
 from urllib.parse import quote, urlencode
 from urllib.request import urlopen
 
-from ..common import _get_json, _DictWrapper
 from .const import FILTER_ALL
+from .._dictwrapper import _DictWrapper
+from .._request import get_json as _get_json
 
 __all__ = (
     'DeepLink',
@@ -55,13 +56,13 @@ def _make_search_request(url: str, token: str, retry: bool) -> tuple[dict, str]:
 
 
 def search(query: str, *, filter_type='', language='E', sort='', token='') -> ResultPage:
-    """Perform a search and return a :class:`ResultPage`.
+    """Perform a search and return a `ResultPage`.
 
     :param query: search term
-    :param filter_type: see ``FILTER_*`` in :mod:`~jwlib.search.const`
+    :param filter_type: see `const.FILTER_* <jwlib.search.const>`
     :param language: language code
-    :param sort: see ``SORT_*`` in :mod:`~jwlib.search.const`
-    :param token: authentication token, acquired if empty (see :attr:`ResultPage.token`)
+    :param sort: see `const.SORT_* <jwlib.search.const>`
+    :param token: authentication token, acquired if empty (see `ResultPage.token`)
     """
     assert query
     assert language
@@ -86,8 +87,8 @@ class ResultPage(_DictWrapper):
     def from_url(cls, url: str, token: str = ''):
         """Load a search page from a URL.
 
-        :param url: complete search query URL, like the one from :attr:`PageLink.url`.
-        :param token: authentication token, acquired if empty (see :attr:`ResultPage.token`).
+        :param url: complete search query URL, like the one from `PageLink.url`.
+        :param token: authentication token, acquired if empty (see `ResultPage.token`).
         """
         response, valid_token = _make_search_request(url, token, retry=True)
         return ResultPage(response, token=valid_token)
@@ -192,7 +193,7 @@ class ResultPage(_DictWrapper):
     def results(self) -> List[Result]:
         """List of search results.
 
-        If you're using :const:`FILTER_ALL`, this will flatten all groups into a single list of results.
+        If you're using `const.FILTER_ALL <jwlib.media.const>`, this will flatten all groups into a single list of results.
         """
         return [r for g in self.result_groups
                 for r in g.results]
@@ -201,7 +202,7 @@ class ResultPage(_DictWrapper):
     def result_groups(self) -> List[ResultGroup]:
         """List of search result groups.
 
-        When using :const:`FILTER_ALL`, the search result may contain videos, music and publications.
+        When using `const.FILTER_ALL <jwlib.media.const>`, the search result may contain videos, music and publications.
         These will be grouped in separate sections on the search page, just like this function returns them.
 
         When using any other filter, the webpage doesn't put results in groups (since there's only one).
@@ -235,7 +236,7 @@ class ResultPage(_DictWrapper):
 
 
 class ResultGroup(_DictWrapper):
-    """Group of :class:`Result` s of similar type."""
+    """Group of `Result` s of similar type."""
 
     def __init__(self, data: dict, parent: ResultPage):
         super().__init__(data)
@@ -244,7 +245,7 @@ class ResultGroup(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.label!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -293,7 +294,7 @@ class Result(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.title!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -347,7 +348,7 @@ class Result(_DictWrapper):
     def type(self) -> str:
         """Item type.
 
-        See ``RESULT_*`` in :mod:`~jwlib.search.const`.
+        See `const.RESULT_* <jwlib.search.const>`.
         """
         return self._get_string('subtype')
 
@@ -376,7 +377,7 @@ class Result(_DictWrapper):
 
 
 class PageLink(_DictWrapper):
-    """Link to a :class:`ResultPage`."""
+    """Link to a `ResultPage`."""
 
     def __init__(self, data: dict, parent: ResultPage):
         super().__init__(data)
@@ -385,7 +386,7 @@ class PageLink(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.label!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
@@ -394,7 +395,7 @@ class PageLink(_DictWrapper):
         return self._get_string('label', '')
 
     def open(self) -> ResultPage:
-        """Fetch and return the :class:`ResultPage`."""
+        """Fetch and return the `ResultPage`."""
         return ResultPage.from_url(self.url, self._parent.token)
 
     @property
@@ -417,7 +418,7 @@ class PageLink(_DictWrapper):
 
     @property
     def url(self) -> str:
-        """Link destination, use :meth:`PageLink.open` to open it."""
+        """Link destination, use `PageLink.open()` to open it."""
         url = self._get_string('link')
 
         # Links are relative to the API base
@@ -437,12 +438,12 @@ class DeepLink(_DictWrapper):
     def __repr__(self):
         try:
             return f'<{self.__class__.__name__} {self.label!r}>'
-        except (TypeError, LookupError, ValueError):
+        except Exception:
             return super().__repr__()
 
     @property
     def key(self) -> int:
-        """Media code name, similar to :attr:`Result.key`."""
+        """Media code name, similar to `Result.key`."""
         return self.data.get('insight', {}).get('lank', '')
 
     @property
@@ -457,7 +458,7 @@ class DeepLink(_DictWrapper):
 
     @property
     def snippet(self) -> str:
-        """Blurb, similar to :attr:`Result.snippet`"""
+        """Blurb, similar to `Result.snippet`"""
         return self.data.get('snippet', '')
 
     @property
@@ -467,7 +468,7 @@ class DeepLink(_DictWrapper):
 
     @property
     def urls(self) -> Dict[str, str]:
-        """Dictionary of links, similar to :attr:`Result.urls`."""
+        """Dictionary of links, similar to `Result.urls`."""
         return self.data.get('urls', {})
 
     @property
@@ -483,7 +484,7 @@ class SearchInsight(_DictWrapper):
     def filter(self) -> str:
         """Current search filter.
 
-        See ``FILTER_*`` in :mod:`~jwlib.search.const` for valid values.
+        See `const.FILTER_* <jwlib.search.const>` for valid values.
         """
         return self._get_string('filter', '')
 
@@ -506,7 +507,7 @@ class SearchInsight(_DictWrapper):
     def sort(self) -> str:
         """Current sort method.
 
-        See ``SORT_*`` in :mod:`~jwlib.search.const` for valid values.
+        See `const.SORT_* <jwlib.search.const>` for valid values.
         """
         return self._get_string('sort', '')
 

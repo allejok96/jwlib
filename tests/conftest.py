@@ -1,5 +1,16 @@
 import pytest
 
+import jwlib.media._api_requests
+
+
+@pytest.fixture(autouse=True)
+def reset_inferred_media_limit(monkeypatch):
+    """Reset inferred media limit to default value after each test."""
+    original = jwlib.media._api_requests.get_inferred_media_limit()
+    yield
+    jwlib.media._api_requests.set_inferred_media_limit(original)
+
+
 # Apply this to all unmarked items:
 # @pytest.mark.vcr
 # @pytest.mark.default_cassette('cassette.yaml')
