@@ -6,8 +6,8 @@ from datetime import datetime
 from typing import Optional, Union
 from urllib.parse import urlparse
 
+from . import const
 from .._deprecated import deprecated
-from jwlib.media import const
 
 
 @dataclass

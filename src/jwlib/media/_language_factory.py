@@ -1,5 +1,5 @@
-from jwlib.media import Language
-from jwlib.media._api_responses import LanguageDict
+from ._api_responses import LanguageDict
+from ._language import Language
 
 
 def create_language(d: LanguageDict) -> Language:

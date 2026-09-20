@@ -3,7 +3,8 @@ Module kept for compatibility
 """
 import warnings
 
-from jwlib.media import Language, request_languages
+from . import request_languages
+from ._language import Language
 
 __all__ = 'request_languages', 'Language'
 
