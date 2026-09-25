@@ -2,6 +2,14 @@
 Changelog
 =========
 
+1.2.1_ (2026-09-25)
+===================
+
+Fixed
+-------
+
+- [media] Make Subtitles public
+
 1.2.0_ (2026-09-19)
 ===================
 
@@ -67,6 +75,7 @@ Added
 
 - First release on PyPI.
 
+.. _1.2.1: https://github.com/allejok96/jwlib/releases/tag/v1.2.1
 .. _1.2.0: https://github.com/allejok96/jwlib/releases/tag/v1.2.0
 .. _1.1.2: https://github.com/allejok96/jwlib/releases/tag/v1.1.2
 .. _1.1.1: https://github.com/allejok96/jwlib/releases/tag/v1.1.1
