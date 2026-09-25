@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from jwlib.media._file import File, Subtitle
+from jwlib.media._file import File, Subtitles
 
 
 def test_file_create_defaults():
@@ -24,13 +24,13 @@ def test_file_create_defaults():
 def test_file_create_with_subtitle_dict():
     file = File.create(url='https://example.org/video.mp4',
                        subtitles={'url': 'https://example.org/sub.vtt', 'checksum': 'abc'})
-    assert isinstance(file.subtitles, Subtitle)
+    assert isinstance(file.subtitles, Subtitles)
     assert file.subtitles.url == 'https://example.org/sub.vtt'
     assert file.subtitles.checksum == 'abc'
 
 
 def test_file_create_with_subtitle_instance_passthrough():
-    subtitle = Subtitle.create(url='https://example.org/sub.vtt')
+    subtitle = Subtitles.create(url='https://example.org/sub.vtt')
     file = File.create(url='https://example.org/video.mp4', subtitles=subtitle)
     assert file.subtitles is subtitle
 
@@ -83,12 +83,12 @@ def test_file_deprecated_subtitle_shims_none_when_no_subtitles():
 
 
 def test_subtitle_create_defaults():
-    subtitle = Subtitle.create(url='https://example.org/sub.vtt')
+    subtitle = Subtitles.create(url='https://example.org/sub.vtt')
     assert subtitle.checksum is None
     assert subtitle.date == ''
     assert subtitle.url == 'https://example.org/sub.vtt'
 
 
 def test_subtitle_get_date():
-    subtitle = Subtitle.create(url='x', date='2020-03-01T12:30:00')
+    subtitle = Subtitles.create(url='x', date='2020-03-01T12:30:00')
     assert subtitle.get_date() == datetime(2020, 3, 1, 12, 30, 0)
